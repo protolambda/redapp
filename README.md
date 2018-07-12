@@ -28,7 +28,10 @@ TODO: describe store structure, reducers, and sagas.
 
 ## Dependencies
 
-- Web3.0
+- Web3.0, v1.0+
+- redux + redux-saga: where tracked information is maintained and updated with.
+- eth-block-tracker: used to get block info from the web3 provider, either by polling (for metamask) or by listening.
+- UUID: for unique ids for each transaction. Hashes do not suffice since in-broadcast transactions don't have a hash yet.
 - Babel: ES6 support
 - Mocha, Chai: testing
 - istanbul: coverage reporting
