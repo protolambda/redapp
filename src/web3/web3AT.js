@@ -1,0 +1,8 @@
+const web3AT = {
+  WEB3_START_INIT: 'WEB3_INIT',
+  WEB3_INIT_COMPLETED: 'WEB3_COMPLETED',
+  WEB3_INIT_FAILED: 'WEB3_FAILED',
+
+};
+
+export default web3AT;

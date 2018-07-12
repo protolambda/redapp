@@ -1,0 +1,6 @@
+const contractsAT = {
+  CONTRACT_START_INIT: 'CONTRACT_START_INIT',
+  CONTRACT_INIT_COMPLETED: 'CONTRACT_INIT_COMPLETED'
+};
+
+export default contractsAT;
