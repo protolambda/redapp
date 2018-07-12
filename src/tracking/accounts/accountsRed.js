@@ -1,5 +1,5 @@
 import accountsAT from './accountsAT';
-import mappedReducer from '../../mapped-reducer';
+import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {
   accountsMap: {}
