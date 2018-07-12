@@ -51,5 +51,8 @@
     "istanbul": "^1.0.0-alpha",
     "mocha": "^5.2.0",
     "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "redux": "^4.0.0"
   }
 }
