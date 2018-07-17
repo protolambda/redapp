@@ -2,12 +2,14 @@ import {
   put, takeEvery, call, take
 } from 'redux-saga/effects';
 import {eventChannel, END} from 'redux-saga';
+import uuid4 from "uuid/v4";
 import transactionsAT from './transactionsAT';
 
 /**
  * Open a TX channel: this channel maps web3 events to our redux tracking system.
  *
  * @param web3 The web3 instance to use when sending the actual TX.
+ * @param txID The ID of the transaction, used in the tracking system.
  * @param from Senders address, optional. (default wallet otherwise)
  * @param to Destination address, or undefined for contract creation.
  * @param value TX value in wei.
@@ -18,7 +20,7 @@ import transactionsAT from './transactionsAT';
  * @param nonce Optional, can be used to re-send a transaction (with higher gas).
  * @returns {Channel<any>} The redux saga channel.
  */
-const openSendTxChannel = (web3, {
+const openSendTxChannel = (web3, txID, {
   from, to, value, gas, gasPrice, data, nonce
 }) => eventChannel((emit) => {
   // Web3 returns a "promise combined with an event emitter": we map this to redux events.
@@ -26,24 +28,24 @@ const openSendTxChannel = (web3, {
     from, to, value, gas, gasPrice, data, nonce
   })
     .on('transactionHash', (hash) => {
-      emit({type: transactionsAT.TX_BROADCAST, txHash: hash});
+      emit({type: transactionsAT.TX_BROADCAST, txID, txHash: hash});
     })
     .on('receipt', (receipt) => {
       // TODO: first receipt is probably double, as it's also the initial confirmation.
       // This can be ignored for now, but maybe we can remove this listener altogether.
-      emit({type: transactionsAT.TX_RECEIPT, receipt});
+      emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
     })
     .on('confirmation', (confirmationNumber, receipt) => {
       // re-fire the TX_RECEIPT, it changed if the confirmation number is 0 again.
-      if (confirmationNumber === 0) emit({type: transactionsAT.TX_RECEIPT, receipt});
+      if (confirmationNumber === 0) emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
       // Some apps may find the notice that web3 provided 12 confirmations (as far it goes)
       if (confirmationNumber === 12) {
-        emit({type: transactionsAT.TX_FINAL, receipt});
+        emit({type: transactionsAT.TX_FINAL, txID, receipt});
         emit(END);
       }
     })
     .on('error', (error, receipt) => {
-      emit({type: transactionsAT.TX_FAILED, receipt});
+      emit({type: transactionsAT.TX_FAILED, txID, receipt});
       // TODO This is tricky, an out-of-gas transaction technically did not fail until it's final,
       // as it could still be orphaned, and mined with a context
       // that does not make it run out of gas.
@@ -54,9 +56,14 @@ const openSendTxChannel = (web3, {
 });
 
 
-function* sendTX({from, to, value, gas, gasPrice, data, nonce}, web3) {
+function* sendTX({from, to, value, gas, gasPrice, data, nonce, txID}, web3) {
+
+  // If the user does not specify any ID, than create a new one (recommended).
+  const id = txID || uuid4();
+
   // Create TX channel, firing redux events based on all promises from web3.
-  const chan = yield call(openSendTxChannel, web3, {from, to, value, gas, gasPrice, data, nonce});
+  const chan = yield call(openSendTxChannel, web3, id,
+    {from, to, value, gas, gasPrice, data, nonce});
 
   // Now process the channel, and forward the events. A channel END will make it reach the finally.
   // noinspection UnreachableCodeJS

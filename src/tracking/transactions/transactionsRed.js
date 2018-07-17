@@ -36,33 +36,33 @@ const initialState = {
 //  hence it not being a Redux event.
 
 // simple util function that replicates previous state and replace the specific transaction state.
-const updateTx = (state, trackingId, txState) => ({
+const updateTx = (state, txID, txState) => ({
   ...state,
   tracker: {
     ...state.tracker,
-    [trackingId]: txState
+    [txID]: txState
   }
 });
 
 const mapping = {
-  [transactionsAT.TX_SENT]: (state, { trackingId }) => updateTx(state, trackingId,
-    {...state.tracker[trackingId], status: 'sent' }),
+  [transactionsAT.TX_SENT]: (state, { txID }) => updateTx(state, txID,
+    {...state.tracker[txID], status: 'sent' }),
 
-  [transactionsAT.TX_BROADCAST]: (state, { trackingId, txHash }) => updateTx(state, trackingId,
-    {...state.tracker[trackingId], status: 'broadcast', hash: txHash }),
+  [transactionsAT.TX_BROADCAST]: (state, { txID, txHash }) => updateTx(state, txID,
+    {...state.tracker[txID], status: 'broadcast', hash: txHash }),
 
-  [transactionsAT.TX_FAILED]: (state, { trackingId }) => updateTx(state, trackingId,
-    {...state.tracker[trackingId], status: 'failed'}),
+  [transactionsAT.TX_FAILED]: (state, { txID }) => updateTx(state, txID,
+    {...state.tracker[txID], status: 'failed'}),
 
-  [transactionsAT.TX_SUCCESS]: (state, { trackingId }) => updateTx(state, trackingId,
-    {...state.tracker[trackingId], status: 'success'}),
+  [transactionsAT.TX_SUCCESS]: (state, { txID }) => updateTx(state, txID,
+    {...state.tracker[txID], status: 'success'}),
 
-  [transactionsAT.TX_RECEIPT]: (state, { trackingId, receipt }) => updateTx(state, trackingId,
-    {...state.tracker[trackingId], receipt}),
+  [transactionsAT.TX_RECEIPT]: (state, { txID, receipt }) => updateTx(state, txID,
+    {...state.tracker[txID], receipt}),
 
-  [transactionsAT.FORGET_TX]: (state, { trackingId }) => {
+  [transactionsAT.FORGET_TX]: (state, { txID }) => {
     const res = {...state};
-    delete res.tracker[trackingId];
+    delete res.tracker[txID];
     return res;
   }
 };
