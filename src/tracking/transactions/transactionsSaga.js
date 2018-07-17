@@ -1,9 +1,9 @@
 import {
   put, takeEvery, call, take
 } from 'redux-saga/effects';
-import {eventChannel, END} from 'redux-saga';
-import uuid4 from "uuid/v4";
+import uuid4 from 'uuid/v4';
 import transactionsAT from './transactionsAT';
+import openTxChannel from './openTxChannel';
 
 /**
  * Open a TX channel: this channel maps web3 events to our redux tracking system.
@@ -22,42 +22,16 @@ import transactionsAT from './transactionsAT';
  */
 const openSendTxChannel = (web3, txID, {
   from, to, value, gas, gasPrice, data, nonce
-}) => eventChannel((emit) => {
+}) => {
   // Web3 returns a "promise combined with an event emitter": we map this to redux events.
   const promiEvent = web3.eth.sendTransaction({
     from, to, value, gas, gasPrice, data, nonce
-  })
-    .on('transactionHash', (hash) => {
-      emit({type: transactionsAT.TX_BROADCAST, txID, txHash: hash});
-    })
-    .on('receipt', (receipt) => {
-      // TODO: first receipt is probably double, as it's also the initial confirmation.
-      // This can be ignored for now, but maybe we can remove this listener altogether.
-      emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
-    })
-    .on('confirmation', (confirmationNumber, receipt) => {
-      // re-fire the TX_RECEIPT, it changed if the confirmation number is 0 again.
-      if (confirmationNumber === 0) emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
-      // Some apps may find the notice that web3 provided 12 confirmations (as far it goes)
-      if (confirmationNumber === 12) {
-        emit({type: transactionsAT.TX_FINAL, txID, receipt});
-        emit(END);
-      }
-    })
-    .on('error', (error, receipt) => {
-      emit({type: transactionsAT.TX_FAILED, txID, receipt});
-      // TODO This is tricky, an out-of-gas transaction technically did not fail until it's final,
-      // as it could still be orphaned, and mined with a context
-      // that does not make it run out of gas.
-      emit(END);
-    });
-  // Return unsubscribe function (wrap for future compatibility)
-  return () => promiEvent.off();
-});
+  });
+  return openTxChannel(promiEvent, txID);
+};
 
 
 function* sendTX({from, to, value, gas, gasPrice, data, nonce, txID}, web3) {
-
   // If the user does not specify any ID, than create a new one (recommended).
   const id = txID || uuid4();
 
