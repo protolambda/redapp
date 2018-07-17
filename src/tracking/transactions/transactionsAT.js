@@ -1,6 +1,7 @@
 const transactionsAT = {
   // send a transaction, to be tracked
   SEND_TX: 'SEND_TX',
+  // TODO do we need a SEND_TX_FAILED action?
   // when a tx has been broadcast
   TX_BROADCAST: 'TX_BROADCAST',
   // when a receipt was received
