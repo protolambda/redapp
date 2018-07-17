@@ -1,7 +1,7 @@
 import {
-  put, takeLatest, call, take
+  put, takeEvery, call, take
 } from 'redux-saga/effects';
-import {eventChannel, END} from 'redux-saga'
+import {eventChannel, END} from 'redux-saga';
 import transactionsAT from './transactionsAT';
 
 /**
@@ -54,7 +54,7 @@ const openSendTxChannel = (web3, {
 });
 
 
-function* sendTX({from, to, value, gas, gasPrice, data, nonce}, {web3}) {
+function* sendTX({from, to, value, gas, gasPrice, data, nonce}, web3) {
   // Create TX channel, firing redux events based on all promises from web3.
   const chan = yield call(openSendTxChannel, web3, {from, to, value, gas, gasPrice, data, nonce});
 
@@ -73,8 +73,8 @@ function* sendTX({from, to, value, gas, gasPrice, data, nonce}, {web3}) {
 }
 
 
-function* transactionsSaga() {
-  yield takeLatest(transactionsAT.SEND_TX, sendTX);
+function* transactionsSaga(web3) {
+  yield takeEvery(transactionsAT.SEND_TX, sendTX, web3);
 }
 
 export default transactionsSaga;
