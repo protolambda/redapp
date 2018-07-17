@@ -5,8 +5,10 @@ env:
   es6: true
   browser: true
 rules:
-  # Although it can look nice, it can also look a lot more verbose than necessary when forcing spacing around "}".
+  # Although it can look nice, it can also look a lot more verbose
+  # than necessary when forcing spacing/newlines around "}".
   "object-curly-spacing": off
+  "object-curly-newline": off
   "comma-dangle":
     - error
     - "only-multiline"

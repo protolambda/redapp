@@ -7,7 +7,26 @@ const initialState = {
 
 // TX flow:
 //
-// *creation* -> [broadcast] -> *pending* -> *confirmation* -> [receipt] -> [failed/success]
+//     *creation*         = User calls tx method
+//  -> [send]             = TX_SEND is started
+//  -> [sent]             = tx is added into tracker store, TX_SENT.
+//                           Web3provider needs to broadcast now
+//                           (e.g. user signs+sends with Metamask)
+//  -> [broadcast]        = Web3provider answered, we have a hash now, TX is in pool. TX_BROADCAST.
+//  -> *pending*          = Waiting for tx to get mined
+//  -> *confirmation*     = TX is mined, now we have to wait for the web3 provider to tell us.
+//  -> [receipt]          = Web3provider tells us the tx was processed.
+//                           Receipt is handled with TX_RECEIPT.
+//                           The receipt is being processed now.
+//  -> [failed/success]   = ReDApp fires an TX_SUCCESS/TX_FAILED depending on the receipt.
+//                           Note: TX_FAILED can also be fired without receipt,
+//                           meaning that the TX failed before being processed.
+//                           It fails with receipt when it ran out of gas.
+//  -> *more blocks mined on top*
+//  -> [confirmation, for each block] = Receipt may change, web3 tells us about the next 12 blocks.
+//                           But what we're really interested in is if the receipt changes,
+//                           in which case there should be another confirmation
+//                           from web3 with number 0. In this case, the TX_RECEIPT is fired again.
 //
 // *something* = implicit state, no events
 // [something] = explicit, fires an event
@@ -26,8 +45,11 @@ const updateTx = (state, trackingId, txState) => ({
 });
 
 const mapping = {
-  [transactionsAT.TX_BROADCAST]: (state, { trackingId }) => updateTx(state, trackingId,
-    {...state.tracker[trackingId], status: 'broadcast'}),
+  [transactionsAT.TX_SENT]: (state, { trackingId }) => updateTx(state, trackingId,
+    {...state.tracker[trackingId], status: 'sent' }),
+
+  [transactionsAT.TX_BROADCAST]: (state, { trackingId, txHash }) => updateTx(state, trackingId,
+    {...state.tracker[trackingId], status: 'broadcast', hash: txHash }),
 
   [transactionsAT.TX_FAILED]: (state, { trackingId }) => updateTx(state, trackingId,
     {...state.tracker[trackingId], status: 'failed'}),
