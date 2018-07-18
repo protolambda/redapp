@@ -6,17 +6,20 @@ const initialState = {
 };
 
 const mapping = {
-  [contractsAt.CONTRACT_INIT_COMPLETED]: (state, action) => ({
+  [contractsAt.CONTRACT_ADDED]: (state, {contractName, methods, networks}) => ({
     ...state,
-    // Add the contract (A js object with methods for each abi entry)
-    [action.contractName]: action.contract
+    // Add the contract to the state
+    [contractName]: {
+      methods,
+      networks
+    }
   }),
-  [contractsAt.FORGET_CONTRACT]: (state, action) => {
+  [contractsAt.FORGET_CONTRACT]: (state, {contractName}) => {
     // copy the state, we don't want to alter the old state,
-    //  but we do want to do a shallow copy: keep the same contract instances alive.
-    const newState = Object.assign({}, state);
+    //  but we do want to do a shallow copy: keep the same contract thunks alive.
+    const newState = {...state};
     // remove the contract
-    delete newState[action.contractName];
+    delete newState[contractName];
     return newState;
   }
 };

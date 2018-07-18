@@ -9,6 +9,11 @@ rules:
   # than necessary when forcing spacing/newlines around "}".
   "object-curly-spacing": off
   "object-curly-newline": off
+  # This is just restricting, good intent, but it really depends on the loop.
+  "no-loop-func": off
+  # Redux actions can be big (optional parameters),
+  #  better to have them on a few lines (with grouped parameters) than stretching longer.
+  "object-property-newline": off
   "comma-dangle":
     - error
     - "only-multiline"
