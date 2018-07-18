@@ -17,7 +17,7 @@ import awaitCall from './awaitCall';
  * @param to Destination address, or undefined for contract creation.
  * @param data Optional. TX data, i.e. abi encoded contract call,
  *              or contract code itself for contract creation. (99% of calls should have it though.)
- * @returns {Channel<any>} The redux saga channel.
+ * @returns {Promise} The redux saga channel.
  */
 const initiateCall = (web3, callID, blockNr, {from, to, data}) => {
   // Web3 returns a simple promise here, no complex emitter object.
