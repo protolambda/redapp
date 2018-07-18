@@ -46,7 +46,7 @@ function* cacheCall({from, to, data, blockNr, callID}) {
   const id = callID || uuid4();
 
   // check if we hit the cache.
-  const cached = yield select(state => state.cache[id]);
+  const cached = yield select(state => state[id]);
 
   if (!cached) {
     yield put(callsAT.FORCE_CALL, {from, to, data, blockNr, callID});

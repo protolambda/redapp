@@ -2,7 +2,7 @@ import callsAT from './callsAT';
 import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {
-  cache: {}
+  // no calls initially
 };
 
 /*
@@ -23,54 +23,42 @@ const initialState = {
 const mapping = {
   [callsAT.FORCE_CALL]: (state, { callID, blockNr }) => ({
     ...state,
-    cache: {
-      ...state.cache,
-      // Create a new cache entry if it does not already exist
-      [callID]: state.cache[callID] || {
-        status: 'in-progress',
-        value: undefined,
-        blockNr // blockNr is optional
-      }
+    // Create a new cache entry if it does not already exist
+    [callID]: state.cache[callID] || {
+      status: 'in-progress',
+      value: undefined,
+      blockNr // blockNr is optional
     }
   }),
 
   [callsAT.CALL_RETURNED]: (state, { callID, value }) => ({
     ...state,
-    cache: {
-      ...state.cache,
-      [callID]: {
-        // keep old state; blockNr is still there.
-        ...state.cache[callID],
-        status: 'success',
-        value
-      }
+    [callID]: {
+      // keep old state; blockNr is still there.
+      ...state.cache[callID],
+      status: 'success',
+      value
     }
   }),
 
   [callsAT.CALL_FAILED]: (state, { callID, err }) => ({
     ...state,
-    cache: {
-      ...state.cache,
-      [callID]: {
-        // keep old state; blockNr is still there.
-        ...state.cache[callID],
-        status: 'failed',
-        value: null,
-        err
-      }
+    [callID]: {
+      // keep old state; blockNr is still there.
+      ...state.cache[callID],
+      status: 'failed',
+      value: null,
+      err
     }
   }),
 
-  [callsAT.CLEAR_CACHE]: (state) => ({
-    ...state,
-    cache: {
-      // cache is empty now.
-    }
+  [callsAT.CLEAR_CACHE]: () => ({
+    // cache is empty now.
   }),
 
   [callsAT.FORGET_CALL]: (state, { callID }) => {
     const res = {...state};
-    delete res.cache[callID];
+    delete res[callID];
     return res;
   }
 };

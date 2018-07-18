@@ -38,31 +38,28 @@ const initialState = {
 // simple util function that replicates previous state and replace the specific transaction state.
 const updateTx = (state, txID, txState) => ({
   ...state,
-  tracker: {
-    ...state.tracker,
-    [txID]: txState
-  }
+  [txID]: txState
 });
 
 const mapping = {
   [transactionsAT.TX_SENT]: (state, { txID }) => updateTx(state, txID,
-    {...state.tracker[txID], status: 'sent' }),
+    {...state[txID], status: 'sent' }),
 
   [transactionsAT.TX_BROADCAST]: (state, { txID, txHash }) => updateTx(state, txID,
-    {...state.tracker[txID], status: 'broadcast', hash: txHash }),
+    {...state[txID], status: 'broadcast', hash: txHash }),
 
   [transactionsAT.TX_FAILED]: (state, { txID }) => updateTx(state, txID,
-    {...state.tracker[txID], status: 'failed'}),
+    {...state[txID], status: 'failed'}),
 
   [transactionsAT.TX_SUCCESS]: (state, { txID }) => updateTx(state, txID,
-    {...state.tracker[txID], status: 'success'}),
+    {...state[txID], status: 'success'}),
 
   [transactionsAT.TX_RECEIPT]: (state, { txID, receipt }) => updateTx(state, txID,
-    {...state.tracker[txID], receipt}),
+    {...state[txID], receipt}),
 
   [transactionsAT.FORGET_TX]: (state, { txID }) => {
     const res = {...state};
-    delete res.tracker[txID];
+    delete res[txID];
     return res;
   }
 };
