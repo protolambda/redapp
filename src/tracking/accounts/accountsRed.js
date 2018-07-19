@@ -2,31 +2,44 @@ import accountsAT from './accountsAT';
 import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {
-  accountsMap: {}
-  // TODO also track which of these is the default account?
+  // The accounts fetched from web3 provider
+  wallet: {
+    // Empty initially
+  },
+  // The accounts managed locally
+  local: {
+    // Empty initially
+  }
 };
 
-const mapping = {
-  [accountsAT.ACCOUNTS_FETCH_COMPLETED]: (state, action) => ({
-    ...state,
-    accountsMap: action.accountsMap
-  }),
-  [accountsAT.ACCOUNTS_SYNC_COMPLETED]: (state, action) => {
-    const newAccMap = state.accountsMap;
+// Check if the address is part of the wallet being tracked.
+const isWalletAccount = (state, address) => !!state.wallet[address];
 
-    for (const key of action.accountsMap) {
-      const value = action.accountsMap[key];
-      // Merge in new updated data.
-      newAccMap[key] = {
-        ...newAccMap[key],
-        value
-      };
+const mapping = {
+  [accountsAT.ACCOUNTS_FETCH_COMPLETED]: (state, {accounts}) => ({
+    ...state,
+    wallet: accounts
+  }),
+  [accountsAT.ACCOUNT_BALANCE]: (state, {account, balance}) => isWalletAccount(state, account) ? ({
+    ...state,
+    wallet: {
+      ...state.wallet,
+      [account]: {
+        ...state.wallet[account],
+        balance
+      }
     }
-    return ({
+  }) :
+    ({
       ...state,
-      accountsMap: state.accountsMap
-    });
-  }
+      walllocalet: {
+        ...state.local,
+        [account]: {
+          ...state.local[account],
+          balance
+        }
+      }
+    })
 };
 
 export default mappedReducer(mapping, initialState);
