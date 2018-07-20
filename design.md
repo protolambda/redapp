@@ -38,7 +38,12 @@ TODO: this document is a **WORK IN PROGRESS**.
                  kept in memory, older ones are removed.
     - `transactions`: a mapping, with a UUID (v4) as key. Because TX-hashes are not available
                        before processing by the web3provider.
-  - `contracts`: actionable, more complex, not necessarily tracked.
+    - `calls`: a mapping, with a hash of the web3 call-data as key (Fallback to UUID).
+                  Acts as a cache; it can be cleared, and cache-calls can be made
+                   (i.e. try to hit cache before resorting to make a new web3 call). 
+  - `contracts`: actionable, more complex, not necessarily tracked, hence separated
+                  from the tracking. Contract methods delegate web3 work to the tracking system,
+                   only ABI-encoding is done by the contract.
 
 
 ## Tracking

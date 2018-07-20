@@ -18,7 +18,7 @@ function* awaitCall(callPromise, callID) {
     // The inner call is the Web3 contract call, returning a promise.
     const callResult = yield call(callPromise);
 
-    put({type: callsAT.CALL_RETURNED, callID, value: callResult});
+    put({type: callsAT.CALL_RETURNED, callID, rawValue: callResult});
   } catch (err) {
     // Handle failure, forward error, user can check what happened.
     put({type: callsAT.CALL_FAILED, callID, err});

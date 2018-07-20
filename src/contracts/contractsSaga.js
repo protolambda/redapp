@@ -41,7 +41,8 @@ function* addContract({contractName, abi, networks}, web3, defaultNetworkId) {
               const contractAddress = to || (getState()[contractName]
                 .networks[networkId || defaultNetworkId].address);
               dispatch({
-                type: callType, data: callData, blockNr, callID, to: contractAddress
+                type: callType, data: callData, blockNr, callID, to: contractAddress,
+                outputsABI: entry.outputs
               });
             }
           };
@@ -77,7 +78,7 @@ function* addContract({contractName, abi, networks}, web3, defaultNetworkId) {
 
   // TODO: add events as well?
 
-  yield put(callsAT.CONTRACT_ADDED, {contractName, methods, networks});
+  yield put({type: callsAT.CONTRACT_ADDED, contractName, methods, networks});
 }
 
 

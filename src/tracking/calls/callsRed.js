@@ -13,7 +13,9 @@ const initialState = {
     // suffixed with "-", and then the blocknumber that was used.
     "0xDEADBEEF": {
       status: "success"/"failed"/"in-progress",
-      value: ....,
+      rawValue: ...., // raw returned data
+      value: ..., // decoded data, if a decoder was available
+      decoder: (data) => value, // decoding function
       block: block number used, e.g. "latest", or "123"
     },
     ....more call cache entries
@@ -21,23 +23,25 @@ const initialState = {
 */
 
 const mapping = {
-  [callsAT.FORCE_CALL]: (state, { callID, blockNr }) => ({
+  [callsAT.FORCE_CALL]: (state, { callID, blockNr, outputsABI }) => ({
     ...state,
     // Create a new cache entry if it does not already exist
     [callID]: state.cache[callID] || {
       status: 'in-progress',
+      rawValue: undefined,
       value: undefined,
+      outputsABI,
       blockNr // blockNr is optional
     }
   }),
 
-  [callsAT.CALL_RETURNED]: (state, { callID, value }) => ({
+  [callsAT.CALL_RETURNED]: (state, { callID, rawValue }) => ({
     ...state,
     [callID]: {
       // keep old state; blockNr is still there.
       ...state.cache[callID],
       status: 'success',
-      value
+      rawValue
     }
   }),
 
@@ -47,6 +51,7 @@ const mapping = {
       // keep old state; blockNr is still there.
       ...state.cache[callID],
       status: 'failed',
+      rawValue: null,
       value: null,
       err
     }

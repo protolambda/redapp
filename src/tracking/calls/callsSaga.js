@@ -42,22 +42,34 @@ function* forceCall({from, to, data, blockNr, callID}, web3) {
 }
 
 
-function* cacheCall({from, to, data, blockNr, callID}) {
+function* cacheCall({from, to, data, blockNr, callID, outputsABI}) {
   const id = callID || uuid4();
 
   // check if we hit the cache.
   const cached = yield select(state => state[id]);
 
   if (!cached) {
-    yield put(callsAT.FORCE_CALL, {from, to, data, blockNr, callID});
+    yield put({type: callsAT.FORCE_CALL, from, to, data, blockNr, callID, outputsABI});
   }
   // TODO: the else case: we could fire a "cache is hit" event, but we probably don't need it.
 }
 
+function* decodeCall({callID, rawValue}, web3) {
+  const outputsABI = yield select(state => state[callID].outputsABI);
+  // if no outputsABI is available, then we can't decode it.
+  // The user will have to do with the rawValue.
+  if (outputsABI !== undefined) {
+    // We have the outputs ABI, let's decode the raw bytes
+    const value = web3.abi.decodeParameters(outputsABI, rawValue);
+
+    yield put({type: callsAT.CALL_VALUE, callID, value});
+  }
+}
 
 function* callsSaga(web3) {
   yield takeEvery(callsAT.CACHE_CALL, cacheCall);
   yield takeEvery(callsAT.FORCE_CALL, forceCall, web3);
+  yield takeEvery(callsAT.CALL_RETURNED, decodeCall, web3);
 }
 
 export default callsSaga;
