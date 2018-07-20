@@ -20,26 +20,26 @@ const mapping = {
     ...state,
     wallet: accounts
   }),
-  [accountsAT.ACCOUNT_BALANCE]: (state, {account, balance}) => isWalletAccount(state, account) ? ({
-    ...state,
-    wallet: {
-      ...state.wallet,
-      [account]: {
-        ...state.wallet[account],
-        balance
-      }
-    }
-  }) :
-    ({
+  [accountsAT.ACCOUNT_BALANCE]: (state, {account, balance}) => (
+    isWalletAccount(state, account) ? ({
       ...state,
-      walllocalet: {
+      wallet: {
+        ...state.wallet,
+        [account]: {
+          ...state.wallet[account],
+          balance
+        }
+      }
+    }) : ({
+      ...state,
+      local: {
         ...state.local,
         [account]: {
           ...state.local[account],
           balance
         }
       }
-    })
+    }))
 };
 
 export default mappedReducer(mapping, initialState);
