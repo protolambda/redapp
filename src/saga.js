@@ -1,13 +1,14 @@
 import { all, fork } from 'redux-saga/effects';
 
-import web3Saga from './web3/web3Saga';
+import trackingSaga from './tracking/trackingSaga';
+import contractsSaga from './contracts/contractsSaga';
 
 /**
- *  Simply forks to all ReDApp sagas
+ *  Forks to tracking and contracts saga.
  */
 export default function* root() {
   yield all([
-    // fork(todoSaga),
-    fork(web3Saga)
+    fork(trackingSaga),
+    fork(contractsSaga)
   ]);
 }
