@@ -19,7 +19,6 @@ examples
 CHANGELOG.md
 .travis.yml
 .editorconfig
-.eslintignore
-.eslintrc
+.eslintrc.yaml
 .babelrc
 .gitignore
