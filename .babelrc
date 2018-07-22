@@ -1,15 +1,42 @@
 {
   "env": {
     "development": {
-      "presets": ["stage-3"],
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "loose": false,
+            "modules": "commonjs",
+            "forceAllTransforms": true
+          }
+        ],
+        "@babel/stage-2"
+      ],
       "plugins": [
-        "add-module-exports"
+        ["@babel/transform-runtime", {
+          "polyfill": false,
+          "regenerator": true
+        }]
       ]
     },
     "production": {
-      "presets": ["stage-3", "minify"],
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "loose": false,
+            "modules": "commonjs",
+            "forceAllTransforms": true
+          }
+        ],
+        "@babel/stage-2",
+        "minify"
+      ],
       "plugins": [
-        "add-module-exports"
+        ["@babel/transform-runtime", {
+          "polyfill": false,
+          "regenerator": true
+        }]
       ]
     }
   }
