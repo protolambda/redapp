@@ -1,0 +1,32 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "loose": false,
+            "modules": "commonjs",
+            "forceAllTransforms": true
+          }
+        ],
+        "@babel/react",
+        "@babel/stage-2"
+      ]
+    },
+    "production": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "loose": false,
+            "modules": "commonjs",
+            "forceAllTransforms": true
+          }
+        ],
+        "@babel/react",
+        "@babel/stage-2"
+      ]
+    }
+  }
+}
