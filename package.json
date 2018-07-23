@@ -24,11 +24,12 @@
     "url": "git+https://github.com/protolambda/redapp.git"
   },
   "keywords": [
-    "boilerplate",
-    "npm",
-    "module",
-    "node",
-    "javascript"
+    "ethereum",
+    "redux",
+    "dapp",
+    "tracking",
+    "transaction", "transactions",
+    "smartcontract", "smartcontracts"
   ],
   "author": "@protolambda <proto@protolambda.com>",
   "license": "MIT",
