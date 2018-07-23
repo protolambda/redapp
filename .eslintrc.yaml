@@ -5,6 +5,8 @@ env:
   es6: true
   browser: true
 rules:
+  # nothing wrong with a little bit of padding.
+  "padded-blocks": off
   # Although it can look nice, it can also look a lot more verbose
   # than necessary when forcing spacing/newlines around "}".
   "object-curly-spacing": off

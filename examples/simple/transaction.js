@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-const redappReducer = require('../lib/reducer');
-const redappSaga = require('../lib/saga');
+const redappReducer = require('../../lib/reducer');
+const redappSaga = require('../../lib/saga');
 
 // TODO init a store
 // TODO init redapp root reducer

@@ -6,9 +6,9 @@ import contractsSaga from './contracts/contractsSaga';
 /**
  *  Forks to tracking and contracts saga.
  */
-export default function* root() {
+export default function* root(web3) {
   yield all([
-    fork(trackingSaga),
-    fork(contractsSaga)
+    fork(trackingSaga, web3),
+    fork(contractsSaga, web3)
   ]);
 }

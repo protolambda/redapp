@@ -8,10 +8,10 @@ import transactionsSaga from './transactions/transactionsSaga';
 /**
  *  This saga forks into all tracking sagas.
  */
-export default function* root() {
+export default function* root(web3) {
   yield all([
-    fork(accountsSaga),
-    fork(callsSaga),
-    fork(transactionsSaga)
+    fork(accountsSaga, web3),
+    fork(callsSaga, web3),
+    fork(transactionsSaga, web3)
   ]);
 }
