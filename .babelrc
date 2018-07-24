@@ -1,32 +1,67 @@
 {
-  "presets": [
-    [
-      "@babel/env",
-      {
-        "targets": {
-          "browsers": [
-            "ie >= 11"
-          ]
-        },
-        "exclude": ["transform-async-to-generator", "transform-regenerator"],
-        "loose": true,
-        "modules": false
-      }
-    ],
-    "@babel/stage-2"
-  ],
   "env": {
-    "commonjs": {
+    "es": {
       "presets": [
         [
           "@babel/env",
           {
-            "true": false,
-            "modules": "commonjs"
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "exclude": ["transform-async-to-generator", "transform-regenerator"],
+            "loose": true,
+            "modules": false,
+            "forceAllTransforms": true
           }
         ],
         "@babel/stage-2"
       ]
+    },
+    "cjs": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "loose": true,
+            "modules": false,
+            "forceAllTransforms": true
+          }
+        ],
+        "@babel/stage-2"
+      ],
+      "plugins": [
+        "@babel/plugin-transform-modules-commonjs",
+        ["@babel/transform-runtime", {
+        "polyfill": false,
+        "regenerator": true
+        }]
+      ]
+    },
+    "umd": {
+      "presets": [
+        [
+          "@babel/env",
+          {
+            "targets": {
+              "browsers": [
+                "ie >= 11"
+              ]
+            },
+            "loose": true,
+            "modules": false,
+            "forceAllTransforms": true
+          }
+        ],
+        "@babel/stage-2"
+      ],
+      "plugins": ["@babel/plugin-external-helpers"]
     }
   }
 }
