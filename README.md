@@ -23,7 +23,8 @@ ReDApp is a NodeJS package aiming to ease the development of DApps
 ReDApp only support Web3.js v1.0+.
 
 TODO: describe store structure, reducers, and sagas.
-
+TODO: format documentation.
+TODO: images for documentation
 
 
 ## Dependencies
@@ -31,14 +32,66 @@ TODO: describe store structure, reducers, and sagas.
 - Web3.0, v1.0+
 - redux + redux-saga: where tracked information is maintained and updated with.
 - eth-block-tracker: used to get block info from the web3 provider, either by polling (for metamask) or by listening.
-- UUID: for unique ids for each transaction. Hashes do not suffice since in-broadcast transactions don't have a hash yet.
-- Babel: ES6 support
+- UUID/v4: for unique ids for each transaction. Hashes do not suffice since in-broadcast transactions don't have a hash yet.
+- Babel (v7): ES6 support
 - Mocha, Chai: testing
 - istanbul: coverage reporting
-- rimraf, cross-env: utils for npm run scripts
+- rimraf, cross-env, npm-run-all: utils for npm run scripts
 - ESLint: linting
 
 
 Waiting for Airbnb base config to support ESLint 5.0,
  see: https://github.com/airbnb/javascript/issues/1834
+
+
+## Examples
+
+See `/examples` folder:
+
+- [ReDApp React example](examples/react-example/README.md)
+- [Minimal example](examples/simple)
+
+## Testing & Coverage
+
+```bash
+npm run:test
+npm run:cover
+```
+
+## Building
+
+There are three build output formats: ES6, common-js, UMD.
+
+### ES6
+
+- Babel stage features are transformed, code is otherwise the same
+- Separate modules
+- Outputs to `es`
+
+```bash
+npm run build:es
+```
+
+### Common-js
+
+- Separate modules
+- Compatible with non-ES6 code
+- Outputs to `/lib`
+
+```bash
+npm run build:cjs
+```
+
+### UMD
+
+- bundled code, single module require.
+- Built to work with unpkg.
+- external dependencies
+- external babel helpers (`regeneratorRuntime`)
+- Outputs to `/dist/redapp.js`, and a minified version, `/dist/redapp.js`
+
+```bash
+npm run build:umd
+npm run build:umd:min
+```
 
