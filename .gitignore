@@ -33,8 +33,14 @@ jspm_packages
 # Editors
 .idea
 
-# Lib
+# Lib (Commonjs build output)
 lib
+
+# Dist (UMD dev/production build output)
+dist
+
+# ES (ES build output)
+es
 
 # npm package lock
 package-lock.json

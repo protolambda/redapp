@@ -1,3 +1,6 @@
 examples
 lib
+dist
+es
 coverage
+**/node_modules/**
