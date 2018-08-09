@@ -7,9 +7,14 @@ module.exports = {
     'webpack-hot-middleware/client?reload=true',
     path.join(__dirname, 'src', 'main'),
   ],
+  resolve: {
+    modules: [
+      path.resolve('./node_modules')
+    ]
+  },
   mode: 'development',
   performance: {
-    hints: false
+   hints: false
   },
   output: {
     path: path.join(__dirname, 'dist'),

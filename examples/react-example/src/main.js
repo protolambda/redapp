@@ -5,10 +5,10 @@ import ReactDOM from 'react-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import reducer from './reducers';
-import rootSaga from './sagas';
+import initWeb3 from 'redapp/es/initWeb3';
+import rootReducer from './rootReducer';
+import rootSaga from './rootSaga';
 import App from './components/App';
-import initWeb3 from 'redapp';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -17,7 +17,7 @@ const sagaMiddleware = createSagaMiddleware();
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
-  reducer,
+  rootReducer,
   composeEnhancers(
     applyMiddleware(sagaMiddleware)
   )

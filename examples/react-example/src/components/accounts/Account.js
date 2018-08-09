@@ -18,5 +18,5 @@ Account.propTypes = {
 };
 
 export default connect((state, props) => ({
-  data: state.accounts[props.address]
+  data: state.redapp.tracking.accounts[props.address]
 }))(Account);

@@ -17,6 +17,6 @@ const AccountList = ({walletAccounts, localAccounts}) => (
 );
 
 export default connect(state => ({
-  walletAccounts: Object.keys(state.accounts.wallet),
-  localAccounts: Object.keys(state.accounts.local),
+  walletAccounts: Object.keys(state.redapp.tracking.accounts.wallet),
+  localAccounts: Object.keys(state.redapp.tracking.accounts.local),
 }))(AccountList);

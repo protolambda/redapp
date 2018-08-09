@@ -28,5 +28,5 @@ Contract.propTypes = {
 };
 
 export default connect((state, props) => ({
-  data: state.contracts[props.name]
+  data: state.redapp.contracts[props.name]
 }))(Contract);

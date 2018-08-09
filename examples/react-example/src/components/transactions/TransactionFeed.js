@@ -13,5 +13,5 @@ const TransactionFeed = ({transactions}) => (
 );
 
 export default connect(state => ({
-  transactions: Object.keys(state.tracker.transactions)
+  transactions: Object.keys(state.redapp.tracking.transactions)
 }))(TransactionFeed);

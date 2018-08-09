@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import contractsAT from 'redapp/src/contracts/contractsAT';
+import contractsAT from 'redapp/es/contracts/contractsAT';
 
 
 // eslint-disable-next-line
@@ -29,8 +29,8 @@ class ContractLoader extends React.Component {
   addContract = () => this.props.dispatch({
     type: contractsAT.ADD_CONTRACT,
     contractName: this.state.contractName,
-    abi: JSON.parse(this.state.abi),
-    networks: JSON.parse(this.state.networks)
+    abi: this.state.abi,
+    networks: this.state.networks
   });
 
   validateName = (evt) => {
@@ -68,7 +68,7 @@ class ContractLoader extends React.Component {
       <div>
         <h1>Contract Loader</h1>
 
-        Name: <input type="text" name="contract-name" value={this.state.contractName}/>
+        Name: <input type="text" name="contract-name" defaultValue={this.state.contractName}/>
         <button onClick={this.addContract} disabled={
             !(this.state.contractNameValid && this.state.abiValid && this.state.networksValid)
           } onChange={this.validateName}>Add contract</button>
@@ -76,12 +76,12 @@ class ContractLoader extends React.Component {
 
         <h2>Contract ABI</h2>
         <textarea rows="4" cols="50" name="abi"
-                  value={this.state.abiInput}
+                  defaultValue={this.state.abiInput}
                   onChange={this.validateJSON('abi')}/>
 
         <h2>Contract networks config</h2>
         <textarea rows="4" cols="50" name="abi"
-                  value={this.state.networksInput}
+                  defaultValue={this.state.networksInput}
                   onChange={this.validateJSON('networks')}/>
       </div>
     );

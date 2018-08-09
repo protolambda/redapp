@@ -20,5 +20,5 @@ TransactionFeedItem.propTypes = {
 };
 
 export default connect((state, props) => ({
-  data: state.tracker.transactions[props.txID]
+  data: state.redapp.tracking.transactions[props.txID]
 }))(TransactionFeedItem);

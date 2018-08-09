@@ -13,5 +13,5 @@ const ContractList = ({contracts}) => (
 );
 
 export default connect(state => ({
-  contracts: Object.keys(state.contracts)
+  contracts: Object.keys(state.redapp.contracts)
 }))(ContractList);
