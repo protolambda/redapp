@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import TransactionFeedItem from '../transactions/TransactionFeedItem';
+import CallFeedItem from '../calls/CallFeedItem';
 
 
 class ContractMethodInput extends React.Component {
@@ -73,10 +75,12 @@ class ContractMethodInput extends React.Component {
 
 
   render() {
-    const {method, ...otherProps} = this.props;
+    const {method} = this.props;
+
+    const {txIDs, callIDs} = this.state;
 
     return (
-      <div {...otherProps}>
+      <div>
         <h4>{method.name}</h4>
         <div>
           {method.inputs.map(({name, type}, i) => (
@@ -95,6 +99,18 @@ class ContractMethodInput extends React.Component {
           {method.forceCall && (<button onClick={this.forceCall}>
             Call (Tracked, Force)
           </button>)}
+        </div>
+        <div>
+          {(txIDs && txIDs.length > 0) && <div>
+            <h5>Transactions</h5>
+            {txIDs.map((txID, i) => (<TransactionFeedItem key={`tx_${txID}_${i}`} txID={txID}/>))}
+          </div>
+          }
+          {(callIDs && callIDs.length > 0) && <div>
+            <h5>Calls</h5>
+            {callIDs.map((callID, i) => (<CallFeedItem key={`tx_${callID}_${i}`} callID={callID}/>))}
+          </div>
+          }
         </div>
       </div>
     );

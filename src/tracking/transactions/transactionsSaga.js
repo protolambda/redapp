@@ -47,14 +47,14 @@ function* sendTX(web3, {from, to, value, gas, gasPrice, data, nonce, txID}) {
       yield put(event);
     }
   } catch (err) {
-    put({type: transactionsAT.SEND_TX_FAILED, err});
+    yield put({type: transactionsAT.SEND_TX_FAILED, err});
   } finally {
     chan.close();
   }
 }
 
 
-function* transactionsSaga(web3) {
+function* transactionsSaga(web3, getTransactionsState) {
   yield takeEvery(transactionsAT.SEND_TX, sendTX, web3);
 }
 

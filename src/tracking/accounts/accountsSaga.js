@@ -22,8 +22,6 @@ function* tryFetchAccounts(web3, action) {
 }
 // TODO should accounts be fetched automatically on interval?
 
-const getAccounts = state => state.accounts;
-
 function* tryGetBalance(web3, {account}) {
   try {
     const balance = yield call(web3.eth.getBalance, account);
@@ -39,18 +37,18 @@ function* getSingle({account}) {
   yield put({type: accountsAT.ACCOUNT_GET_BALANCE, account});
 }
 
-function* getAll() {
-  const accounts = yield select(getAccounts);
+function* getAll(getAccountsState) {
+  const accounts = yield select(getAccountsState);
 
   for (const account of accounts) {
     yield put({type: accountsAT.ACCOUNT_GET, account});
   }
 }
 
-function* accountsSaga(web3) {
+function* accountsSaga(web3, getAccountsState) {
   // only take latest, doing multiple buffered updates is useless.
   yield takeLatest(accountsAT.ACCOUNTS_START_FETCH, tryFetchAccounts, web3);
-  yield takeLatest(accountsAT.ACCOUNTS_GET_ALL, getAll);
+  yield takeLatest(accountsAT.ACCOUNTS_GET_ALL, getAll, getAccountsState);
   yield takeEvery(accountsAT.ACCOUNT_GET, getSingle);
   yield takeEvery(accountsAT.ACCOUNT_GET_BALANCE, tryGetBalance, web3);
 }

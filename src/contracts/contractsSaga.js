@@ -7,7 +7,7 @@ import contractsAT from './contractsAT';
 import callsAT from '../tracking/calls/callsAT';
 import transactionsAT from '../tracking/transactions/transactionsAT';
 
-function* addContract(web3, defaultNetworkId, {contractName, abi, networks}) {
+function* addContract(web3, defaultNetworkId, getContractsState, {contractName, abi, networks}) {
   // Keep contract creation extremely simple:
   //  we only use this instance to create the ABI encoded data with,
   //  transactions/calls/events will be handled by the other parts of ReDApp.
@@ -23,7 +23,7 @@ function* addContract(web3, defaultNetworkId, {contractName, abi, networks}) {
     if (entry.type === 'function') {
       // Add ABI data to each method
       const method = {...entry};
-      const encodeABI = args => web3Contract[entry.name](...args).encodeABI();
+      const encodeABI = args => web3Contract.methods[entry.name](...args).encodeABI();
 
       // Constant methods don't change any state; hence, only add call functionality.
       if (entry.constant) {
@@ -39,7 +39,7 @@ function* addContract(web3, defaultNetworkId, {contractName, abi, networks}) {
           return {
             callID,
             thunk: (dispatch, getState) => {
-              const contractAddress = to || (getState()[contractName]
+              const contractAddress = to || (getContractsState(getState())[contractName]
                 .networks[networkId || defaultNetworkId].address);
               dispatch({
                 type: callType, data: callData, blockNr, callID, to: contractAddress,
@@ -63,7 +63,7 @@ function* addContract(web3, defaultNetworkId, {contractName, abi, networks}) {
           return {
             txID,
             thunk: (dispatch, getState) => {
-              const contractAddress = to || (getState()[contractName]
+              const contractAddress = to || (getContractsState(getState())[contractName]
                 .networks[networkId || defaultNetworkId].address);
               dispatch({
                 type: transactionsAT.SEND_TX, data: txData,
@@ -83,8 +83,8 @@ function* addContract(web3, defaultNetworkId, {contractName, abi, networks}) {
 }
 
 
-function* contractsSaga(web3, defaultNetworkId) {
-  yield takeEvery(contractsAT.ADD_CONTRACT, addContract, web3, defaultNetworkId);
+function* contractsSaga(web3, defaultNetworkId, getContractsState) {
+  yield takeEvery(contractsAT.ADD_CONTRACT, addContract, web3, defaultNetworkId, getContractsState);
 }
 
 export default contractsSaga;

@@ -26,10 +26,11 @@ const mapping = {
   [callsAT.FORCE_CALL]: (state, { callID, blockNr, outputsABI }) => ({
     ...state,
     // Create a new cache entry if it does not already exist
-    [callID]: state.cache[callID] || {
+    [callID]: state[callID] || {
       status: 'in-progress',
       rawValue: undefined,
       value: undefined,
+      decodeFail: false,
       outputsABI,
       blockNr // blockNr is optional
     }
@@ -39,7 +40,7 @@ const mapping = {
     ...state,
     [callID]: {
       // keep old state; blockNr is still there.
-      ...state.cache[callID],
+      ...state[callID],
       status: 'success',
       rawValue
     }
@@ -49,9 +50,26 @@ const mapping = {
     ...state,
     [callID]: {
       // keep old state; blockNr is still there.
-      ...state.cache[callID],
+      ...state[callID],
       status: 'failed',
       rawValue: null,
+      value: null,
+      err
+    }
+  }),
+
+  [callsAT.CALL_DECODE_SUCCESS]: (state, { callID, value }) => ({
+    ...state,
+    [callID]: {
+      ...state[callID],
+      value
+    }
+  }),
+
+  [callsAT.CALL_DECODE_FAIL]: (state, { callID, err }) => ({
+    ...state,
+    [callID]: {
+      ...state[callID],
       value: null,
       err
     }

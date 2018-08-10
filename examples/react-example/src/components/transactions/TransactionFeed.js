@@ -2,6 +2,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import TransactionFeedItem from './TransactionFeedItem';
+import PropTypes from 'prop-types';
 
 const TransactionFeed = ({transactions}) => (
   <div>
@@ -11,6 +12,10 @@ const TransactionFeed = ({transactions}) => (
     ))}
   </div>
 );
+
+TransactionFeed.propTypes = {
+  transactions: PropTypes.array.isRequired
+};
 
 export default connect(state => ({
   transactions: Object.keys(state.redapp.tracking.transactions)

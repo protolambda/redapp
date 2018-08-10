@@ -10,7 +10,9 @@ const callsAT = {
   // When a call promise is completed by web3, adds the raw result to the cache.
   CALL_RETURNED: 'CALL_RETURNED',
   // When a call is decoded, after CALL_RETURNED
-  CALL_VALUE: 'CALL_VALUE',
+  CALL_DECODE_SUCCESS: 'CALL_DECODE_SUCCESS',
+  // When a call failed to be decoded but was otherwise succesful
+  CALL_DECODE_FAIL: 'CALL_DECODE_FAIL',
   // When the call failed, (e.g. invalid block number)
   CALL_FAILED: 'CALL_FAILED'
 };
