@@ -61,7 +61,11 @@ function* decodeCall(web3, getCallsState, {callID, rawValue}) {
   if (outputsABI !== undefined) {
     try {
       // We have the outputs ABI, let's decode the raw bytes
-      const value = web3.abi.decodeParameters(outputsABI, rawValue);
+      // The '0x' string is special: we know it just means that there is no data,
+      //  don't try to decode (which would result in an error),
+      //  just tell with the decoded data that it is non-existant.
+      const value = rawValue === '0x' ? null
+        : web3.eth.abi.decodeParameters(outputsABI, rawValue);
 
       yield put({
         type: callsAT.CALL_DECODE_SUCCESS,

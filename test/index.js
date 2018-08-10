@@ -1,6 +1,6 @@
 import { assert } from 'chai';
 import redappReducer from '../src/reducer';
-import redappSaga from '../src/saga';
+import redappSaga from '../src/saga/saga';
 
 describe('TX test.', () => {
   it('foo', () => {
