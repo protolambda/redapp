@@ -31,7 +31,7 @@ const openSendTxChannel = (web3, txID, {
 };
 
 
-function* sendTX({from, to, value, gas, gasPrice, data, nonce, txID}, web3) {
+function* sendTX(web3, {from, to, value, gas, gasPrice, data, nonce, txID}) {
   // If the user does not specify any ID, than create a new one (recommended).
   const id = txID || uuid4();
 

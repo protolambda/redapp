@@ -29,7 +29,7 @@ const initiateCall = (web3, callID, blockNr, {from, to, data}) => {
 };
 
 
-function* forceCall({from, to, data, blockNr, callID}, web3) {
+function* forceCall(web3, {from, to, data, blockNr, callID}) {
   // If the user does not specify any ID, than create a new one.
   // This new ID is formatted differently from than the one used by contracts making cache-calls;
   //  users should use their own ID when sending direct raw transactions (recommended).

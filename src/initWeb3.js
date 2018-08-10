@@ -5,7 +5,7 @@ import Web3 from 'web3';
  * @param fallback An object specifying what to use when no provider was found.
  * @returns Web3 A new web3 instance, or throws an error if failing to instantiate.
  */
-export default function initWeb3({fallback}) {
+export default function initWeb3(fallback) {
   let web3 = null;
 
   // Check for injected web3 provider.

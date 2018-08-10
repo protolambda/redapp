@@ -7,7 +7,7 @@ import contractsAT from './contractsAT';
 import callsAT from '../tracking/calls/callsAT';
 import transactionsAT from '../tracking/transactions/transactionsAT';
 
-function* addContract({contractName, abi, networks}, web3, defaultNetworkId) {
+function* addContract(web3, defaultNetworkId, {contractName, abi, networks}) {
   // Keep contract creation extremely simple:
   //  we only use this instance to create the ABI encoded data with,
   //  transactions/calls/events will be handled by the other parts of ReDApp.
@@ -78,7 +78,7 @@ function* addContract({contractName, abi, networks}, web3, defaultNetworkId) {
 
   // TODO: add events as well?
 
-  yield put({type: callsAT.CONTRACT_ADDED, contractName, methods, networks});
+  yield put({type: contractsAT.CONTRACT_ADDED, contractName, methods, networks});
 }
 
 
