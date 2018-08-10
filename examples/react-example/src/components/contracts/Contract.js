@@ -8,7 +8,7 @@ const Contract = ({name, data}) => (
     <h2>Contract: {name}</h2>
     <div>
       <h3>Methods</h3>
-      {data.methods.map((name, i) => (
+      {Object.keys(data.methods).map((name, i) => (
         <div key={`method-${name}-${i}`}>
           <h4>{name}</h4>
           <p>
