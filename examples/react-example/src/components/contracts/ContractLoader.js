@@ -68,10 +68,12 @@ class ContractLoader extends React.Component {
       <div>
         <h1>Contract Loader</h1>
 
-        Name: <input type="text" name="contract-name" defaultValue={this.state.contractName}/>
+        Name: <input type="text" name="contract-name"
+                     defaultValue={this.state.contractName}
+                     onChange={this.validateName}/>
         <button onClick={this.addContract} disabled={
             !(this.state.contractNameValid && this.state.abiValid && this.state.networksValid)
-          } onChange={this.validateName}>Add contract</button>
+          }>Add contract</button>
         <br/>
 
         <h2>Contract ABI</h2>

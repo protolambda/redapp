@@ -21,7 +21,8 @@ function* addContract(web3, defaultNetworkId, {contractName, abi, networks}) {
   //  each returning a thunk to dispatch and execute the method with.
   for (const entry of abi) {
     if (entry.type === 'function') {
-      const method = {};
+      // Add ABI data to each method
+      const method = {...entry};
       const encodeABI = args => web3Contract[entry.name](...args).encodeABI();
 
       // Constant methods don't change any state; hence, only add call functionality.
