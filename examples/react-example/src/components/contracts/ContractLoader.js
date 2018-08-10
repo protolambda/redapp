@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Typography, TextField, Button} from '@material-ui/core';
 import contractsAT from 'redapp/es/contracts/contractsAT';
+import { withStyles } from '@material-ui/core/styles';
 
 
 // eslint-disable-next-line
@@ -9,10 +11,19 @@ const erc20ABI = [{ "constant":false,"inputs":[{"name":"_owner","type":"address"
 // eslint-disable-next-line
 const exampleNetworksConfigZRX = { "1": { "address": "0xe41d2489571d322189246dafa5ebde1f4699f498" } };
 
+const styles = theme => ({
+  addBtn: {
+    margin: theme.spacing.unit * 2,
+  },
+  abiField: {
+    fontFamily: 'monospace !important'
+  }
+});
+
 class ContractLoader extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       contractName: 'ZRX',
       contractNameInput: 'ZRX',
@@ -64,30 +75,65 @@ class ContractLoader extends React.Component {
   });
 
   render() {
+    const {classes} = this.props;
+
     return (
       <div>
-        <h1>Contract Loader</h1>
+        <Typography variant="headline" gutterBottom>Contract Loader</Typography>
 
-        Name: <input type="text" name="contract-name"
-                     defaultValue={this.state.contractName}
-                     onChange={this.validateName}/>
-        <button onClick={this.addContract} disabled={
-            !(this.state.contractNameValid && this.state.abiValid && this.state.networksValid)
-          }>Add contract</button>
+        <TextField
+          id="contract-name-input"
+          label="Contract Name"
+          defaultValue={this.state.contractName}
+          onChange={this.validateName}
+          margin="normal"
+        />
+
+        <Button variant="contained" disabled={
+          !(this.state.contractNameValid && this.state.abiValid && this.state.networksValid)}
+          onClick={this.addContract}
+          className={classes.addBtn}>
+
+          Add contract
+        </Button>
+
         <br/>
 
-        <h2>Contract ABI</h2>
-        <textarea rows="4" cols="50" name="abi"
-                  defaultValue={this.state.abiInput}
-                  onChange={this.validateJSON('abi')}/>
+        <TextField
+          id="abi-input"
+          label="Contract ABI spec"
+          multiline
+          fullWidth
+          rowsMax="30"
+          defaultValue={this.state.abiInput}
+          onChange={this.validateJSON('abi')}
+          margin="normal"
+          InputProps={{classes: {
+            input: classes.abiField}
+          }}
+        />
 
-        <h2>Contract networks config</h2>
-        <textarea rows="4" cols="50" name="abi"
-                  defaultValue={this.state.networksInput}
-                  onChange={this.validateJSON('networks')}/>
+        <br/>
+
+        <TextField
+          id="networks-input"
+          label="Contract networks config"
+          multiline
+          fullWidth
+          rowsMax="10"
+          defaultValue={this.state.networksInput}
+          onChange={this.validateJSON('networks')}
+          margin="normal"
+          InputProps={{classes: {
+            input: classes.abiField}
+          }}
+        />
+
       </div>
     );
   }
 }
 
-export default connect()(ContractLoader);
+const styledContractLoader = withStyles(styles)(ContractLoader);
+
+export default connect()(styledContractLoader);

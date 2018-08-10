@@ -1,19 +1,54 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import {
+  Typography,
+  TextField,
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import TransactionFeedItem from '../transactions/TransactionFeedItem';
 import CallFeedItem from '../calls/CallFeedItem';
 
+const styles = theme => ({
+  actionButton: {
+    margin: theme.spacing.unit,
+    textTransform: 'none',
+    padding: 4
+  },
+  input: {
+    margin: theme.spacing.unit
+  }
+});
 
 class ContractMethodInput extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       txIDs: [],
-      callIDs: []
+      callIDs: [],
+      isOpen: !!props.open
     };
   }
+
+  componentWillReceiveProps(nextProps, nextCtx) {
+    this.setState(prevState => ((prevState.isOpen === !!nextProps.open)
+      ? null : {isOpen: !!nextProps.open}));
+  }
+
+  handleOpen = open => (() => {
+    this.setState({
+      isOpen: open,
+    });
+    if (!open && this.props.onClose) {
+      this.props.onClose();
+    }
+  });
 
   onInputChange = (argName) => (evt) => {
     const inputValue = evt.target.value;
@@ -65,7 +100,7 @@ class ContractMethodInput extends React.Component {
     )));
 
     // Remember the ID, so we can track the progress from this component
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       callIDs: [callID, ...prevState.callIDs]
     }));
 
@@ -75,44 +110,80 @@ class ContractMethodInput extends React.Component {
 
 
   render() {
-    const {method} = this.props;
+    const {method, classes} = this.props;
 
     const {txIDs, callIDs} = this.state;
 
     return (
-      <div>
-        <h4>{method.name}</h4>
-        <div>
-          {method.inputs.map(({name, type}, i) => (
-            <div key={`input_${name}_${i}`}>Type: {type}<br/>
-              Input: <input type="text" name={name} onChange={this.onInputChange(name)}/>
-            </div>))
-          }
-        </div>
-        <div>
-          {method.trackedSend && (<button onClick={this.trackedSend}>
-            Send (Tracked)
-          </button>)}
-          {method.cacheCall && (<button onClick={this.cacheCall}>
-            Call (Tracked, Cached)
-          </button>)}
-          {method.forceCall && (<button onClick={this.forceCall}>
-            Call (Tracked, Force)
-          </button>)}
-        </div>
-        <div>
-          {(txIDs && txIDs.length > 0) && <div>
-            <h5>Transactions</h5>
-            {txIDs.map((txID, i) => (<TransactionFeedItem key={`tx_${txID}_${i}`} txID={txID}/>))}
+      <Dialog
+        open={this.state.isOpen}
+        onClose={this.handleOpen(false)}
+        aria-labelledby="dialog-title"
+      >
+        <DialogTitle id="dialog-title">{method.name}</DialogTitle>
+        <DialogContent>
+          <div>
+            {(!method.inputs || method.inputs.length === 0)
+              ? <Typography>No inputs.</Typography>
+              : <div>
+                {method.inputs.map(({name, type}, i) => (
+                  <TextField
+                    key={`input_${name}_${i}`}
+                    id="helperText"
+                    label={name}
+                    fullWidth
+                    defaultValue=""
+                    helperText={`type: ${type}`}
+                    margin="normal"
+                    className={classes.input}
+                    onChange={this.onInputChange(name)}
+                  />
+                ))}
+              </div>
+            }
           </div>
-          }
-          {(callIDs && callIDs.length > 0) && <div>
-            <h5>Calls</h5>
-            {callIDs.map((callID, i) => (<CallFeedItem key={`tx_${callID}_${i}`} callID={callID}/>))}
-          </div>
-          }
-        </div>
-      </div>
+        </DialogContent>
+        <DialogActions>
+          {method.trackedSend && (<Button
+            variant="contained"
+            className={classes.actionButton}
+            onClick={this.trackedSend}
+          >
+            <code>trackedSend</code>
+          </Button>)}
+          {method.cacheCall && (<Button
+            variant="contained"
+            className={classes.actionButton}
+            onClick={this.cacheCall}
+          >
+            <code>cacheCall</code>
+          </Button>)}
+          {method.forceCall && (<Button
+            variant="contained"
+            className={classes.actionButton}
+            onClick={this.forceCall}
+          >
+            <code>forceCall</code>
+          </Button>)}
+
+          <Button onClick={this.handleOpen(false)}
+                  variant="contained"
+                  color="primary">
+            Cancel
+          </Button>
+        </DialogActions>
+
+        {(txIDs && txIDs.length > 0) && <DialogContent>
+          <Typography variant="subheading" gutterBottom>Transactions</Typography>
+          {txIDs.map((txID, i) => (<TransactionFeedItem key={`tx_${txID}_${i}`} txID={txID}/>))}
+        </DialogContent>
+        }
+        {(callIDs && callIDs.length > 0) && <DialogContent>
+          <Typography variant="subheading" gutterBottom>Calls</Typography>
+          {callIDs.map((callID, i) => (<CallFeedItem key={`tx_${callID}_${i}`} callID={callID}/>))}
+        </DialogContent>
+        }
+      </Dialog>
     );
   }
 }
@@ -121,9 +192,15 @@ ContractMethodInput.propTypes = {
   contractName: PropTypes.string.isRequired,
   methodName: PropTypes.string.isRequired,
   // retrieved from redux store using above props
-  method: PropTypes.object.isRequired
+  method: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  open: PropTypes.bool,
+  onClose: PropTypes.func
 };
+
+const styledContractMethodInput = withStyles(styles)(ContractMethodInput);
 
 export default connect((state, props) => ({
   method: state.redapp.contracts[props.contractName].methods[props.methodName]
-}))(ContractMethodInput);
+}))(styledContractMethodInput);

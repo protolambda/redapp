@@ -1,17 +1,39 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
 import {connect} from 'react-redux';
+import {Typography, Paper} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
 import Contract from './Contract';
 
-const ContractList = ({contracts}) => (
-  <div>
-    <h1>Contracts</h1>
+const styles = theme => ({
+  root: {
+    minHeight: 250
+  },
+  outerContract: {
+    padding: theme.spacing.unit * 2,
+  }
+});
+
+const ContractList = ({contracts, classes}) => (
+  <div className={classes.root}>
+    <Typography variant="headline" gutterBottom>Contracts</Typography>
     {contracts.map((contract, i) => (
-      <Contract key={`contract-${contract}-${i}`} name={contract}/>
+      <Paper key={`contract-${contract}-${i}`} className={classes.outerContract}>
+        <Contract name={contract}/>
+      </Paper>
     ))}
+    {Object.keys(contracts).length === 0 && <Typography variant="subheading">No contracts loaded.</Typography>}
   </div>
 );
 
+ContractList.propTypes = {
+  classes: PropTypes.object.isRequired,
+  contracts: PropTypes.object.isRequired
+};
+
+const styledContractList = withStyles(styles)(ContractList);
+
 export default connect(state => ({
   contracts: Object.keys(state.redapp.contracts)
-}))(ContractList);
+}))(styledContractList);

@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
 import { Provider } from 'react-redux';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import createSagaMiddleware from 'redux-saga';
 import thunkMiddleware from 'redux-thunk';
 import initWeb3 from 'redapp/es/initWeb3';
@@ -30,9 +31,12 @@ sagaMiddleware.run(rootSaga, web3);
 
 function render() {
   ReactDOM.render(
-    <Provider store={store}>
-      <App/>
-    </Provider>,
+    <div>
+      <CssBaseline />
+      <Provider store={store}>
+        <App/>
+      </Provider>
+    </div>,
     document.getElementById('root'),
   );
 }
