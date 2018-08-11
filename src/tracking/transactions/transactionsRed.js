@@ -2,7 +2,7 @@ import transactionsAT from './transactionsAT';
 import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {
-  tracker: {}
+  // empty initially
 };
 
 // TX flow:
