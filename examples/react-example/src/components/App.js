@@ -43,17 +43,20 @@ const styles = theme => ({
   },
   part: {
     padding: theme.spacing.unit * 2,
+  },
+  headerText: {
+    ...theme.typography.body1
   }
 });
 
 const App = ({classes}) => (
   <div className={classes.root}>
-    <Grid container className={classes.gridRoot} spacing={16}>
+    <Grid container spacing={16}>
       <Grid item xs={12}>
-        <Typography variant="headline" gutterBottom>
+        <Typography variant="headline" component="h1" gutterBottom>
           <strong>ReDApp</strong> React Example
         </Typography>
-        <Typography variant="body1">
+        <div className={classes.headerText}>
           <p>
             This is an example DApp built with ReDApp.
             It loads contracts and then provides an interface to make interactions and calls.
@@ -68,7 +71,7 @@ const App = ({classes}) => (
             <br/>
             TODO: Blocks and events.
           </p>
-        </Typography>
+        </div>
       </Grid>
       <Grid item xs={12}>
         <Paper className={classes.part}>

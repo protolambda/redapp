@@ -29,7 +29,7 @@ const ContractList = ({contracts, classes}) => (
 
 ContractList.propTypes = {
   classes: PropTypes.object.isRequired,
-  contracts: PropTypes.object.isRequired
+  contracts: PropTypes.array.isRequired
 };
 
 const styledContractList = withStyles(styles)(ContractList);

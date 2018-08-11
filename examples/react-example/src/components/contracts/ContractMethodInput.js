@@ -50,25 +50,38 @@ class ContractMethodInput extends React.Component {
     }
   });
 
-  onInputChange = (argName) => (evt) => {
+  getInputStateName = argName => `arg_${argName}`;
+
+  getInputStateValid = argName => `arg_${argName}_valid`;
+
+  onInputChange = argName => (evt) => {
     const inputValue = evt.target.value;
 
     // TODO we could validate the input based on the ABI type.
 
-    this.setState({
-      [`arg_${argName}`]: inputValue
-    });
+    try {
+      const parsedInput = JSON.parse(inputValue);
+
+      this.setState({
+        [this.getInputStateName(argName)]: parsedInput,
+        [this.getInputStateValid(argName)]: true
+      });
+    } catch (err) {
+      this.setState({
+        [this.getInputStateValid(argName)]: false
+      });
+    }
   };
 
   trackedSend = () => {
     const {txID, thunk} = this.props.method.trackedSend({
       // from, value, gas, gasPrice, nonce, to, networkId
     }, ...(this.props.method.inputs.map(
-      ({name}) => this.state[`arg_${name}`]
+      ({name}) => this.state[this.getInputStateName(name)]
     )));
 
     // Remember the ID, so we can track the progress from this component
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       txIDs: [txID, ...prevState.txIDs]
     }));
 
@@ -80,11 +93,11 @@ class ContractMethodInput extends React.Component {
     const {callID, thunk} = this.props.method.cacheCall({
       // blockNr, to, networkId
     }, ...(this.props.method.inputs.map(
-      ({name}) => this.state[`arg_${name}`]
+      ({name}) => this.state[this.getInputStateName(name)]
     )));
 
     // Remember the ID, so we can track the progress from this component
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       callIDs: [callID, ...prevState.callIDs]
     }));
 
@@ -96,7 +109,7 @@ class ContractMethodInput extends React.Component {
     const {callID, thunk} = this.props.method.forceCall({
       // blockNr, to, networkId
     }, ...(this.props.method.inputs.map(
-      ({name}) => this.state[`arg_${name}`]
+      ({name}) => this.state[this.getInputStateName(name)]
     )));
 
     // Remember the ID, so we can track the progress from this component
@@ -108,6 +121,10 @@ class ContractMethodInput extends React.Component {
     this.props.dispatch(thunk);
   };
 
+
+  allArgsValid = () => this.props.method.inputs.map(
+    ({name}) => !!this.state[this.getInputStateValid(name)]
+  ).every(s => s);
 
   render() {
     const {method, classes} = this.props;
@@ -126,10 +143,12 @@ class ContractMethodInput extends React.Component {
             {(!method.inputs || method.inputs.length === 0)
               ? <Typography>No inputs.</Typography>
               : <div>
+                <Typography>ABI type hints are provided, inputs must be valid JSON.</Typography>
                 {method.inputs.map(({name, type}, i) => (
                   <TextField
                     key={`input_${name}_${i}`}
-                    id="helperText"
+                    id={`input_${name}_${i}`}
+                    error={!this.state[this.getInputStateValid(name)]}
                     label={name}
                     fullWidth
                     defaultValue=""
@@ -147,6 +166,7 @@ class ContractMethodInput extends React.Component {
           {method.trackedSend && (<Button
             variant="contained"
             className={classes.actionButton}
+            disabled={!this.allArgsValid()}
             onClick={this.trackedSend}
           >
             <code>trackedSend</code>
@@ -154,6 +174,7 @@ class ContractMethodInput extends React.Component {
           {method.cacheCall && (<Button
             variant="contained"
             className={classes.actionButton}
+            disabled={!this.allArgsValid()}
             onClick={this.cacheCall}
           >
             <code>cacheCall</code>
@@ -161,6 +182,7 @@ class ContractMethodInput extends React.Component {
           {method.forceCall && (<Button
             variant="contained"
             className={classes.actionButton}
+            disabled={!this.allArgsValid()}
             onClick={this.forceCall}
           >
             <code>forceCall</code>
@@ -169,18 +191,24 @@ class ContractMethodInput extends React.Component {
           <Button onClick={this.handleOpen(false)}
                   variant="contained"
                   color="primary">
-            Cancel
+            {((txIDs && txIDs.length > 0) || (callIDs && callIDs.length > 0)) ? 'Close' : 'Cancel'}
           </Button>
         </DialogActions>
 
         {(txIDs && txIDs.length > 0) && <DialogContent>
           <Typography variant="subheading" gutterBottom>Transactions</Typography>
-          {txIDs.map((txID, i) => (<TransactionFeedItem key={`tx_${txID}_${i}`} txID={txID}/>))}
+          {txIDs.map((txID, i) => (
+            <div key={`tx_${txID}_${i}`} style={{ borderBottom: '2px solid #bbb' }}>
+              <TransactionFeedItem txID={txID}/>
+            </div>))}
         </DialogContent>
         }
         {(callIDs && callIDs.length > 0) && <DialogContent>
           <Typography variant="subheading" gutterBottom>Calls</Typography>
-          {callIDs.map((callID, i) => (<CallFeedItem key={`tx_${callID}_${i}`} callID={callID}/>))}
+          {callIDs.map((callID, i) => (
+            <div key={`call_${callID}_${i}`} style={{ borderBottom: '2px solid #bbb' }}>
+              <CallFeedItem callID={callID}/>
+            </div>))}
         </DialogContent>
         }
       </Dialog>

@@ -1,30 +1,31 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Typography } from '@material-ui/core';
+import Row from '../util/Row';
+import PreWrap from '../util/PreWrap';
 
-const CallFeedItem = ({callID, data}) => (
+const CallFeedItem = ({ callID, data }) => (
   <div>
-    <h2>Call id: {callID}</h2>
+    <Row label="Call ID:"><PreWrap>{callID}</PreWrap></Row>
     {data
       ? <div>
-          Hash: {data.hash}<br/>
-          Status: {data.status}<br/>
-          Raw value: {data.rawValue}<br/>
-          Decoded value: {data.value}<br/>
-          Outputs ABI: {JSON.stringify(data.outputsABI, null, 4)}<br/>
-          Block number: {data.blockNr}<br/>
-        </div>
-      : <div> No data available </div>
-    }
+        <Row label="Status:">{data.status}</Row>
+        <Row label="Raw value:"><PreWrap>{data.rawValue}</PreWrap></Row>
+        <Row label="Decoded value:"><PreWrap>{data.value}</PreWrap></Row>
+        <Row label="Outputs ABI:"><PreWrap>{JSON.stringify(data.outputsABI, null, 4)}</PreWrap></Row>
+        <Row label="Block number:">{data.blockNr}</Row>
+      </div>
+      : <Typography variant="caption">No data available</Typography>}
   </div>
 );
 
 CallFeedItem.propTypes = {
   callID: PropTypes.string.isRequired,
-  data: PropTypes.object
+  data: PropTypes.object,
 };
 
 export default connect((state, props) => ({
-  data: state.redapp.tracking.calls[props.callID]
+  data: state.redapp.tracking.calls[props.callID],
 }))(CallFeedItem);
