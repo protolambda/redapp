@@ -11,6 +11,7 @@ import {
   DialogActions
 } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import EncodeABIError from 'redapp/es/errors/EncodeABIError';
 import TransactionFeedItem from '../transactions/TransactionFeedItem';
 import CallFeedItem from '../calls/CallFeedItem';
 
@@ -22,6 +23,13 @@ const styles = theme => ({
   },
   input: {
     margin: theme.spacing.unit
+  },
+  errorText: {
+    ...theme.typography.body1,
+    color: '#f00'
+  },
+  feedItem: {
+    margin: theme.spacing.unit
   }
 });
 
@@ -32,7 +40,8 @@ class ContractMethodInput extends React.Component {
     this.state = {
       txIDs: [],
       callIDs: [],
-      isOpen: !!props.open
+      isOpen: !!props.open,
+      actionErrMsg: null
     };
   }
 
@@ -121,6 +130,24 @@ class ContractMethodInput extends React.Component {
     this.props.dispatch(thunk);
   };
 
+  tryAction = action => (() => {
+    try {
+      action();
+      this.setState({
+        actionErrMsg: null
+      });
+    } catch (err) {
+      if (err instanceof EncodeABIError) {
+        this.setState({
+          actionErrMsg: 'Failed to encode argument(s), formatting does not conform to ABI.'
+        });
+      } else {
+        // Unknown error, just propagate.
+        throw err;
+      }
+    }
+  });
+
 
   allArgsValid = () => this.props.method.inputs.map(
     ({name}) => !!this.state[this.getInputStateValid(name)]
@@ -129,7 +156,7 @@ class ContractMethodInput extends React.Component {
   render() {
     const {method, classes} = this.props;
 
-    const {txIDs, callIDs} = this.state;
+    const {txIDs, callIDs, actionErrMsg} = this.state;
 
     return (
       <Dialog
@@ -162,12 +189,19 @@ class ContractMethodInput extends React.Component {
             }
           </div>
         </DialogContent>
+        {actionErrMsg && (
+          <DialogContent>
+            <div className={classes.errorText}>
+              {actionErrMsg}
+            </div>
+          </DialogContent>
+        )}
         <DialogActions>
           {method.trackedSend && (<Button
             variant="contained"
             className={classes.actionButton}
             disabled={!this.allArgsValid()}
-            onClick={this.trackedSend}
+            onClick={this.tryAction(this.trackedSend)}
           >
             <code>trackedSend</code>
           </Button>)}
@@ -175,7 +209,7 @@ class ContractMethodInput extends React.Component {
             variant="contained"
             className={classes.actionButton}
             disabled={!this.allArgsValid()}
-            onClick={this.cacheCall}
+            onClick={this.tryAction(this.cacheCall)}
           >
             <code>cacheCall</code>
           </Button>)}
@@ -183,7 +217,7 @@ class ContractMethodInput extends React.Component {
             variant="contained"
             className={classes.actionButton}
             disabled={!this.allArgsValid()}
-            onClick={this.forceCall}
+            onClick={this.tryAction(this.forceCall)}
           >
             <code>forceCall</code>
           </Button>)}
@@ -198,7 +232,7 @@ class ContractMethodInput extends React.Component {
         {(txIDs && txIDs.length > 0) && <DialogContent>
           <Typography variant="subheading" gutterBottom>Transactions</Typography>
           {txIDs.map((txID, i) => (
-            <div key={`tx_${txID}_${i}`} style={{ borderBottom: '2px solid #bbb' }}>
+            <div key={`tx_${txID}_${i}`} className={classes.feedItem}>
               <TransactionFeedItem txID={txID}/>
             </div>))}
         </DialogContent>
@@ -206,7 +240,7 @@ class ContractMethodInput extends React.Component {
         {(callIDs && callIDs.length > 0) && <DialogContent>
           <Typography variant="subheading" gutterBottom>Calls</Typography>
           {callIDs.map((callID, i) => (
-            <div key={`call_${callID}_${i}`} style={{ borderBottom: '2px solid #bbb' }}>
+            <div key={`call_${callID}_${i}`} className={classes.feedItem}>
               <CallFeedItem callID={callID}/>
             </div>))}
         </DialogContent>

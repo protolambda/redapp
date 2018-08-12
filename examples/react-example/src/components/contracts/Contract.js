@@ -33,9 +33,13 @@ class Contract extends React.Component {
               const stateOpenName = `dialogOpen_${methodName}_${i}`;
               const closeHandler = open => (
                 () => {
-                  console.log(`Changing open state to: ${open}`);
                   this.setState({[stateOpenName]: open});
                 });
+              const inputs = data.methods[methodName].inputs;
+              const inputCountTxt = (!inputs || inputs.length === 0)
+                ? 'No inputs' : (inputs.length === 1 ? '1 input' : `${inputs.length} inputs`);
+              const inputTypes = (!inputs || inputs.length === 0)
+                ? '' : inputs.map(({type}) => type).join(', ');
               return (
                 <div key={`method-${methodName}-${i}`}>
                   <ListItem button
@@ -43,7 +47,8 @@ class Contract extends React.Component {
                     <ListItemIcon>
                       {data.methods[methodName].trackedSend ? <TxIcon/> : <CallIcon/>}
                     </ListItemIcon>
-                    <ListItemText inset primary={methodName} />
+                    <ListItemText inset primary={methodName}
+                                  secondary={`${inputCountTxt}: ${inputTypes}`}/>
                   </ListItem>
 
                   { /* Separate dialog from button-typed list item, to prevent double toggle */ }

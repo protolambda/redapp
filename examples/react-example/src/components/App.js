@@ -84,14 +84,10 @@ const App = ({classes}) => (
       </Grid>
 
       <Grid item xs={12} md={6}>
-        <Paper className={classes.part}>
-          <TransactionFeed/>
-        </Paper>
+        <TransactionFeed/>
       </Grid>
       <Grid item xs={12} md={6}>
-        <Paper className={classes.part}>
-          <CallFeed/>
-        </Paper>
+        <CallFeed/>
       </Grid>
 
       <Grid item xs={12}>
