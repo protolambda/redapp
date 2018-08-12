@@ -40,9 +40,30 @@ const fetchAllAcounts = () => (dispatch => dispatch({
   type: accountsAT.ACCOUNTS_START_FETCH,
 }));
 
+/**
+ * Start polling for accounts.
+ * @param interval The polling interval in milliseconds.
+ * @returns {function(*): *} Redux thunk, dispatch to run action.
+ */
+const startAccountPolling = interval => (dispatch => dispatch({
+  type: accountsAT.ACCOUNTS_START_POLLING,
+  interval
+}));
+
+/**
+ * Stop polling for accounts.
+ *
+ * @returns {function(*): *} Redux thunk, dispatch to run action.
+ */
+const stopAccountPolling = () => (dispatch => dispatch({
+  type: accountsAT.ACCOUNTS_STOP_POLLING,
+}));
+
 export default {
   getSingleAccount,
   getBalance,
   getAllAccounts,
   fetchAllAcounts,
+  startAccountPolling,
+  stopAccountPolling
 };

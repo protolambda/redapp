@@ -1,7 +1,8 @@
 import {
-  call, put, select, takeEvery, takeLatest
+  call, fork, put, select, takeEvery, takeLatest
 } from 'redux-saga/effects';
 import accountsAT from './accountsAT';
+import poller from '../../util/poller';
 
 function* tryFetchAccounts(web3) {
   try {
@@ -40,13 +41,34 @@ function* getSingle({account}) {
 function* getAll(getAccountsState) {
   const accounts = yield select(getAccountsState);
 
-  for (const account of accounts) {
+  // Get wallet accounts
+  for (const account of accounts.wallet) {
+    yield put({type: accountsAT.ACCOUNT_GET, account});
+  }
+
+  // Get local accounts (tracked, but not part of wallet)
+  for (const account of accounts.local) {
     yield put({type: accountsAT.ACCOUNT_GET, account});
   }
 }
 
+function* accountsPollWorker(web3, getAccountsState) {
+  yield call(tryFetchAccounts, web3);
+  yield call(getAll, getAccountsState);
+}
+
+function* accountsPollError(err) {
+  yield put({type: accountsAT.ACCOUNTS_POLL_ERROR, err});
+}
+
 function* accountsSaga(web3, getAccountsState) {
   // only take latest, doing multiple buffered updates is useless.
+  yield fork(poller(
+    accountsAT.ACCOUNTS_START_POLLING,
+    accountsAT.ACCOUNTS_STOP_POLLING,
+    accountsPollWorker,
+    accountsPollError
+  ));
   yield takeLatest(accountsAT.ACCOUNTS_START_FETCH, tryFetchAccounts, web3);
   yield takeLatest(accountsAT.ACCOUNTS_GET_ALL, getAll, getAccountsState);
   yield takeEvery(accountsAT.ACCOUNT_GET, getSingle);

@@ -11,7 +11,13 @@ const accountsAT = {
   // When balance updating fails
   ACCOUNT_GET_BALANCE_FAILED: 'ACCOUNT_GET_BALANCE_FAILED',
   // When an account gets a new updated balance
-  ACCOUNT_BALANCE: 'ACCOUNT_BALANCE'
+  ACCOUNT_BALANCE: 'ACCOUNT_BALANCE',
+  // Start polling accounts (runs a ACCOUNTS_START_FETCH, followed by a ACCOUNTS_GET_ALL)
+  ACCOUNTS_START_POLLING: 'ACCOUNTS_START_POLLING',
+  // Stop polling accounts (Polling can be resumed with ACCOUNTS_START_POLLING again)
+  ACCOUNTS_STOP_POLLING: 'ACCOUNTS_STOP_POLLING',
+  // Whenever accounts polling failed, fired with "err" property containing the error.
+  ACCOUNTS_POLL_ERROR: 'ACCOUNTS_POLL_ERROR'
 };
 
 export default accountsAT;
