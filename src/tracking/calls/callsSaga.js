@@ -58,7 +58,7 @@ function* decodeCall(web3, getCallsState, {callID, rawValue}) {
   const outputsABI = yield select(state => getCallsState(state)[callID].outputsABI);
   // if no outputsABI is available, then we can't decode it.
   // The user will have to do with the rawValue.
-  if (outputsABI !== undefined) {
+  if (outputsABI) {
     try {
       // We have the outputs ABI, let's decode the raw bytes
       // The '0x' string is special: we know it just means that there is no data,
