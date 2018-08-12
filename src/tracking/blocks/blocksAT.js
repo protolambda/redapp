@@ -1,8 +1,12 @@
 const blocksAT = {
   // Polling, for simple non-websocket based Web3 providers such as Metamask
-  BLOCKS_START_POLL: 'BLOCKS_START_POLL',
+  BLOCKS_START_POLLING: 'BLOCKS_START_POLLING',
+  BLOCKS_STOP_POLLING: 'BLOCKS_STOP_POLLING',
+  BLOCKS_POLL_ERROR: 'BLOCKS_POLL_ERROR',
   // Listening, for websocket based Web3 providers.
-  BLOCKS_START_LISTEN: 'BLOCKS_START_LISTEN',
+  BLOCKS_START_LISTENING: 'BLOCKS_START_LISTENING',
+  BLOCKS_STOP_LISTENING: 'BLOCKS_STOP_LISTENING',
+  BLOCKS_LISTEN_ERROR: 'BLOCKS_LISTEN_ERROR',
   // when raw block data was received
   BLOCK_RECEIVED: 'BLOCK_RECEIVED',
   // when block data from "BLOCK_RECEIVED" was processed successfully
