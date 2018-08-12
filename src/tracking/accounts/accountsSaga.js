@@ -62,13 +62,14 @@ function* accountsPollError(err) {
 }
 
 function* accountsSaga(web3, getAccountsState) {
-  // only take latest, doing multiple buffered updates is useless.
   yield fork(poller(
     accountsAT.ACCOUNTS_START_POLLING,
     accountsAT.ACCOUNTS_STOP_POLLING,
     accountsPollWorker,
-    accountsPollError
+    accountsPollError,
+    web3, getAccountsState
   ));
+  // only take latest, doing multiple buffered updates is useless.
   yield takeLatest(accountsAT.ACCOUNTS_START_FETCH, tryFetchAccounts, web3);
   yield takeLatest(accountsAT.ACCOUNTS_GET_ALL, getAll, getAccountsState);
   yield takeEvery(accountsAT.ACCOUNT_GET, getSingle);

@@ -18,16 +18,17 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
  * @param workerInner A saga that is called each poll iteration.
  * @param errorHandler A saga that is called on an error during a polling iteration.
  *  Optional, error is propagated otherwise.
+ * @param workerArgs The remaining function arguments are forwarded to workerInner.
  * @returns {pollWatcher} The watcher saga, controlling the inner worker saga.
  */
-function poller(startAT, stopAT, workerInner, errorHandler) {
+function poller(startAT, stopAT, workerInner, errorHandler, ...workerArgs) {
   // ms: the polling interval in milliseconds
   function* pollWorker(ms) {
     // Repeat endlessly, watcher will take control away on a stop command.
     while (true) {
       try {
         // Do the necessary work
-        yield call(workerInner);
+        yield call(workerInner, ...workerArgs);
         // wait for next polling iteration
         yield call(delay, ms);
       } catch (err) {
