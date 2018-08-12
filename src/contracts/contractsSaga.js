@@ -6,6 +6,7 @@ import uuid4 from 'uuid/v4';
 import contractsAT from './contractsAT';
 import callsAT from '../tracking/calls/callsAT';
 import transactionsAT from '../tracking/transactions/transactionsAT';
+import EncodeABIError from '../errors/EncodeABIError';
 
 function* addContract(web3, defaultNetworkId, getContractsState, {contractName, abi, networks}) {
   // Keep contract creation extremely simple:
@@ -23,7 +24,13 @@ function* addContract(web3, defaultNetworkId, getContractsState, {contractName, 
     if (entry.type === 'function') {
       // Add ABI data to each method
       const method = {...entry};
-      const encodeABI = args => web3Contract.methods[entry.name](...args).encodeABI();
+      const encodeABI = (args) => {
+        try {
+          return web3Contract.methods[entry.name](...args).encodeABI();
+        } catch (err) {
+          throw new EncodeABIError(`Failed to encode arguments: ${args}`);
+        }
+      };
 
       // Constant methods don't change any state; hence, only add call functionality.
       if (entry.constant) {

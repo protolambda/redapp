@@ -5,6 +5,10 @@ env:
   es6: true
   browser: true
 rules:
+  # makes no sense for a single property (adding more properties is an edge case, not a goal)
+  "prefer-destructuring": off
+  # If indentation is right, then simple stuff becomes much less verbose.
+  "no-nested-ternary": off
   # nothing wrong with a little bit of padding.
   "padded-blocks": off
   # Although it can look nice, it can also look a lot more verbose

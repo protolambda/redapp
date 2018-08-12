@@ -45,14 +45,17 @@ const mapping = {
   [transactionsAT.TX_SENT]: (state, { txID }) => updateTx(state, txID,
     {...state[txID], status: 'sent' }),
 
+  [transactionsAT.SEND_TX_FAILED]: (state, { txID, err }) => updateTx(state, txID,
+    {...state[txID], status: 'send_failed', err }),
+
   [transactionsAT.TX_BROADCAST]: (state, { txID, txHash }) => updateTx(state, txID,
     {...state[txID], status: 'broadcast', hash: txHash }),
 
-  [transactionsAT.TX_FAILED]: (state, { txID }) => updateTx(state, txID,
-    {...state[txID], status: 'failed'}),
+  [transactionsAT.TX_FAILED]: (state, { txID, receipt }) => updateTx(state, txID,
+    {...state[txID], status: 'failed', receipt}),
 
-  [transactionsAT.TX_SUCCESS]: (state, { txID }) => updateTx(state, txID,
-    {...state[txID], status: 'success'}),
+  [transactionsAT.TX_SUCCESS]: (state, { txID, receipt }) => updateTx(state, txID,
+    {...state[txID], status: 'success', receipt}),
 
   [transactionsAT.TX_RECEIPT]: (state, { txID, receipt }) => updateTx(state, txID,
     {...state[txID], receipt}),

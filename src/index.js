@@ -42,6 +42,9 @@ const transactions = {transactionsAT, transactionsRed, transactionsSaga};
 
 const tracking = {accounts, blocks, calls, transactions};
 
+import EncodeABIError from './errors/EncodeABIError';
+const errors = {EncodeABIError};
+
 // Main
 // -----------------------------------------------------------
-export {rootReducer, rootSaga, initWeb3, contracts, tracking};
+export {rootReducer, rootSaga, initWeb3, contracts, tracking, errors};
