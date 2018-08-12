@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import accountsAT from './accountsAT';
 
-function* tryFetchAccounts(web3, action) {
+function* tryFetchAccounts(web3) {
   try {
     // fetch the accounts from web3
     const accounts = yield call(web3.eth.getAccounts);
