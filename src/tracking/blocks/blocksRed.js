@@ -23,12 +23,14 @@ const mapping = {
     blocks: {
       // filter the blocks, throw away blocks that are out of scope (i.e. too old).
       ...(Object.entries(state.blocks).filter(
-        ([key, value]) => value.number > (action.block.number - state.maxBlockDepth)
+        ([key, value]) => value.number > (state.latest.number - state.maxBlockDepth)
       ).map(([key, value]) => ({[key]: value}))),
-      [action.block.hash]: action.block
+      ...((action.block.number > (state.latest.number - state.maxBlockDepth)) && {
+        [action.block.hash]: action.block
+      })
     },
     // if the new block is higher, update the latest block
-    ...(state.blockNr < action.block.number && {
+    ...((state.blockNr < action.block.number) && {
       latest: {
         number: action.block.number,
         hash: action.block.hash
