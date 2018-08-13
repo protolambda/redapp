@@ -2,6 +2,7 @@ import {
   call, fork, put, select, takeEvery, takeLatest
 } from 'redux-saga/effects';
 import poller from '../../util/poller';
+import subber from '../../util/subber';
 import blocksAT from './blocksAT';
 
 /**
@@ -29,7 +30,7 @@ function* getSpecificBlock(web3, {blockHandle}) {
 
 function* getLatestBlock(web3) {
   // Simply use the special 'latest' handle to get the latest block.
-  yield call(getSpecificBlock, web3, {blockHashOrBlockNumber: 'latest'});
+  yield call(getSpecificBlock, web3, {blockHandle: 'latest'});
 }
 
 function* handleNewBlock(web3, getBlocksState, blockDepth, {parentHash, number}) {
@@ -41,7 +42,7 @@ function* handleNewBlock(web3, getBlocksState, blockDepth, {parentHash, number})
   //  block depth range to track, then try to get the parent block.
   // TODO: double check range
   if (!parentBlock && (latestBlock - blockDepth) < number) {
-    yield call(getSpecificBlock, web3, parentHash);
+    yield put({type: blocksAT.GET_BLOCK, blockHandle: parentHash});
   }
 }
 
@@ -50,12 +51,25 @@ function* blocksPollWorker(web3, getBlocksState) {
   const stateNumber = yield select(state => getBlocksState(state).latest.number);
   // Retrieve the data of the block if we know the block will be higher than we already have.
   if (reportedNumber > stateNumber) {
-    yield call(getLatestBlock, web3);
+    // We know the exact block number, but try get the latest anyway.
+    // Maybe we are lagging behind badly,
+    //  and then it's better to just skip and back-fill only the necessary depth.
+    // Also, duplicate GET_LATEST_BLOCK actions are reduced to only the latest.
+    yield put({type: blocksAT.GET_LATEST_BLOCK});
   }
 }
 
 function* blocksPollError(err) {
   yield put({type: blocksAT.BLOCKS_POLL_ERROR, err});
+}
+
+function* blocksSubWorker(web3, getBlocksState, {number}) {
+  // "number": the block-number from the block-header received from the subscription.
+  const stateNumber = yield select(state => getBlocksState(state).latest.number);
+  // Retrieve the data of the block if we know the block will be higher than we already have.
+  if (number > stateNumber) {
+    yield call(getLatestBlock, web3);
+  }
 }
 
 function* blocksSaga(web3, getBlocksState) {
@@ -70,8 +84,20 @@ function* blocksSaga(web3, getBlocksState) {
     blocksPollError,
     web3, getBlocksState
   ));
+
+  yield fork(subber(
+    blocksAT.BLOCKS_START_LISTENING,
+    blocksAT.BLOCKS_STOP_LISTENING,
+    // Get the full block, the header has slightly less data (Compared to getBlock without TXs)
+    blocksAT.BLOCKS_SUB_NEW_BLOCK_CHECK,
+    // "changed" events are never fired by block-headers subscription, bad generalization of web3js
+    null,
+    blocksAT.BLOCKS_LISTEN_ERROR,
+    () => web3.eth.subscribe('newBlockHeaders')
+  ));
   yield takeEvery(blocksAT.BLOCK_RECEIVED, handleNewBlock, web3, getBlocksState, blockDepth);
   yield takeLatest(blocksAT.GET_LATEST_BLOCK, getLatestBlock, web3);
+  yield takeEvery(blocksAT.BLOCKS_SUB_NEW_BLOCK_CHECK, blocksSubWorker, web3, getBlocksState);
 }
 
 export default blocksSaga;

@@ -6,9 +6,13 @@ const blocksAT = {
   // Listening, for websocket based Web3 providers.
   BLOCKS_START_LISTENING: 'BLOCKS_START_LISTENING',
   BLOCKS_STOP_LISTENING: 'BLOCKS_STOP_LISTENING',
+  // Trigger that is used to tunnel the subscription event to a block check.
+  BLOCKS_SUB_NEW_BLOCK_CHECK: 'BLOCKS_SUB_NEW_BLOCK_CHECK',
   BLOCKS_LISTEN_ERROR: 'BLOCKS_LISTEN_ERROR',
   // force get latest block
   GET_LATEST_BLOCK: 'GET_LATEST_BLOCK',
+  // force get a specific block (passed with 'blockHandle')
+  GET_BLOCK: 'GET_BLOCK',
   // when retrieving a block fails.
   BLOCK_RETRIEVAL_ERROR: 'BLOCK_RETRIEVAL_ERROR',
   // when raw block data was received
