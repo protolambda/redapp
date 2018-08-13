@@ -63,7 +63,10 @@ function* blocksPollError(err) {
   yield put({type: blocksAT.BLOCKS_POLL_ERROR, err});
 }
 
-function* blocksSubWorker(web3, getBlocksState, {number}) {
+function* blocksSubWorker(web3, getBlocksState, {number, hash}) {
+  // if it has no hash, than we got a pending block. Ignore it.
+  if (!hash) return;
+
   // "number": the block-number from the block-header received from the subscription.
   const stateNumber = yield select(state => getBlocksState(state).latest.number);
   // Retrieve the data of the block if we know the block will be higher than we already have.
