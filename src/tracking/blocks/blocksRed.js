@@ -6,7 +6,11 @@ const initialState = {
   blocks: {
     // empty initially
   },
-  blockNr: 0
+  latest: {
+    number: 0,
+    hash: null
+  },
+  maxBlockDepth: 24
 };
 
 const mapping = {
@@ -17,11 +21,19 @@ const mapping = {
   [blocksAT.BLOCK_RECEIVED]: (state, action) => ({
     ...state,
     blocks: {
-      ...state.blocks,
+      // filter the blocks, throw away blocks that are out of scope (i.e. too old).
+      ...(Object.entries(state.blocks).filter(
+        ([key, value]) => value.number > (action.block.number - state.maxBlockDepth)
+      ).map(([key, value]) => ({[key]: value}))),
       [action.block.hash]: action.block
     },
-    // if the new block is higher, update the block height
-    ...(state.blockNr < action.block.nr && {blockNr: action.block.nr})
+    // if the new block is higher, update the latest block
+    ...(state.blockNr < action.block.number && {
+      latest: {
+        number: action.block.number,
+        hash: action.block.hash
+      }
+    })
   }),
   [blocksAT.BLOCK_PROCESSED]: (state, action) => ({
     ...state,

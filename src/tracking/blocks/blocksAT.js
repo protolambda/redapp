@@ -7,6 +7,10 @@ const blocksAT = {
   BLOCKS_START_LISTENING: 'BLOCKS_START_LISTENING',
   BLOCKS_STOP_LISTENING: 'BLOCKS_STOP_LISTENING',
   BLOCKS_LISTEN_ERROR: 'BLOCKS_LISTEN_ERROR',
+  // force get latest block
+  GET_LATEST_BLOCK: 'GET_LATEST_BLOCK',
+  // when retrieving a block fails.
+  BLOCK_RETRIEVAL_ERROR: 'BLOCK_RETRIEVAL_ERROR',
   // when raw block data was received
   BLOCK_RECEIVED: 'BLOCK_RECEIVED',
   // when block data from "BLOCK_RECEIVED" was processed successfully
