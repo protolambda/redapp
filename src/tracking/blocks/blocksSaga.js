@@ -35,7 +35,7 @@ function* getLatestBlock(web3) {
 function* handleNewBlock(web3, getBlocksState, blockDepth, {parentHash, number}) {
   // continue looking for the ancestor blocks
   //  until we find a known older block, or got $blockDepth blocks in the store.
-  const latestBlock = yield select(state => getBlocksState(state).blockNr);
+  const latestBlock = yield select(state => getBlocksState(state).latest.number);
   const parentBlock = yield select(state => getBlocksState(state).blocks[parentHash]);
   // If we don't know the parent block, and the current block number is within the
   //  block depth range to track, then try to get the parent block.
@@ -45,8 +45,13 @@ function* handleNewBlock(web3, getBlocksState, blockDepth, {parentHash, number})
   }
 }
 
-function* blocksPollWorker(web3) {
-  yield call(getLatestBlock, web3);
+function* blocksPollWorker(web3, getBlocksState) {
+  const reportedNumber = yield call(web3.eth.getBlockNumber());
+  const stateNumber = yield select(state => getBlocksState(state).latest.number);
+  // Retrieve the data of the block if we know the block will be higher than we already have.
+  if (reportedNumber > stateNumber) {
+    yield call(getLatestBlock, web3);
+  }
 }
 
 function* blocksPollError(err) {
