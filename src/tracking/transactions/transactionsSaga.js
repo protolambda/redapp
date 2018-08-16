@@ -11,14 +11,15 @@ import openTxChannel from './openTxChannel';
  *
  * @param web3 The web3 instance to use when sending the actual TX.
  * @param txID The ID of the transaction, used in the tracking system.
- * @param from Senders address, optional. (default wallet otherwise)
- * @param to Destination address, or undefined for contract creation.
- * @param value TX value in wei.
- * @param gas TX gas. Optional, can be determined later.
- * @param gasPrice TX gas price. Optional, defaults to web3.eth.gasPrice.
- * @param data Optional. TX data, i.e. abi encoded contract call,
+ * @param txParams The transaction parameters.
+ * @param txParams.from Senders address, optional. (default wallet otherwise)
+ * @param txParams.to Destination address, or undefined for contract creation.
+ * @param txParams.value TX value in wei.
+ * @param txParams.gas TX gas. Optional, can be determined later.
+ * @param txParams.gasPrice TX gas price. Optional, defaults to web3.eth.gasPrice.
+ * @param txParams.data Optional. TX data, i.e. abi encoded contract call,
  *              or contract code itself for contract creation.
- * @param nonce Optional, can be used to re-send a transaction (with higher gas).
+ * @param txParams.nonce Optional, can be used to re-send a transaction (with higher gas).
  * @returns {PromiEvent<TransactionReceipt>} The redux saga channel.
  */
 const createTransactionPromiEvent = (web3, txID, {

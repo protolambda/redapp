@@ -2,7 +2,7 @@ import {
   takeEvery, call, select, put
 } from 'redux-saga/effects';
 import uuid4 from 'uuid/v4';
-import callsAT from './callsAT';
+import * as callsAT from './AT';
 import awaitCall from './awaitCall';
 
 /**
@@ -11,11 +11,12 @@ import awaitCall from './awaitCall';
  *
  * @param web3 The web3 instance to use when sending the actual TX.
  * @param callID The ID of the transaction, used in the tracking system.
- * @param blockNr The block number to use in the computation of the call.
+ * @param blockNr The block number to use in the computation of the call, as call context.
  *                (Optional, web3 defaults to the "latest" block).
- * @param from Senders address, optional. (default wallet otherwise)
- * @param to Destination address, or undefined for contract creation.
- * @param data Optional. TX data, i.e. abi encoded contract call,
+ * @param callParams The call parameters
+ * @param callParams.from Senders address, optional. (default wallet otherwise)
+ * @param callParams.to Destination address, or undefined for contract creation.
+ * @param callParams.data Optional. TX data, i.e. abi encoded contract call,
  *              or contract code itself for contract creation. (99% of calls should have it though.)
  * @returns {Promise} The redux saga channel.
  */
