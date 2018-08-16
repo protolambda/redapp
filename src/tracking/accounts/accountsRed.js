@@ -1,4 +1,4 @@
-import accountsAT from './accountsAT';
+import * as accountsAT from './AT';
 import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {
@@ -42,4 +42,6 @@ const mapping = {
     }))
 };
 
-export default mappedReducer(mapping, initialState);
+const accountsRed = mappedReducer(mapping, initialState);
+
+export default accountsRed;

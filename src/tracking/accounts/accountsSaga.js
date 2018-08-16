@@ -1,7 +1,7 @@
 import {
   call, fork, put, select, takeEvery, takeLatest
 } from 'redux-saga/effects';
-import accountsAT from './accountsAT';
+import * as accountsAT from './AT';
 import poller from '../../util/poller';
 
 function* tryFetchAccounts(web3) {

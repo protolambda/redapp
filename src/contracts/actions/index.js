@@ -1,4 +1,4 @@
-import contractsAT from './contractsAT';
+import * as contractsAT from '../AT';
 
 /**
  * Load a contract (binding it to an web3js Contract instance), and add it to the redux store.
@@ -14,9 +14,9 @@ import contractsAT from './contractsAT';
  *  (i.e. cacheCall/forceCall/trackedSend)
  * @param networks The network spec, like formatted by tools like truffle. An object,
  *  with network IDs (strings) as keys, and each value being an object with an "address" property.
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const addContract = (contractName, abi, networks) => (dispatch => dispatch({
+export const addContract = (contractName, abi, networks) => (dispatch => dispatch({
   type: contractsAT.ADD_CONTRACT,
   contractName,
   abi,
@@ -27,14 +27,9 @@ const addContract = (contractName, abi, networks) => (dispatch => dispatch({
  * Removes the contract from the local redux store.
  * Note: this does not affect the real contract in any way.
  * @param contractName The name of the contract (key in the state tree)
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const forgetContract = contractName => (dispatch => dispatch({
+export const forgetContract = contractName => (dispatch => dispatch({
   type: contractsAT.FORGET_CONTRACT,
   contractName,
 }));
-
-export default {
-  addContract,
-  forgetContract,
-};

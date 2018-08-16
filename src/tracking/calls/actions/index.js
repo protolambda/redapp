@@ -1,4 +1,4 @@
-import callsAT from './callsAT';
+import * as callsAT from '../AT';
 
 /**
  * Start a new call, but try to hit the cache for an existing call result first.
@@ -18,17 +18,19 @@ import callsAT from './callsAT';
  *  Optional, a new ID (uuid v4) is used when not set.
  * @param outputsABI The ABI spec of the expected outputs. Optional, if set,
  *  the raw resulting value will be decoded and stored with the other data in the store.
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const cacheCall = ({ from, to, data, blockNr, callID, outputsABI }) => (dispatch => dispatch({
-  type: callsAT.CACHE_CALL,
-  from,
-  to,
-  data,
-  blockNr,
-  callID,
-  outputsABI,
-}));
+export const cacheCall = ({ from, to, data, blockNr, callID, outputsABI }) => (
+  dispatch => dispatch({
+    type: callsAT.CACHE_CALL,
+    from,
+    to,
+    data,
+    blockNr,
+    callID,
+    outputsABI,
+  })
+);
 
 /**
  * Start a new call, ignoring previous call data, forcing an overwrite when getting the result.
@@ -43,19 +45,16 @@ const cacheCall = ({ from, to, data, blockNr, callID, outputsABI }) => (dispatch
  *  Optional, a new ID (uuid v4) is used when not set.
  * @param outputsABI The ABI spec of the expected outputs. Optional, if set,
  *  the raw resulting value will be decoded and stored with the other data in the store.
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const forceCall = ({ from, to, data, blockNr, callID, outputsABI }) => (dispatch => dispatch({
-  type: callsAT.FORCE_CALL,
-  from,
-  to,
-  data,
-  blockNr,
-  callID,
-  outputsABI,
-}));
-
-export default {
-  cacheCall,
-  forceCall,
-};
+export const forceCall = ({ from, to, data, blockNr, callID, outputsABI }) => (
+  dispatch => dispatch({
+    type: callsAT.FORCE_CALL,
+    from,
+    to,
+    data,
+    blockNr,
+    callID,
+    outputsABI,
+  })
+);

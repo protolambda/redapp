@@ -1,12 +1,12 @@
-import blocksAT from './blocksAT';
+import * as blocksAT from '../AT';
 
 /**
  * Start polling blocks.
  *
  * @param interval The polling interval in milliseconds.
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const startPolling = interval => (dispatch => dispatch({
+export const startPolling = interval => (dispatch => dispatch({
   type: blocksAT.BLOCKS_START_POLLING,
   interval,
 }));
@@ -14,36 +14,36 @@ const startPolling = interval => (dispatch => dispatch({
 /**
  * Stop polling blocks. Polling can be resumed later with `startPolling` again.
  *
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const stopPolling = () => (dispatch => dispatch({
+export const stopPolling = () => (dispatch => dispatch({
   type: blocksAT.BLOCKS_STOP_POLLING,
 }));
 
 /**
  * Start listening for block headers, a new header will trigger the retrieval of the latest block.
 
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const startListening = () => (dispatch => dispatch({
+export const startListening = () => (dispatch => dispatch({
   type: blocksAT.BLOCKS_START_LISTENING,
 }));
 
 /**
  * Stop listening for block headers.
  *
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const stopListening = () => (dispatch => dispatch({
+export const stopListening = () => (dispatch => dispatch({
   type: blocksAT.BLOCKS_STOP_LISTENING,
 }));
 
 /**
  * Force retrieval of the latest block.
  *
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const getLatestBlock = () => (dispatch => dispatch({
+export const getLatestBlock = () => (dispatch => dispatch({
   type: blocksAT.GET_LATEST_BLOCK,
 }));
 
@@ -54,18 +54,9 @@ const getLatestBlock = () => (dispatch => dispatch({
  *
  * @param blockHandle The hash, number, of special name ("genesis", "latest", "pending")
  *  of the block to get.
- * @returns {function(*): *} Redux thunk, dispatch to run action.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-const getBlock = blockHandle => (dispatch => dispatch({
+export const getBlock = blockHandle => (dispatch => dispatch({
   type: blocksAT.GET_LATEST_BLOCK,
   blockHandle,
 }));
-
-export default {
-  startPolling,
-  stopPolling,
-  startListening,
-  stopListening,
-  getLatestBlock,
-  getBlock,
-};
