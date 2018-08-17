@@ -1,4 +1,4 @@
-![ReDApp](/docs/assets/redapp_full.png)
+![ReDApp](docs/assets/redapp_full.png)
 
 # ReDApp
 
@@ -40,10 +40,6 @@ API reference docs and integration docs can be found here:
 - istanbul: coverage reporting
 - rimraf, cross-env, npm-run-all: utils for npm run scripts
 - ESLint: linting
-
-
-Waiting for Airbnb base config to support ESLint 5.0,
- see: https://github.com/airbnb/javascript/issues/1834
 
 
 ## Examples
