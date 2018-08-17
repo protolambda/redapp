@@ -67,4 +67,8 @@ const mapping = {
   }
 };
 
+/**
+ * Transactions reducer of redapp.
+ * @type {ReduxReducer}
+ */
 export default mappedReducer(mapping, initialState);

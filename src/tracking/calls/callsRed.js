@@ -86,4 +86,8 @@ const mapping = {
   }
 };
 
+/**
+ * Calls reducer of redapp.
+ * @type {ReduxReducer}
+ */
 export default mappedReducer(mapping, initialState);

@@ -60,4 +60,8 @@ const mapping = {
   })
 };
 
+/**
+ * Blocks reducer of redapp.
+ * @type {ReduxReducer}
+ */
 export default mappedReducer(mapping, initialState);
