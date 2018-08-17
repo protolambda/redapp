@@ -1,0 +1,38 @@
+{
+  "source": "./src",
+  "destination": "./api-docs",
+  "includes": ["\\.js$"],
+  "excludes": ["^index\\.js"],
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "lint": {"enable": true},
+        "coverage": {"enable": true},
+        "accessor": {"access": ["public", "protected", "private"], "autoPrivate": true},
+        "undocumentIdentifier": {"enable": false},
+        "unexportedIdentifier": {"enable": true},
+        "typeInference": {"enable": true},
+        "brand": {
+          "logo": "./docs/assets/redapp.png",
+          "title": "ReDApp",
+          "description": "Buidl your ethereum DApp with redux.",
+          "repository": "https://github.com/protolambda/redapp",
+          "site": "https://protolambda.github.io/redapp",
+          "author": "https://twitter.com/protolambda",
+          "image": "https://protolambda.github.io/redapp/logo.png"
+        }
+      }
+    },
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
+    {
+      "name": "esdoc-importpath-plugin",
+      "option": {
+        "stripPackageName": false,
+        "replaces": [
+          {"from": "^src/", "to": "es/"}
+        ]
+      }
+    }
+  ]
+}

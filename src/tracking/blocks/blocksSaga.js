@@ -7,9 +7,10 @@ import * as blocksAT from './AT';
 
 /**
  * @param web3 Web3 handle.
- * @param blockHandle The hash, number,
+ * @param action The action to handle.
+ * @param action.blockHandle The hash, number,
  *  of special name ("genesis", "latest", "pending") of the block to get.
- * @returns {IterableIterator<*>} Saga generator
+ * @returns {ReduxSaga} Saga generator
  */
 function* getSpecificBlock(web3, {blockHandle}) {
   try {
