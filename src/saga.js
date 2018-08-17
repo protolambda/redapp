@@ -11,9 +11,9 @@ import contractsSaga from './contracts/contractsSaga';
  * @param getRootState A state selector (E.g. `(state) => state.redapp`)
  *  that points to the root of the ReDApp state. This pattern repeats for each saga,
  *  enabling you to compose custom state structures.
- * @returns {IterableIterator<*>} The raw Saga.
+ * @return {ReduxSaga} The ReDApp root saga.
  */
-export default function* root(web3, defaultNetworkId, getRootState) {
+export default function* saga(web3, defaultNetworkId, getRootState) {
   yield all([
     fork(trackingSaga, web3, state => getRootState(state).tracking),
     fork(contractsSaga, web3, defaultNetworkId, state => getRootState(state).contracts)

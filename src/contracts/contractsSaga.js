@@ -90,6 +90,13 @@ function* addContract(web3, defaultNetworkId, getContractsState, {contractName, 
 }
 
 
+/**
+ * Handles ReDApp contract background processing, e.g. loading new contracts.
+ * @param web3 The web3js 1.0 instance to use.
+ * @param defaultNetworkId The default network ID to use when looking up a contract address.
+ * @param getContractsState {ReduxStateSelector} Gets contracts state
+ * @return {ReduxSaga} Contracts saga.
+ */
 function* contractsSaga(web3, defaultNetworkId, getContractsState) {
   yield takeEvery(contractsAT.ADD_CONTRACT, addContract, web3, defaultNetworkId, getContractsState);
 }

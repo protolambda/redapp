@@ -75,9 +75,16 @@ function* blocksSubWorker(web3, getBlocksState, {number, hash}) {
   }
 }
 
+/**
+ * Handles ReDApp block background processing.
+ * @param web3 The web3js 1.0 instance to use.
+ * @param getBlocksState {ReduxStateSelector} Gets blocks state
+ *  (obj. incl. both `blocks` and `latest`)
+ * @return {ReduxSaga} Blocks saga.
+ */
 function* blocksSaga(web3, getBlocksState) {
-  // TODO could be configurable.
-  const blockDepth = 24;
+  // Get block depth from the store.
+  const blockDepth = (yield select(state => getBlocksState(state).maxBlockDepth)) || 24;
 
   // Polling system, only intended for non-stream based RPC, e.g. metamask (over http).
   yield fork(poller(

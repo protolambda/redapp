@@ -59,7 +59,12 @@ function* sendTX(web3, {from, to, value, gas, gasPrice, data, nonce, txID}) {
   }
 }
 
-
+/**
+ * Handles ReDApp transaction background processing.
+ * @param web3 The web3js 1.0 instance to use.
+ * @param getTransactionsState {ReduxStateSelector} Gets transactions state.
+ * @return {ReduxSaga} Transactions saga.
+ */
 function* transactionsSaga(web3, getTransactionsState) {
   yield takeEvery(transactionsAT.SEND_TX, sendTX, web3);
 }

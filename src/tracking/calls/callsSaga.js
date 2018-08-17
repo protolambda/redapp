@@ -83,6 +83,12 @@ function* decodeCall(web3, getCallsState, {callID, rawValue}) {
   }
 }
 
+/**
+ * Handles ReDApp call background processing.
+ * @param web3 The web3js 1.0 instance to use.
+ * @param getCallsState {ReduxStateSelector} Gets calls state.
+ * @return {ReduxSaga} Calls saga.
+ */
 function* callsSaga(web3, getCallsState) {
   yield takeEvery(callsAT.CACHE_CALL, cacheCall, getCallsState);
   yield takeEvery(callsAT.FORCE_CALL, forceCall, web3);
