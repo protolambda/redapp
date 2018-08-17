@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import poller from '../../util/poller';
 import subber from '../../util/subber';
-import blocksAT from './blocksAT';
+import * as blocksAT from './AT';
 
 /**
  * @param web3 Web3 handle.

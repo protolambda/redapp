@@ -3,9 +3,9 @@ import {
 } from 'redux-saga/effects';
 import Web3Utils from 'web3-utils';
 import uuid4 from 'uuid/v4';
-import contractsAT from './contractsAT';
-import callsAT from '../tracking/calls/callsAT';
-import transactionsAT from '../tracking/transactions/transactionsAT';
+import * as contractsAT from './AT';
+import * as callsAT from '../tracking/calls/AT';
+import * as transactionsAT from '../tracking/transactions/AT';
 import EncodeABIError from '../errors/EncodeABIError';
 
 function* addContract(web3, defaultNetworkId, getContractsState, {contractName, abi, networks}) {

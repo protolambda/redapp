@@ -1,4 +1,4 @@
-import transactionsAT from './transactionsAT';
+import * as transactionsAT from './AT';
 import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {

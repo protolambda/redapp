@@ -1,5 +1,5 @@
-import {call, put} from 'redux-saga/effects';
-import callsAT from './callsAT';
+import {put} from 'redux-saga/effects';
+import * as callsAT from './AT';
 
 /**
  * Awaits a web3 call, and fires the corresponding redux events

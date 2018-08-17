@@ -1,4 +1,4 @@
-import callsAT from './callsAT';
+import * as callsAT from './AT';
 import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {

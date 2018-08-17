@@ -1,5 +1,5 @@
 import { END, eventChannel } from 'redux-saga';
-import transactionsAT from './transactionsAT';
+import * as transactionsAT from './AT';
 
 /**
  * Open a TX channel: this channel maps web3 events to our redux tracking system.

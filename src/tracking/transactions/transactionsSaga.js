@@ -2,7 +2,7 @@ import {
   put, takeEvery, call, take
 } from 'redux-saga/effects';
 import uuid4 from 'uuid/v4';
-import transactionsAT from './transactionsAT';
+import * as transactionsAT from './AT';
 import openTxChannel from './openTxChannel';
 
 /**

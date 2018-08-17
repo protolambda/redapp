@@ -1,4 +1,4 @@
-import contractsAt from './contractsAT';
+import * as contractsAt from './AT';
 import mappedReducer from '../util/mapped-reducer';
 
 const initialState = {

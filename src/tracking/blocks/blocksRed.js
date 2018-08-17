@@ -1,4 +1,4 @@
-import blocksAT from './blocksAT';
+import * as blocksAT from './AT';
 import mappedReducer from '../../util/mapped-reducer';
 
 const initialState = {
