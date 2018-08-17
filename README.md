@@ -1,3 +1,5 @@
+![ReDApp](/docs/assets/redapp_full.png)
+
 # ReDApp
 
 [![Build Status](https://travis-ci.org/protolambda/redapp.svg?branch=master)](https://travis-ci.org/protolambda/redapp)
@@ -5,26 +7,26 @@
 [![devDependencies Status](https://david-dm.org/protolambda/redapp/dev-status.svg)](https://david-dm.org/protolambda/redapp?type=dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-ReDApp is a NodeJS package aiming to ease the development of DApps
- by performing the common web3 tasks in an idiomatic redux flow:
+ReDApp is a NPM package aiming to ease the development of DApps (decentralized application)
+ by performing the common web3 tasks in an idiomatic [Redux](https://github.com/reduxjs/redux) flow:
 
 - **track**:
   - transactions
   - accounts
-  - blocks (v2)
-  - metadata (e.g. blockheight)
+  - blocks
 - **interact**:
   - send regular transactions
   - send smart-contract transactions
 - **view**:
   - call smartcontract getters, e.g. read token balance.
-  - retrieve history: get filtered event logs
+  - retrieve history: get filtered event logs (coming soon in V2)
 
-ReDApp only support Web3.js v1.0+.
+ReDApp only supports Web3.js v1.0+.
 
-TODO: describe store structure, reducers, and sagas.
-TODO: format documentation.
-TODO: images for documentation
+## Documentation
+
+API reference docs and integration docs can be found here:
+[ReDApp Documentation](https://protolambda.github.io/redapp)
 
 
 ## Dependencies
