@@ -1,6 +1,6 @@
 {
   "source": "./src",
-  "destination": "./api-docs",
+  "destination": "./docs",
   "includes": ["\\.js$"],
   "excludes": ["^index\\.js"],
   "plugins": [
@@ -14,13 +14,22 @@
         "unexportedIdentifier": {"enable": true},
         "typeInference": {"enable": true},
         "brand": {
-          "logo": "./docs/assets/redapp.png",
+          "logo": "./manual/asset/img/redapp.svg",
           "title": "ReDApp",
           "description": "Buidl your ethereum DApp with redux.",
           "repository": "https://github.com/protolambda/redapp",
           "site": "https://protolambda.github.io/redapp",
           "author": "https://twitter.com/protolambda",
           "image": "https://protolambda.github.io/redapp/logo.png"
+        },
+        "manual": {
+          "index": "./manual/README.md",
+          "globalIndex": false,
+          "asset": "./manual/asset",
+          "files": [
+            "./manual/Overview.md",
+            "./manual/design.md"
+          ]
         }
       }
     },

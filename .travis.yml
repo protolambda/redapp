@@ -5,6 +5,23 @@ node_js:
 script:
   - npm run test
   - npm run build
-branches:
-  only:
-    - master
+jobs:
+  include:
+  - stage: unit tests
+    script: npm run test
+  - stage: prepare docs deploy
+    if: branch = master
+    node_js: "8"
+    script: npm run docs
+  - stage: docs deploy
+    if: branch = master
+    node_js: "8"
+    script: echo "Deploying docs to github pages"
+    deploy:
+      provider: pages
+      skip-cleanup: true
+      github-token: $GITHUB_TOKEN
+      keep-history: false
+      local-dir: docs
+      on:
+        branch: gh-pages

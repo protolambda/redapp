@@ -1,4 +1,4 @@
-![ReDApp](docs/assets/redapp_full.png)
+<img width="600" src="manual/asset/img/redapp_full.svg"/>
 
 # ReDApp
 
