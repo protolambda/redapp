@@ -41,9 +41,6 @@ const styles = theme => ({
   rootGrid: {
     flexGrow: 1,
   },
-  part: {
-    padding: theme.spacing.unit * 2,
-  },
   headerText: {
     ...theme.typography.body1
   }
@@ -74,9 +71,7 @@ const App = ({classes}) => (
         </div>
       </Grid>
       <Grid item xs={12}>
-        <Paper className={classes.part}>
-          <ContractLoader/>
-        </Paper>
+        <ContractLoader/>
       </Grid>
 
       <Grid item xs={12}>
@@ -91,9 +86,7 @@ const App = ({classes}) => (
       </Grid>
 
       <Grid item xs={12}>
-        <Paper className={classes.part}>
-          <AccountList/>
-        </Paper>
+        <AccountList/>
       </Grid>
     </Grid>
   </div>

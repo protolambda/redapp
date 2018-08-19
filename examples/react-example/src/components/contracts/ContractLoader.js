@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Typography, TextField, Button} from '@material-ui/core';
+import {Typography, TextField, Button, Paper} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { addContract } from 'redapp/es/contracts/actions';
 
@@ -12,8 +12,11 @@ const erc20ABI = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":
 const exampleNetworksConfig = { "3": { "address": "0x722dd3F80BAC40c951b51BdD28Dd19d435762180" } };
 
 const styles = theme => ({
+  root: {
+    padding: theme.spacing.unit * 2
+  },
   addBtn: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing.unit * 2
   },
   abiField: {
     fontFamily: 'monospace !important'
@@ -79,7 +82,7 @@ class ContractLoader extends React.Component {
     const {classes} = this.props;
 
     return (
-      <div>
+      <Paper className={classes.root}>
         <Typography variant="headline" gutterBottom>Contract Loader</Typography>
 
         <TextField
@@ -130,7 +133,7 @@ class ContractLoader extends React.Component {
           }}
         />
 
-      </div>
+      </Paper>
     );
   }
 }
