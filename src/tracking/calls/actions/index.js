@@ -60,3 +60,14 @@ export const forceCall = ({ from, to, data, blockNr, callID, outputsABI }) => (
     outputsABI,
   })
 );
+
+/**
+ * Remove a call from the tracking system.
+ * Note: this does not cancel the call if it was already sent to the web3 instance.
+ * @param callID The ID of the call to remove.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
+ */
+export const forgetCall = callID => (dispatch => dispatch({
+  type: callsAT.FORGET_CALL,
+  callID,
+}));

@@ -41,6 +41,6 @@ export const sendTX = ({ from, to, value, gas, gasPrice, data, nonce, txID }) =>
  * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
 export const forgetTX = txID => (dispatch => dispatch({
-  type: transactionsAT.SEND_TX,
+  type: transactionsAT.FORGET_TX,
   txID,
 }));
