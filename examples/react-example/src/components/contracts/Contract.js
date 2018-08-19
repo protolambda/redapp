@@ -6,11 +6,14 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  IconButton
 } from '@material-ui/core';
 import TxIcon from '@material-ui/icons/Publish';
 import CallIcon from '@material-ui/icons/RemoveRedEye';
+import DeleteIcon from '@material-ui/icons/Delete';
 import ContractMethodInput from './ContractMethodInput';
+import { forgetContract } from 'redapp/es/contracts/actions';
 
 
 class Contract extends React.Component {
@@ -20,12 +23,23 @@ class Contract extends React.Component {
     this.state = {};
   }
 
+  forgetThisContract = () => this.props.dispatch(
+    forgetContract(
+      this.state.contractName,
+      this.state.abi,
+      this.state.networks
+    )
+  );
+
   render() {
     const {name, data} = this.props;
 
     return (
       <div>
         <Typography variant="headline">Contract: {name}</Typography>
+        <IconButton onClick={this.forgetThisContract} className={classes.button} aria-label="Delete">
+          <DeleteIcon />
+        </IconButton>
         <div>
           <Typography variant="title">Methods</Typography>
           <List component="nav">

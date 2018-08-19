@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Typography, TextField, Button} from '@material-ui/core';
-import contractsAT from 'redapp/es/contracts/contractsAT';
 import { withStyles } from '@material-ui/core/styles';
+import { addContract } from 'redapp/es/contracts/actions';
 
 
 // eslint-disable-next-line
@@ -37,12 +37,13 @@ class ContractLoader extends React.Component {
     };
   }
 
-  addContract = () => this.props.dispatch({
-    type: contractsAT.ADD_CONTRACT,
-    contractName: this.state.contractName,
-    abi: this.state.abi,
-    networks: this.state.networks
-  });
+  addContract = () => this.props.dispatch(
+    addContract(
+      this.state.contractName,
+      this.state.abi,
+      this.state.networks
+    )
+  );
 
   validateName = (evt) => {
     const name = evt.target.value;

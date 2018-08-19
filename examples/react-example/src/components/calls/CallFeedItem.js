@@ -10,7 +10,7 @@ import {
   ExpansionPanelDetails,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import callsAT from 'redapp/es/tracking/calls/callsAT';
+import { forgetCall } from 'redapp/es/tracking/calls/actions';
 import Row from '../util/Row';
 import PreWrap from '../util/PreWrap';
 
@@ -29,10 +29,7 @@ const CallFeedItem = ({ callID, data, dispatch }) => (
             <PreWrap>{JSON.stringify(data.outputsABI, null, 4)}</PreWrap>
           </Row>
           <Row label="Block number:">{data.blockNr}</Row>
-          <Button onClick={() => dispatch({
-            type: callsAT.FORGET_CALL,
-            callID
-          })}>Forget this call</Button>
+          <Button onClick={() => dispatch(forgetCall(callID))}>Forget this call</Button>
         </div>
         : <Typography variant="caption">No data available</Typography>}
     </ExpansionPanelDetails>

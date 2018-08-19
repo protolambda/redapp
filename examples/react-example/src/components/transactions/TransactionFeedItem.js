@@ -9,7 +9,7 @@ import {
   ExpansionPanelDetails, Button,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import transactionsAT from 'redapp/es/tracking/transactions/transactionsAT';
+import { forgetTX } from 'redapp/es/tracking/transactions/actions';
 import Row from '../util/Row';
 import PreWrap from '../util/PreWrap';
 
@@ -24,10 +24,7 @@ const TransactionFeedItem = ({ txID, data, dispatch }) => (
           <Row label="Hash:"><PreWrap>{data.hash}</PreWrap></Row>
           <Row label="Status:">{data.status}</Row>
           <Row label="Receipt:"><PreWrap>{JSON.stringify(data.receipt, null, 4)}</PreWrap></Row>
-          <Button onClick={() => dispatch({
-            type: transactionsAT.FORGET_TX,
-            txID
-          })}>Forget this TX</Button>
+          <Button onClick={() => dispatch(forgetTX(txID))}>Forget this TX</Button>
         </div>
         : <Typography variant="caption">No data available</Typography>}
     </ExpansionPanelDetails>

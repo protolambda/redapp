@@ -14,9 +14,11 @@ const Account = ({address, data}) => (
 
 Account.propTypes = {
   address: PropTypes.string.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
+  // "wallet" or "local"
+  accountSpace: PropTypes.string.isRequired
 };
 
 export default connect((state, props) => ({
-  data: state.redapp.tracking.accounts[props.address]
+  data: state.redapp.tracking.accounts[props.accountSpace][props.address]
 }))(Account);

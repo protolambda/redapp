@@ -7,11 +7,11 @@ const AccountList = ({walletAccounts, localAccounts}) => (
   <div>
     <h1>Accounts (Wallet)</h1>
     {walletAccounts.map((account, i) => (
-      <Account key={`account-${account}-${i}`} address={account}/>
+      <Account key={`account-${account}-${i}`} address={account} accountSpace="wallet"/>
     ))}
     <h1>Accounts (Local)</h1>
     {localAccounts.map((account, i) => (
-      <Account key={`account-${account}-${i}`} address={account}/>
+      <Account key={`account-${account}-${i}`} address={account} accountSpace="local"/>
     ))}
   </div>
 );

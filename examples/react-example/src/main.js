@@ -8,10 +8,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import createSagaMiddleware from 'redux-saga';
 import thunkMiddleware from 'redux-thunk';
 import initWeb3 from 'redapp/es/initWeb3';
+import { startAccountPolling } from 'redapp/es/tracking/accounts/actions';
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
 import App from './components/App';
-
 const sagaMiddleware = createSagaMiddleware();
 
 // Redux DevTools
@@ -28,6 +28,9 @@ const store = createStore(
 const web3 = initWeb3();
 
 sagaMiddleware.run(rootSaga, web3);
+
+// Start polling for accounts, with an interval of 5000 ms
+store.dispatch(startAccountPolling(5000));
 
 function render() {
   ReactDOM.render(
