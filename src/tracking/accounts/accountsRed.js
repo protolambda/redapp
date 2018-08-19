@@ -18,7 +18,11 @@ const isWalletAccount = (state, address) => !!state.wallet[address];
 const mapping = {
   [accountsAT.ACCOUNTS_FETCH_COMPLETED]: (state, {accounts}) => ({
     ...state,
-    wallet: accounts
+    wallet: Object.assign({},
+      ...accounts.map(address => ({[address]: null})),
+      ...Object.entries(state.wallet)
+        .filter(([address, data]) => (accounts.indexOf(address) >= 0))
+        .map(([address, data]) => ({[address]: data})))
   }),
   [accountsAT.ACCOUNT_BALANCE]: (state, {account, balance}) => (
     isWalletAccount(state, account) ? ({
