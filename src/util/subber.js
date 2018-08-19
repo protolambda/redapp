@@ -14,7 +14,7 @@ import { eventChannel } from 'redux-saga';
  * @param changedAT The action type that will be emitted when a "changed" event
  *  is received from the subscription. Payload property = 'changed'
  * @param errorAT The action type that will be emitted when a "error" event
- *  is received from the subscription. Payload property = 'error'
+ *  is received from the subscription. Payload property = 'err'
  * @param openEventSub A function that returns a new EventEmitter ready to subscribe to.
  * @returns {subscriptionWatcher} The watcher, a redux-saga,
  *  can be shut down to stop the service completely.
@@ -32,7 +32,7 @@ function subber(startAT, stopAT, dataAT, changedAT, errorAT, openEventSub) {
         emit({type: changedAT, changed});
       })
       .on('error', error => {
-        emit({type: errorAT, error});
+        emit({type: errorAT, err: error.message});
       });
     // Return unsubscribe function (wrap for future compatibility)
     return () => eventSub.unsubscribe();

@@ -42,12 +42,12 @@ function* getAll(getAccountsState) {
   const accounts = yield select(getAccountsState);
 
   // Get wallet accounts
-  for (const account of accounts.wallet) {
+  for (const account of Object.keys(accounts.wallet)) {
     yield put({type: accountsAT.ACCOUNT_GET, account});
   }
 
   // Get local accounts (tracked, but not part of wallet)
-  for (const account of accounts.local) {
+  for (const account of Object.keys(accounts.local)) {
     yield put({type: accountsAT.ACCOUNT_GET, account});
   }
 }
@@ -58,7 +58,7 @@ function* accountsPollWorker(web3, getAccountsState) {
 }
 
 function* accountsPollError(err) {
-  yield put({type: accountsAT.ACCOUNTS_POLL_ERROR, err});
+  yield put({type: accountsAT.ACCOUNTS_POLL_ERROR, err: err.message});
 }
 
 function* accountsSaga(web3, getAccountsState) {

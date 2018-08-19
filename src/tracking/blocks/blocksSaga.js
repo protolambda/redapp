@@ -61,7 +61,7 @@ function* blocksPollWorker(web3, getBlocksState) {
 }
 
 function* blocksPollError(err) {
-  yield put({type: blocksAT.BLOCKS_POLL_ERROR, err});
+  yield put({type: blocksAT.BLOCKS_POLL_ERROR, err: err.message});
 }
 
 function* blocksSubWorker(web3, getBlocksState, {number, hash}) {
