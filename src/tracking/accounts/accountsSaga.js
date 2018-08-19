@@ -27,9 +27,9 @@ function* tryGetBalance(web3, {account}) {
   try {
     const balance = yield call(web3.eth.getBalance, account);
 
-    yield put({type: accountsAT.ACCOUNT_BALANCE, balance});
+    yield put({type: accountsAT.ACCOUNT_BALANCE, account, balance});
   } catch (err) {
-    yield put({type: accountsAT.ACCOUNT_GET_BALANCE_FAILED, err});
+    yield put({type: accountsAT.ACCOUNT_GET_BALANCE_FAILED, account, err});
   }
 }
 
