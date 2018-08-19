@@ -58,3 +58,25 @@ export const startAccountPolling = interval => (dispatch => dispatch({
 export const stopAccountPolling = () => (dispatch => dispatch({
   type: accountsAT.ACCOUNTS_STOP_POLLING,
 }));
+
+/**
+ * Add an account to track locally. (i.e. no interaction with the user)
+ *
+ * @param address The address of the account to start tracking.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
+ */
+export const addLocalAcount = address => (dispatch => dispatch({
+  type: accountsAT.ADD_LOCAL_ACCOUNT,
+  account: address
+}));
+
+/**
+ * Forget local account.
+ *
+ * @param address The address of the account to forget.
+ * @returns {ReduxThunk} Redux thunk, dispatch to run action.
+ */
+export const forgetLocalAccount = address => (dispatch => dispatch({
+  type: accountsAT.FORGET_LOCAL_ACCOUNT,
+  account: address
+}));

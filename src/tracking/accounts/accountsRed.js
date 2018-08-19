@@ -19,6 +19,9 @@ const isLocalAccount = (state, address) => !!state.local[address];
 const mapping = {
   [accountsAT.ACCOUNTS_FETCH_COMPLETED]: (state, {accounts}) => ({
     ...state,
+    // Retain any existing account data if it can be found in the fetched account list.
+    // Remove the other accounts from the state.
+    // Add any new accounts.
     wallet: Object.assign({},
       ...accounts.map(address => ({[address]: {}})),
       ...Object.entries(state.wallet)
@@ -45,7 +48,21 @@ const mapping = {
         }
       }
     }))
-  })
+  }),
+  [accountsAT.ADD_LOCAL_ACCOUNT]: (state, {account}) => ({
+    ...state,
+    local: {
+      ...state.local,
+      [account]: {
+        // Fresh data, forget possible existing entry for account.
+      }
+    }
+  }),
+  [accountsAT.FORGET_LOCAL_ACCOUNT]: (state, {account}) => {
+    const res = {...state, local: {...state.local}};
+    delete res.local[account];
+    return res;
+  }
 };
 
 const accountsRed = mappedReducer(mapping, initialState);
