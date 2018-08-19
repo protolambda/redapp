@@ -17,50 +17,57 @@ const isWalletAccount = (state, address) => !!state.wallet[address];
 const isLocalAccount = (state, address) => !!state.local[address];
 
 const mapping = {
-  [accountsAT.ACCOUNTS_FETCH_COMPLETED]: (state, {accounts}) => ({
-    ...state,
-    // Retain any existing account data if it can be found in the fetched account list.
-    // Remove the other accounts from the state.
-    // Add any new accounts.
-    wallet: Object.assign({},
-      ...accounts.map(address => ({[address]: {}})),
-      ...Object.entries(state.wallet)
-        .filter(([address, data]) => (accounts.indexOf(address) >= 0))
-        .map(([address, data]) => ({[address]: data})))
-  }),
-  [accountsAT.ACCOUNT_BALANCE]: (state, {account, balance}) => ({
-    ...state,
-    ...(isWalletAccount(state, account) && ({
-      wallet: {
-        ...state.wallet,
-        [account]: {
-          ...state.wallet[account],
-          balance
+  [accountsAT.ACCOUNTS_FETCH_COMPLETED]: (state, {accounts}) => {
+    // Enforce lowercase storage of addresses.
+    const accountsLowercase = accounts.map(addr => addr.toLowerCase());
+    return ({
+      ...state,
+      // Retain any existing account data if it can be found in the fetched account list.
+      // Remove the other accounts from the state.
+      // Add any new accounts.
+      wallet: Object.assign({},
+        ...accountsLowercase.map(address => ({[address]: {}})),
+        ...Object.entries(state.wallet)
+          .filter(([address, data]) => (accountsLowercase.indexOf(address) >= 0))
+          .map(([address, data]) => ({[address]: data})))
+    });
+  },
+  [accountsAT.ACCOUNT_BALANCE]: (state, {account, balance}) => {
+    const addressLowercase = account.toLowerCase();
+    return ({
+      ...state,
+      ...(isWalletAccount(state, addressLowercase) && ({
+        wallet: {
+          ...state.wallet,
+          [addressLowercase]: {
+            ...state.wallet[addressLowercase],
+            balance
+          }
         }
-      }
-    })),
-    ...(isLocalAccount(state, account) && ({
-      local: {
-        ...state.local,
-        [account]: {
-          ...state.local[account],
-          balance
+      })),
+      ...(isLocalAccount(state, addressLowercase) && ({
+        local: {
+          ...state.local,
+          [addressLowercase]: {
+            ...state.local[addressLowercase],
+            balance
+          }
         }
-      }
-    }))
-  }),
+      }))
+    });
+  },
   [accountsAT.ADD_LOCAL_ACCOUNT]: (state, {account}) => ({
     ...state,
     local: {
       ...state.local,
-      [account]: {
+      [account.toLowerCase()]: {
         // Fresh data, forget possible existing entry for account.
       }
     }
   }),
   [accountsAT.FORGET_LOCAL_ACCOUNT]: (state, {account}) => {
     const res = {...state, local: {...state.local}};
-    delete res.local[account];
+    delete res.local[account.toLowerCase()];
     return res;
   }
 };
