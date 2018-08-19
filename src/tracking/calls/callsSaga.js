@@ -50,7 +50,7 @@ function* cacheCall(getCallsState, {from, to, data, blockNr, callID, outputsABI}
   const cached = yield select(state => getCallsState(state)[id]);
 
   if (!cached) {
-    yield put({type: callsAT.FORCE_CALL, from, to, data, blockNr, callID, outputsABI});
+    yield put({type: callsAT.FORCE_CALL, from, to, data, blockNr, callID: id, outputsABI});
   }
   // TODO: the else case: we could fire a "cache is hit" event, but we probably don't need it.
 }

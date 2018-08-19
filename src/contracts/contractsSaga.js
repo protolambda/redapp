@@ -38,7 +38,7 @@ function* addContract(web3, defaultNetworkId, getContractsState, {contractName, 
           const callData = encodeABI(args);
           // Hash it, a new call with the same exact input will hit the cache.
           // Also add the block-number, this also influences the computation.
-          const callID = `${to}-${Web3Utils.soliditySha3(callData)}-${blockNr || 'latest'}`;
+          const callID = `${to || '*'}-${Web3Utils.soliditySha3(callData)}-${blockNr || 'latest'}`;
 
           // Return the callID together with the thunk,
           //  this thunk can be dispatched, and the thunk-middleware will pick it up.
@@ -73,7 +73,7 @@ function* addContract(web3, defaultNetworkId, getContractsState, {contractName, 
               const contractAddress = to || (getContractsState(getState())[contractName]
                 .networks[networkId || defaultNetworkId].address);
               dispatch({
-                type: transactionsAT.SEND_TX, data: txData,
+                type: transactionsAT.SEND_TX, txID, data: txData,
                 from, to: contractAddress, value, gas, gasPrice, nonce
               });
             }
