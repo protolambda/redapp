@@ -12,6 +12,7 @@ const styles = theme => ({
   },
   outerContract: {
     padding: theme.spacing.unit * 2,
+    marginTop: theme.spacing.unit * 4
   }
 });
 

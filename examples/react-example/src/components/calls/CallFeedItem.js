@@ -24,7 +24,7 @@ const CallFeedItem = ({ callID, data, dispatch }) => (
         ? <div style={{width: '100%'}}>
           <Row label="Status:">{data.status}</Row>
           <Row label="Raw value:"><PreWrap>{data.rawValue}</PreWrap></Row>
-          <Row label="Decoded value:"><PreWrap>{data.value}</PreWrap></Row>
+          <Row label="Decoded value:"><PreWrap>{JSON.stringify(data.value, null, 4)}</PreWrap></Row>
           <Row label="Outputs ABI:">
             <PreWrap>{JSON.stringify(data.outputsABI, null, 4)}</PreWrap>
           </Row>

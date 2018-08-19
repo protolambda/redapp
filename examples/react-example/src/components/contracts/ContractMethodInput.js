@@ -85,6 +85,9 @@ class ContractMethodInput extends React.Component {
   trackedSend = () => {
     const {txID, thunk} = this.props.method.trackedSend({
       // from, value, gas, gasPrice, nonce, to, networkId
+      from: this.props.fromAddress,
+      // Other values are all optional
+      // (if you set a default network id and provided a networks config for the contract)
     }, ...(this.props.method.inputs.map(
       ({name}) => this.state[this.getInputStateName(name)]
     )));
@@ -258,11 +261,15 @@ ContractMethodInput.propTypes = {
   classes: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
   open: PropTypes.bool,
-  onClose: PropTypes.func
+  onClose: PropTypes.func,
+  fromAddress: PropTypes.string
 };
 
 const styledContractMethodInput = withStyles(styles)(ContractMethodInput);
 
 export default connect((state, props) => ({
-  method: state.redapp.contracts[props.contractName].methods[props.methodName]
+  method: state.redapp.contracts[props.contractName].methods[props.methodName],
+  // Just pick account 0, in a more complicated multi-account app you can implement
+  // a choice between accounts.
+  fromAddress: Object.keys(state.redapp.tracking.accounts.wallet)[0]
 }))(styledContractMethodInput);

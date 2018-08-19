@@ -25,9 +25,7 @@ class Contract extends React.Component {
 
   forgetThisContract = () => this.props.dispatch(
     forgetContract(
-      this.state.contractName,
-      this.state.abi,
-      this.state.networks
+      this.props.name
     )
   );
 
@@ -37,7 +35,7 @@ class Contract extends React.Component {
     return (
       <div>
         <Typography variant="headline">Contract: {name}</Typography>
-        <IconButton onClick={this.forgetThisContract} className={classes.button} aria-label="Delete">
+        <IconButton onClick={this.forgetThisContract} aria-label="Delete">
           <DeleteIcon />
         </IconButton>
         <div>
