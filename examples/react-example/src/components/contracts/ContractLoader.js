@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Typography, TextField, Button, Paper} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { addContract } from 'redapp/es/contracts/actions';
+import PropTypes from 'prop-types';
 
 
 // eslint-disable-next-line
@@ -137,6 +138,11 @@ class ContractLoader extends React.Component {
     );
   }
 }
+
+ContractLoader.propTypes = {
+  classes: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
 
 const styledContractLoader = withStyles(styles)(ContractLoader);
 

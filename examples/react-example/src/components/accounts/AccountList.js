@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import Account from './Account';
 import { Typography, Paper } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
+import LocalAccountAdder from './LocalAccountAdder';
 
 const styles = theme => ({
   root: {
@@ -15,6 +16,10 @@ const styles = theme => ({
   },
   accountListSection: {
     marginBottom: theme.spacing.unit * 4
+  },
+  addressAdder: {
+    marginTop: theme.spacing.unit * 2,
+    marginBottom: theme.spacing.unit * 2
   }
 });
 
@@ -30,6 +35,7 @@ const AccountList = ({walletAccounts, localAccounts, classes}) => (
     </div>
     <div className={classes.accountListSection}>
       <Typography variant="headline" gutterBottom>Accounts (Local)</Typography>
+      <LocalAccountAdder className={classes.addressAdder}/>
       {localAccounts.map((account, i) => (
         <Paper key={`local-account-${account}-${i}`} className={classes.account}>
           <Account address={account} accountSpace="local"/>
