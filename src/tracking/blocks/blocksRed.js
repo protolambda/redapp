@@ -18,26 +18,31 @@ const mapping = {
     ...state,
     accountsMap: action.accountsMap
   }),
-  [blocksAT.BLOCK_RECEIVED]: (state, action) => ({
-    ...state,
-    blocks: Object.assign(
-      {},
-      // filter the blocks, throw away blocks that are out of scope (i.e. too old).
-      ...(Object.entries(state.blocks).filter(
-        ([key, value]) => value.number > (state.latest.number - state.maxBlockDepth)
-      ).map(([key, value]) => ({[key]: value}))),
-      ((action.block.number > (state.latest.number - state.maxBlockDepth)) && {
-        [action.block.hash]: action.block
+  [blocksAT.BLOCK_RECEIVED]: (state, action) => {
+    const newLatestBlockNr = action.block.number > state.latest.number
+      ? action.block.number
+      : state.latest.number;
+    return ({
+      ...state,
+      blocks: Object.assign(
+        {},
+        // filter the blocks, throw away blocks that are out of scope (i.e. too old).
+        ...(Object.entries(state.blocks).filter(
+          ([key, value]) => state.maxBlockDepth > (newLatestBlockNr - value.number)
+        ).map(([key, value]) => ({[key]: value}))),
+        ((state.maxBlockDepth > (state.latest.number - action.block.number)) && {
+          [action.block.hash]: action.block
+        })
+      ),
+      // if the new block is higher, update the latest block
+      ...((state.latest.number < action.block.number) && {
+        latest: {
+          number: action.block.number,
+          hash: action.block.hash
+        }
       })
-    ),
-    // if the new block is higher, update the latest block
-    ...((state.latest.number < action.block.number) && {
-      latest: {
-        number: action.block.number,
-        hash: action.block.hash
-      }
-    })
-  }),
+    });
+  },
   [blocksAT.BLOCK_PROCESSED]: (state, action) => ({
     ...state,
     blocks: {
