@@ -15,16 +15,17 @@ import * as blocksAT from './AT';
 function* getSpecificBlock(web3, {blockHandle}) {
   try {
     // Get the block, and put it into the store.
-    const block = yield call(web3.eth.getBlock(web3));
+    const block = yield call(web3.eth.getBlock, blockHandle);
     yield put({
       type: blocksAT.BLOCK_RECEIVED,
-      ...block
+      // isolate block data from the action, i.e. add as payload named 'block'
+      block
     });
   } catch (err) {
     yield put({
       type: blocksAT.BLOCK_RETRIEVAL_ERROR,
       blockHandle,
-      err
+      err: err.message
     });
   }
 }
@@ -34,7 +35,7 @@ function* getLatestBlock(web3) {
   yield call(getSpecificBlock, web3, {blockHandle: 'latest'});
 }
 
-function* handleNewBlock(web3, getBlocksState, blockDepth, {parentHash, number}) {
+function* handleNewBlock(web3, getBlocksState, blockDepth, {block: {parentHash, number}}) {
   // continue looking for the ancestor blocks
   //  until we find a known older block, or got $blockDepth blocks in the store.
   const latestBlock = yield select(state => getBlocksState(state).latest.number);
@@ -48,7 +49,7 @@ function* handleNewBlock(web3, getBlocksState, blockDepth, {parentHash, number})
 }
 
 function* blocksPollWorker(web3, getBlocksState) {
-  const reportedNumber = yield call(web3.eth.getBlockNumber());
+  const reportedNumber = yield call(web3.eth.getBlockNumber);
   const stateNumber = yield select(state => getBlocksState(state).latest.number);
   // Retrieve the data of the block if we know the block will be higher than we already have.
   if (reportedNumber > stateNumber) {
@@ -108,6 +109,7 @@ function* blocksSaga(web3, getBlocksState) {
   ));
   yield takeEvery(blocksAT.BLOCK_RECEIVED, handleNewBlock, web3, getBlocksState, blockDepth);
   yield takeLatest(blocksAT.GET_LATEST_BLOCK, getLatestBlock, web3);
+  yield takeEvery(blocksAT.GET_BLOCK, getSpecificBlock, web3);
   yield takeEvery(blocksAT.BLOCKS_SUB_NEW_BLOCK_CHECK, blocksSubWorker, web3, getBlocksState);
 }
 

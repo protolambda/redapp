@@ -31,7 +31,7 @@ const mapping = {
       })
     ),
     // if the new block is higher, update the latest block
-    ...((state.blockNr < action.block.number) && {
+    ...((state.latest.number < action.block.number) && {
       latest: {
         number: action.block.number,
         hash: action.block.hash

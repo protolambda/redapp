@@ -49,6 +49,7 @@ export const GET_LATEST_BLOCK = 'GET_LATEST_BLOCK';
 
 /**
  * Force get a specific block (passed with 'blockHandle').
+ * May be removed if it is not within the allowed the block-depth.
  * @type {ReduxActionType}
  */
 export const GET_BLOCK = 'GET_BLOCK';
