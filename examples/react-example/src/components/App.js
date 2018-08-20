@@ -8,6 +8,7 @@ import ContractList from './contracts/ContractList';
 import TransactionFeed from './transactions/TransactionFeed';
 import AccountList from './accounts/AccountList';
 import CallFeed from './calls/CallFeed';
+import BlockList from './blocks/BlockList';
 
 const styles = theme => ({
   root: {
@@ -64,9 +65,12 @@ const App = ({classes}) => (
           </p>
           <p>
             In addition to smart-contract interactions, transaction tracking,
-             and call caching/tracking, ReDApp also tracks blocks and events.
+             and call caching/tracking, ReDApp also tracks blocks. Blocks are keyed by hash.
+            Every block (within configured block-depth) are kept in the tracking system.
+            The heighest block number/hash is tracked separately, from which the programmer
+            can back-track to check if a recent block was orphaned
+            (i.e. not in main chain, nor an uncle block).
             <br/>
-            TODO: Blocks and events.
           </p>
         </div>
       </Grid>
@@ -87,6 +91,10 @@ const App = ({classes}) => (
 
       <Grid item xs={12}>
         <AccountList/>
+      </Grid>
+
+      <Grid item xs={12}>
+        <BlockList/>
       </Grid>
     </Grid>
   </div>
