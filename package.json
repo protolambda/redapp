@@ -81,7 +81,6 @@
     "symbol-observable": "^1.2.0"
   },
   "dependencies": {
-    "eth-block-tracker": "^4.0.1",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0",
     "uuid": "^3.3.2",
