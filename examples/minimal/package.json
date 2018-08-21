@@ -1,0 +1,28 @@
+{
+  "name": "redapp-minimal-example",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ReDApp minimal example",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "author": "@protolambda <proto@protolambda.com>",
+  "license": "MIT",
+  "dependencies": {
+    "redapp": "link:../..",
+    "redux": "4.0.0",
+    "redux-saga": "0.16.0",
+    "redux-thunk": "^2.3.0",
+    "web3-utils": "^1.0.0-beta.34"
+  },
+  "devDependencies": {
+    "@babel/cli": "next",
+    "@babel/core": "next",
+    "@babel/preset-env": "next",
+    "@babel/preset-stage-2": "next",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "express": "^4.16.3"
+  }
+}
