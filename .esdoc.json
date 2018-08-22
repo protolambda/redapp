@@ -27,8 +27,13 @@
           "globalIndex": false,
           "asset": "./manual/asset",
           "files": [
-            "./manual/Overview.md",
-            "./manual/design.md"
+            "./manual/contracts.md",
+            "./manual/store_structure.md",
+            "./manual/web3.md",
+            "./manual/tracking/accounts.md",
+            "./manual/tracking/blocks.md",
+            "./manual/tracking/calls.md",
+            "./manual/tracking/transactions.md"
           ]
         }
       }

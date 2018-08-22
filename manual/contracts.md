@@ -5,7 +5,7 @@ And if you ever need to remove a contract, just use `forgetContract()` (type `FO
 Once the contract is loaded (type `CONTRACT_ADDED`),
  it exposes its methods (from ABI spec) in the state.
  
-```ecmascript 6
+```js
 redapp.contracts.MyContract.methods.mySoldityFunction.someRedappAction(...args)
 ```
 
@@ -16,7 +16,7 @@ There are 2 types of methods: non-constant and constant.
 
 These look like:
 
-```ecmascript 6
+```js
 const {txID, thunk} = mySoldityFunction.trackedSend({
   from: '0x1234567890......',
   // optionally other transaction settings, see API ref.
@@ -36,7 +36,7 @@ Note: the `txID` is not the same as the transaction hash;
 This thunk can then be dispatched whenever you like, 
  and will start a new transaction, tracked with `txID`.
 
-```ecmascript 6
+```js
 store.dispatch(thunk)
 ```
 
@@ -52,7 +52,7 @@ See [transactions tracking](tracking/transactions.md) on how to track transactio
 
 Constant methods are very similar:
 
-```ecmascript 6
+```js
 const {callID, thunk} = mySoldityViewFunction.cacheCall({
   // call options, like the sender or block number, see API ref.
 }, ...myArguments)
