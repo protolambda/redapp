@@ -1,32 +1,4 @@
-# Design of ReDApp
-
-This document aims to outline the core ideas and the design choices of ReDApp.
-It's mostly about **structure** and **reasoning**.
- I.e. this is doc is not a series of large text bodies that nobody reads,
-  *only essential stuff*.
-
-TODO: this document is a **WORK IN PROGRESS**.
-
-**NONE OF THIS IS FINALIZED**
-
-
-## Initialization
-
-- Web3 is used in many different settings.
-- Redux is designed for immutable objects.
-
-->
-
-- Dev should provide an web3 instance, not this library
-- The web3 instance is not mixed into the redux store
-- The sagas, which use the web3 instance,
- get it from an extra argument, which trickles down every redux `call`/`take` etc.
-- The contract methods are thunked,
- and access web3 from the thunk, created using the extra argument from the saga.
-
-
-## Store structure
-
+# Redux Store Structure
 
 - `[root]`
   - `tracking`: keep tracking separated, it's non-actionable, just watch something or don't.
@@ -44,23 +16,5 @@ TODO: this document is a **WORK IN PROGRESS**.
     from the tracking. Contract methods delegate web3 work to the tracking system,
      only ABI-encoding is done by the contract.
 
+TODO: document store structure with properties and example objects in state.
 
-## Tracking
-
-// TODO
-
-### Accounts
-
-// TODO
-
-### Blocks
-
-// TODO
-
-### Transactions
-
-// TODO
-
-## Contracts
-
-// TODO

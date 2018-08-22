@@ -10,15 +10,14 @@
 ReDApp is a NPM package aiming to ease the development of DApps (decentralized applications)
  by performing the common web3 tasks in an idiomatic [Redux](https://github.com/reduxjs/redux) flow:
 
-- **track**:
   - call smartcontract getters, e.g. read token balance.
   - transactions
   - accounts
   - blocks
-- **interact**:
   - send regular transactions
   - send smart-contract transactions
-- **lookups** (coming soon in V2):
+
+coming soon in V2:
   - retrieve history: get filtered event logs
 
 ReDApp only supports Web3.js v1.0+.
