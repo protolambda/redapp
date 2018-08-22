@@ -1,8 +1,6 @@
 import { assert } from 'chai';
-import redappReducer from '../src/reducer';
-import redappSaga from '../src/saga/saga';
 
-describe('TX test.', () => {
+describe('placeholder test.', () => {
   it('foo', () => {
     // const expectedVal = 'bar';
     // assert(foo('abc') === expectedVal, 'Foo does something bad.');
