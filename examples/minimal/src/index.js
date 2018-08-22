@@ -3,8 +3,9 @@ import createSagaMiddleware from 'redux-saga';
 import thunkMiddleware from 'redux-thunk';
 import createCLILogger from 'redux-cli-logger';
 import Web3 from 'web3';
-import { startAccountPolling } from 'redapp/es/tracking/accounts/actions';
-import { startPolling, startListening } from 'redapp/es/tracking/blocks/actions';
+// import { startAccountPolling } from 'redapp/es/tracking/accounts/actions';
+// import { startBlockPolling } from 'redapp/es/tracking/blocks/actions';
+// import { startBlockListening } from 'redapp/es/tracking/blocks/actions';
 import rootReducer from './rootReducer';
 import rootSaga from './rootSaga';
 
@@ -33,11 +34,11 @@ sagaMiddleware.run(rootSaga, web3);
 store.dispatch(startAccountPolling(5000));
 
 // Start polling for blocks, with an interval of 10 seconds.
-store.dispatch(startPolling(10000));
+store.dispatch(startBlockPolling(10000));
 
 // Start listening for blocks
 // *Disabled*, try commenting the block polling above, and uncommenting this,
 //  if you are using a web3 provider that supports subscriptions.
-// store.dispatch(startListening());
+// store.dispatch(startBlockListening());
 
 */

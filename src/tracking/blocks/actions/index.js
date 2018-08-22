@@ -6,7 +6,7 @@ import * as blocksAT from '../AT';
  * @param interval The polling interval in milliseconds.
  * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-export const startPolling = interval => (dispatch => dispatch({
+export const startBlockPolling = interval => (dispatch => dispatch({
   type: blocksAT.BLOCKS_START_POLLING,
   interval,
 }));
@@ -16,7 +16,7 @@ export const startPolling = interval => (dispatch => dispatch({
  *
  * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-export const stopPolling = () => (dispatch => dispatch({
+export const stopBlockPolling = () => (dispatch => dispatch({
   type: blocksAT.BLOCKS_STOP_POLLING,
 }));
 
@@ -25,7 +25,7 @@ export const stopPolling = () => (dispatch => dispatch({
 
  * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-export const startListening = () => (dispatch => dispatch({
+export const startBlockListening = () => (dispatch => dispatch({
   type: blocksAT.BLOCKS_START_LISTENING,
 }));
 
@@ -34,7 +34,7 @@ export const startListening = () => (dispatch => dispatch({
  *
  * @returns {ReduxThunk} Redux thunk, dispatch to run action.
  */
-export const stopListening = () => (dispatch => dispatch({
+export const stopBlockListening = () => (dispatch => dispatch({
   type: blocksAT.BLOCKS_STOP_LISTENING,
 }));
 
