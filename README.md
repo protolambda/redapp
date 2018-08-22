@@ -7,39 +7,45 @@
 [![devDependencies Status](https://david-dm.org/protolambda/redapp/dev-status.svg)](https://david-dm.org/protolambda/redapp?type=dev)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-ReDApp is a NPM package aiming to ease the development of DApps (decentralized application)
+ReDApp is a NPM package aiming to ease the development of DApps (decentralized applications)
  by performing the common web3 tasks in an idiomatic [Redux](https://github.com/reduxjs/redux) flow:
 
 - **track**:
+  - call smartcontract getters, e.g. read token balance.
   - transactions
   - accounts
   - blocks
 - **interact**:
   - send regular transactions
   - send smart-contract transactions
-- **view**:
-  - call smartcontract getters, e.g. read token balance.
-  - retrieve history: get filtered event logs (coming soon in V2)
+- **lookups** (coming soon in V2):
+  - retrieve history: get filtered event logs
 
 ReDApp only supports Web3.js v1.0+.
 
 ## Documentation
 
 API reference docs and integration docs can be found here:
-[ReDApp Documentation](https://protolambda.github.io/redapp)
+[ReDApp Documentation](https://redapp.protolambda.com)
 
 
 ## Dependencies
 
+### Library deps.
+
 - Web3.0, v1.0+
 - redux + redux-saga: where tracked information is maintained and updated with.
-- eth-block-tracker: used to get block info from the web3 provider, either by polling (for metamask) or by listening.
 - UUID/v4: for unique ids for each transaction. Hashes do not suffice since in-broadcast transactions don't have a hash yet.
+
+
+### Dev deps.
+
 - Babel (v7): ES6 support
 - Mocha, Chai: testing
 - istanbul: coverage reporting
 - rimraf, cross-env, npm-run-all: utils for npm run scripts
 - ESLint: linting
+- ESdoc: documentation generator, checks doc coverage.
 
 
 ## Examples
@@ -93,3 +99,6 @@ npm run build:umd
 npm run build:umd:min
 ```
 
+## License
+
+MIT, see [LICENSE file](LICENSE)
