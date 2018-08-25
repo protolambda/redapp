@@ -1,6 +1,6 @@
 {
   "source": "./src",
-  "destination": "./docs",
+  "destination": "./docs-out",
   "includes": ["\\.js$"],
   "excludes": ["^index\\.js"],
   "plugins": [
@@ -12,33 +12,61 @@
         "accessor": {"access": ["public", "protected", "private"], "autoPrivate": true},
         "undocumentIdentifier": {"enable": false},
         "unexportedIdentifier": {"enable": true},
-        "typeInference": {"enable": true},
-        "brand": {
-          "logo": "./manual/asset/img/redapp.svg",
-          "title": "ReDApp",
-          "description": "Buidl your ethereum DApp with redux.",
-          "repository": "https://github.com/protolambda/redapp",
-          "site": "https://protolambda.github.io/redapp",
-          "author": "https://twitter.com/protolambda",
-          "image": "https://protolambda.github.io/redapp/logo.png"
-        },
-        "manual": {
-          "index": "./manual/README.md",
-          "globalIndex": false,
-          "asset": "./manual/asset",
-          "files": [
-            "./manual/contracts.md",
-            "./manual/store_structure.md",
-            "./manual/web3.md",
-            "./manual/tracking/accounts.md",
-            "./manual/tracking/blocks.md",
-            "./manual/tracking/calls.md",
-            "./manual/tracking/transactions.md"
+        "typeInference": {"enable": true}
+      }
+    },
+    {
+      "name": "esdoc-integrate-manual-plugin",
+      "option": {
+        "index": "./docs/README.md",
+        "manualFolder": "./docs/",
+        "ignorePatterns": [".*", "."]
+      }
+    },
+    {"name": "esdoc-publish-html-plugin",
+      "option": {
+        "globalOptions": {
+          "rootPath": "/",
+          "headerLinks": [
+            { "text": "ReDApp", "href": "/", "cssClass": "home-link" },
+            { "text": "Usage docs", "href": "/docs/", "cssClass": "header-docs-link" },
+            { "text": "Reference", "href": "/source.html", "cssClass": "reference-link" }
           ]
+        },
+        "builders": {
+          "indetifiersDoc": {},
+          "indexDoc": {},
+          "classDoc": {},
+          "singleDoc": {},
+          "fileDoc": {},
+          "staticFile": {},
+          "searchIndex": {},
+          "sourceDoc": {
+            "coverageFilePath": "coverage.json"
+          },
+          "manualV2": {
+            "manualTitle": "Docs",
+            "inputPrefix": "./docs/",
+            "outputPath": "docs"
+          },
+          "testDoc": {},
+          "testFileDoc": {}
         }
       }
     },
-    {"name": "esdoc-publish-html-plugin"},
+    {
+      "name": "esdoc-brand-plugin",
+      "option": {
+        "logo": "./docs/img/redapp.svg",
+        "title": "ReDApp",
+        "description": "Buidl your ethereum DApp with redux.",
+        "repository": "https://github.com/protolambda/redapp",
+        "site": "https://redapp.protolambda.com",
+        "author": "https://twitter.com/protolambda",
+        "image": "https://redapp.protolambda.com/logo.png",
+        "rootPath": "/"
+      }
+    },
     {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
     {
       "name": "esdoc-importpath-plugin",

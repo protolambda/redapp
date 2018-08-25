@@ -1,4 +1,4 @@
-<img width="600" src="manual/asset/img/redapp_full.svg"/>
+<img width="600" src="docs/img/redapp_full.svg"/>
 
 # ReDApp
 
