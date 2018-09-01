@@ -8,7 +8,7 @@
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es",
     "build:umd": "cross-env BABEL_ENV=umd NODE_ENV=development rollup -c -o dist/redapp.js",
     "build:umd:min": "cross-env BABEL_ENV=umd NODE_ENV=production rollup -c -o dist/redapp.min.js",
-    "clean": "rimraf lib dist es coverage docs",
+    "clean": "rimraf lib dist es coverage docs-out",
     "test": "npm run lint && npm run cover",
     "test:prod": "cross-env BABEL_ENV=production npm run test",
     "test:only": "mocha --require babel-core/register --require babel-polyfill --recursive",
