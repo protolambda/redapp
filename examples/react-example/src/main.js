@@ -26,9 +26,15 @@ const store = createStore(
   )
 );
 
-const web3 = initWeb3();
-
-sagaMiddleware.run(rootSaga, web3);
+// Just try initializing and catch any error.
+try {
+  const web3 = initWeb3();
+  sagaMiddleware.run(rootSaga, web3);
+} catch (err) {
+// eslint-disable-next-line no-alert
+  alert('Failed to find web3 provider.'
+    + ' Please activate your web3 wallet, then reload the page.');
+}
 
 // Start polling for accounts, with an interval of 5 seconds.
 store.dispatch(startAccountPolling(5000));

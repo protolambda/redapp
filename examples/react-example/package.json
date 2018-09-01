@@ -5,7 +5,9 @@
   "description": "ReDApp React example web app",
   "scripts": {
     "start:prod": "NODE_ENV=production node server.js",
-    "start": "NODE_ENV=development node server.js"
+    "start": "NODE_ENV=development node server.js",
+    "build": "NODE_ENV=development webpack --config webpack.config.development.js --progress --profile --colors",
+    "build:prod": "NODE_ENV=production webpack --config webpack.config.production.js --progress --profile --colors"
   },
   "author": "@protolambda <proto@protolambda.com>",
   "license": "MIT",
@@ -21,7 +23,8 @@
     "redux": "4.0.0",
     "redux-saga": "0.16.0",
     "redux-thunk": "^2.3.0",
-    "web3-utils": "^1.0.0-beta.34"
+    "web3-utils": "^1.0.0-beta.34",
+    "webpack-cli": "^3.1.0"
   },
   "devDependencies": {
     "@babel/core": "next",
