@@ -28,6 +28,7 @@ const mapping = {
       wallet: Object.assign({},
         ...accountsLowercase.map(address => ({[address]: {}})),
         ...Object.entries(state.wallet)
+          // eslint-disable-next-line no-unused-vars
           .filter(([address, data]) => (accountsLowercase.indexOf(address) >= 0))
           .map(([address, data]) => ({[address]: data})))
     });

@@ -8,7 +8,7 @@ import transactionsSaga from './transactions/transactionsSaga';
 /**
  * Forks to tracking and contracts saga.
  * @param web3 The web3js 1.0 instance to use.
- * @param getTrackingState {ReduxStateSelector} Gets tracking state.
+ * @param {ReduxStateSelector} getTrackingState Gets tracking state.
  * @return {ReduxSaga} Tracking saga.
  */
 export default function* trackingSaga(web3, getTrackingState) {

@@ -5,6 +5,8 @@ env:
   es6: true
   browser: true
 rules:
+  # Unused vars are ok in some cases, just warn that they're there.
+  "no-unused-vars": warn
   # makes no sense for a single property (adding more properties is an edge case, not a goal)
   "prefer-destructuring": off
   # If indentation is right, then simple stuff becomes much less verbose.

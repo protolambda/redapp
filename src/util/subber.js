@@ -25,13 +25,13 @@ function subber(startAT, stopAT, dataAT, changedAT, errorAT, openEventSub) {
   const createEventChannel = eventSub => eventChannel((emit) => {
     // Map the events to redux actions
     eventSub
-      .on('data', data => {
+      .on('data', (data) => {
         emit({type: dataAT, data});
       })
-      .on('changed', changed => {
+      .on('changed', (changed) => {
         emit({type: changedAT, changed});
       })
-      .on('error', error => {
+      .on('error', (error) => {
         emit({type: errorAT, err: error.message});
       });
     // Return unsubscribe function (wrap for future compatibility)

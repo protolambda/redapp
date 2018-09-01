@@ -28,6 +28,7 @@ const mapping = {
         {},
         // filter the blocks, throw away blocks that are out of scope (i.e. too old).
         ...(Object.entries(state.blocks).filter(
+          // eslint-disable-next-line no-unused-vars
           ([key, value]) => state.maxBlockDepth > (newLatestBlockNr - value.number)
         ).map(([key, value]) => ({[key]: value}))),
         ((state.maxBlockDepth > (state.latest.number - action.block.number)) && {

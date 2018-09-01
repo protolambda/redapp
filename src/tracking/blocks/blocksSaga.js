@@ -80,7 +80,7 @@ function* blocksSubWorker(web3, getBlocksState, {number, hash}) {
 /**
  * Handles ReDApp block background processing.
  * @param web3 The web3js 1.0 instance to use.
- * @param getBlocksState {ReduxStateSelector} Gets blocks state
+ * @param {ReduxStateSelector} getBlocksState Gets blocks state
  *  (obj. incl. both `blocks` and `latest`)
  * @return {ReduxSaga} Blocks saga.
  */
