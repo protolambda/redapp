@@ -15,8 +15,19 @@
             "modules": false,
             "forceAllTransforms": true
           }
-        ],
-        "@babel/stage-2"
+        ]
+      ],
+      "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "@babel/plugin-proposal-function-sent",
+        "@babel/plugin-proposal-export-namespace-from",
+        "@babel/plugin-proposal-numeric-separator",
+        "@babel/plugin-proposal-throw-expressions",
+
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-syntax-import-meta",
+        ["@babel/plugin-proposal-class-properties", { "loose": false }],
+        "@babel/plugin-proposal-json-strings"
       ]
     },
     "cjs": {
@@ -33,13 +44,22 @@
             "modules": false,
             "forceAllTransforms": true
           }
-        ],
-        "@babel/stage-2"
+        ]
       ],
       "plugins": [
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "@babel/plugin-proposal-function-sent",
+        "@babel/plugin-proposal-export-namespace-from",
+        "@babel/plugin-proposal-numeric-separator",
+        "@babel/plugin-proposal-throw-expressions",
+
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-syntax-import-meta",
+        ["@babel/plugin-proposal-class-properties", { "loose": false }],
+        "@babel/plugin-proposal-json-strings",
+
         "@babel/plugin-transform-modules-commonjs",
         ["@babel/transform-runtime", {
-        "polyfill": false,
         "regenerator": true
         }]
       ]
@@ -58,10 +78,23 @@
             "modules": false,
             "forceAllTransforms": true
           }
-        ],
-        "@babel/stage-2"
+        ]
       ],
-      "plugins": ["@babel/plugin-external-helpers"]
+      "plugins": [
+
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "@babel/plugin-proposal-function-sent",
+        "@babel/plugin-proposal-export-namespace-from",
+        "@babel/plugin-proposal-numeric-separator",
+        "@babel/plugin-proposal-throw-expressions",
+
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-syntax-import-meta",
+        ["@babel/plugin-proposal-class-properties", { "loose": false }],
+        "@babel/plugin-proposal-json-strings",
+
+        "@babel/plugin-external-helpers"
+      ]
     }
   }
 }
