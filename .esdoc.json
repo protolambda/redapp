@@ -30,7 +30,8 @@
           "headerLinks": [
             { "text": "ReDApp", "href": "/", "cssClass": "home-link" },
             { "text": "Usage docs", "href": "/docs/", "cssClass": "header-docs-link" },
-            { "text": "Reference", "href": "/source.html", "cssClass": "reference-link" }
+            { "text": "Reference", "href": "/source.html", "cssClass": "reference-link" },
+            { "text": "Examples", "href": "/docs/examples.html", "cssClass": "examples-link" }
           ]
         },
         "builders": {
