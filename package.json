@@ -1,6 +1,6 @@
 {
   "name": "redapp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Redux web3 integration and util for DApps",
   "scripts": {
     "build": "npm run clean && run-p build:**",
@@ -28,7 +28,10 @@
     "dist",
     "lib",
     "es",
-    "src"
+    "src",
+    "LICENSE",
+    "CHANGELOG.md",
+    "README.md"
   ],
   "repository": {
     "type": "git",
