@@ -2,25 +2,22 @@ language: node_js
 node_js:
   - '8'
   - '6'
-script:
-  - npm run test
-  - npm run build
+cache:
+  directories:
+  - node_modules
 jobs:
   include:
-  - stage: unit tests
-    script: npm run test
-  - stage: prepare docs
+  - stage: build & test
+    script:
+    - npm run build
+    - npm run test
+  - stage: deploy docs
     if: branch = master
     node_js: "8"
-    script: npm run docs
-  - stage: prepare docs and demos for examples
-    if: branch = master
-    node_js: "8"
-    script: npm run docs-examples
-  - stage: docs deploy
-    if: branch = master
-    node_js: "8"
-    script: echo "Deploying docs to github pages"
+    script:
+    - npm run docs
+    - npm run docs-examples
+    - echo "Deploying docs to github pages"
     deploy:
       provider: pages
       skip-cleanup: true
@@ -28,4 +25,4 @@ jobs:
       keep-history: false
       local-dir: docs-out
       on:
-        branch: gh-pages
+        branch: master
