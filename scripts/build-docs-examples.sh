@@ -4,6 +4,8 @@
 cd examples/react-example
 # cleanup, if anything is there
 rm -rf dist
+# Install dependencies, if they are not already there (Travis CI cache)
+npm i
 # Build the example
 npm run build:prod
 cd ../..
