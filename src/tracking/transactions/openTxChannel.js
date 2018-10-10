@@ -20,11 +20,10 @@ const openTxChannel = (promiEvent, txID) => eventChannel((emit) => {
       emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
     })
     .on('confirmation', (confirmationNumber, receipt) => {
-      // re-fire the TX_RECEIPT, it changed if the confirmation number is 0 again.
-      if (confirmationNumber === 0) emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
-      // Some apps may find the notice that web3 provided 12 confirmations (as far it goes)
-      if (confirmationNumber === 12) {
-        emit({type: transactionsAT.TX_FINAL, txID, receipt});
+      // re-fire the TX_RECEIPT
+      emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
+      // We can safely close the channel once we received enough confirmations
+      if (confirmationNumber >= 12) {
         emit(END);
       }
     })

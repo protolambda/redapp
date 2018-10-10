@@ -30,12 +30,6 @@ export const TX_BROADCAST = 'TX_BROADCAST';
 export const TX_RECEIPT = 'TX_RECEIPT';
 
 /**
- * Success, fired after processing "TX_RECEIPT", when the receipt shows the TX was mined.
- * @type {ReduxActionType}
- */
-export const TX_SUCCESS = 'TX_SUCCESS';
-
-/**
  * Failed, fired after processing "TX_RECEIPT", or on edge cases.
  * @type {ReduxActionType}
  */

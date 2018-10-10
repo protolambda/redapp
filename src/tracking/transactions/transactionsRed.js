@@ -13,7 +13,7 @@ const initialState = {
 //                           Web3provider needs to broadcast now
 //                           (e.g. user signs+sends with Metamask)
 //  -> [broadcast]        = Web3provider answered, we have a hash now, TX is in pool. TX_BROADCAST.
-//  -> *pending*          = Waiting for tx to get mined
+//  -> [pending]          = Waiting for tx to get mined
 //  -> *confirmation*     = TX is mined, now we have to wait for the web3 provider to tell us.
 //  -> [receipt]          = Web3provider tells us the tx was processed.
 //                           Receipt is handled with TX_RECEIPT.
@@ -54,11 +54,8 @@ const mapping = {
   [transactionsAT.TX_FAILED]: (state, { txID, receipt }) => updateTx(state, txID,
     {...state[txID], status: 'failed', receipt}),
 
-  [transactionsAT.TX_SUCCESS]: (state, { txID, receipt }) => updateTx(state, txID,
-    {...state[txID], status: 'success', receipt}),
-
   [transactionsAT.TX_RECEIPT]: (state, { txID, receipt }) => updateTx(state, txID,
-    {...state[txID], receipt}),
+    {...state[txID], receipt, status: receipt.blockNumber === null ? 'pending' : 'success'}),
 
   [transactionsAT.FORGET_TX]: (state, { txID }) => {
     const res = {...state};
