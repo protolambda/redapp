@@ -1,0 +1,211 @@
+{
+  "coverage": "68.96%",
+  "expectCount": 116,
+  "actualCount": 80,
+  "files": {
+    "src/contracts/AT/index.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/contracts/actions/index.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/contracts/contractsRed.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        8
+      ]
+    },
+    "src/contracts/contractsSaga.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        11
+      ]
+    },
+    "src/errors/EncodeABIError.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "src/initWeb3.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/reducer.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/saga.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/tracking/accounts/AT/index.js": {
+      "expectCount": 13,
+      "actualCount": 10,
+      "undocumentLines": [
+        2,
+        4,
+        6
+      ]
+    },
+    "src/tracking/accounts/accountsRed.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        16,
+        17,
+        19,
+        76
+      ]
+    },
+    "src/tracking/accounts/accountsSaga.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        26,
+        36,
+        41,
+        55,
+        60,
+        64
+      ]
+    },
+    "src/tracking/accounts/actions/index.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "src/tracking/blocks/AT/index.js": {
+      "expectCount": 13,
+      "actualCount": 13,
+      "undocumentLines": []
+    },
+    "src/tracking/blocks/actions/index.js": {
+      "expectCount": 6,
+      "actualCount": 6,
+      "undocumentLines": []
+    },
+    "src/tracking/blocks/blocksRed.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        16
+      ]
+    },
+    "src/tracking/blocks/blocksSaga.js": {
+      "expectCount": 7,
+      "actualCount": 2,
+      "undocumentLines": [
+        33,
+        38,
+        51,
+        64,
+        68
+      ]
+    },
+    "src/tracking/calls/AT/index.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "src/tracking/calls/actions/index.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "src/tracking/calls/awaitCall.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/tracking/calls/callsRed.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        25
+      ]
+    },
+    "src/tracking/calls/callsSaga.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        33,
+        46,
+        58
+      ]
+    },
+    "src/tracking/trackingRed.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/tracking/trackingSaga.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/tracking/transactions/AT/index.js": {
+      "expectCount": 8,
+      "actualCount": 8,
+      "undocumentLines": []
+    },
+    "src/tracking/transactions/actions/index.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/tracking/transactions/openTxChannel.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/tracking/transactions/transactionsRed.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        39,
+        44
+      ]
+    },
+    "src/tracking/transactions/transactionsSaga.js": {
+      "expectCount": 3,
+      "actualCount": 2,
+      "undocumentLines": [
+        32
+      ]
+    },
+    "src/util/mapped-reducer.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "src/util/poller.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "src/util/subber.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    }
+  }
+}

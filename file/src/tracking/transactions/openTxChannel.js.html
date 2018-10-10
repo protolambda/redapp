@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">src/tracking/transactions/openTxChannel.js | ReDApp</title>
+  
+  
+<link data-ice="layoutCss" type="text/css" rel="stylesheet" href="/css/style.css">
+<link data-ice="layoutCss" type="text/css" rel="stylesheet" href="/css/prettify-tomorrow.css">
+<script data-ice="layoutHeadScript" src="/script/prettify/prettify.js"></script>
+<script data-ice="layoutHeadScript" src="/script/manual.js"></script>
+<meta name="description" content="Buidl your ethereum DApp with redux."><meta property="og:type" content="website"><meta property="og:url" content="https://redapp.protolambda.com"><meta property="og:site_name" content="ReDApp"><meta property="og:title" content="ReDApp"><meta property="og:image" content="https://redapp.protolambda.com/logo.png"><meta property="og:description" content="Buidl your ethereum DApp with redux."><meta property="og:author" content="https://twitter.com/protolambda"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="ReDApp"><meta property="twitter:description" content="Buidl your ethereum DApp with redux."><meta property="twitter:image" content="https://redapp.protolambda.com/logo.png"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header class="header" data-ice="pageHeader">
+
+
+<div class="search-box">
+    <span>
+        <img src="/image/search.png">
+        <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+    </span>
+    <ul class="search-result"></ul>
+</div>
+<a data-ice="headerLink" href="/" class="home-link" style="display: flex; align-items: center;"><img src="/image/brand_logo.svg" style="width:34px;"></a>
+<a data-ice="headerLink" href="/docs/" class="header-docs-link">Usage docs</a>
+<a data-ice="headerLink" href="/source.html" class="reference-link">Reference</a>
+<a data-ice="headerLink" href="/docs/examples.html" class="examples-link">Examples</a>
+<a style="position:relative; top:3px;" href="https://github.com/protolambda/redapp"><img width="20px" src="/image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initWeb3">initWeb3</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saga">saga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-reducer">reducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxReducer">ReduxReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxSaga">ReduxSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxStateSelector">ReduxStateSelector</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxThunk">ReduxThunk</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#contracts">contracts</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-contractsSaga">contractsSaga</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#contracts-at">contracts/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADD_CONTRACT">ADD_CONTRACT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONTRACT_ADDED">CONTRACT_ADDED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_CONTRACT">FORGET_CONTRACT</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#contracts-actions">contracts/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addContract">addContract</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetContract">forgetContract</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking">tracking</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-trackingSaga">trackingSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-trackingRed">trackingRed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-accounts-at">tracking/accounts/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_GET_ALL">ACCOUNTS_GET_ALL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_POLL_ERROR">ACCOUNTS_POLL_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_START_POLLING">ACCOUNTS_START_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_STOP_POLLING">ACCOUNTS_STOP_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_BALANCE">ACCOUNT_BALANCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET">ACCOUNT_GET</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET_BALANCE">ACCOUNT_GET_BALANCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET_BALANCE_FAILED">ACCOUNT_GET_BALANCE_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADD_LOCAL_ACCOUNT">ADD_LOCAL_ACCOUNT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_LOCAL_ACCOUNT">FORGET_LOCAL_ACCOUNT</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-accounts-actions">tracking/accounts/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addLocalAcount">addLocalAcount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchAllAcounts">fetchAllAcounts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetLocalAccount">forgetLocalAccount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getAllAccounts">getAllAccounts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getBalance">getBalance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSingleAccount">getSingleAccount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startAccountPolling">startAccountPolling</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopAccountPolling">stopAccountPolling</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-blocks">tracking/blocks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-blocksSaga">blocksSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSpecificBlock">getSpecificBlock</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-blocks-at">tracking/blocks/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_LISTEN_ERROR">BLOCKS_LISTEN_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_POLL_ERROR">BLOCKS_POLL_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_START_LISTENING">BLOCKS_START_LISTENING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_START_POLLING">BLOCKS_START_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_STOP_LISTENING">BLOCKS_STOP_LISTENING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_STOP_POLLING">BLOCKS_STOP_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_SUB_NEW_BLOCK_CHECK">BLOCKS_SUB_NEW_BLOCK_CHECK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_FAILED">BLOCK_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_PROCESSED">BLOCK_PROCESSED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_RECEIVED">BLOCK_RECEIVED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_RETRIEVAL_ERROR">BLOCK_RETRIEVAL_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GET_BLOCK">GET_BLOCK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GET_LATEST_BLOCK">GET_LATEST_BLOCK</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-blocks-actions">tracking/blocks/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getBlock">getBlock</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getLatestBlock">getLatestBlock</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startBlockListening">startBlockListening</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startBlockPolling">startBlockPolling</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopBlockListening">stopBlockListening</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopBlockPolling">stopBlockPolling</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-calls">tracking/calls</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-awaitCall">awaitCall</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-callsSaga">callsSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initiateCall">initiateCall</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-calls-at">tracking/calls/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CACHE_CALL">CACHE_CALL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_DECODE_FAIL">CALL_DECODE_FAIL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_DECODE_SUCCESS">CALL_DECODE_SUCCESS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_FAILED">CALL_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_RETURNED">CALL_RETURNED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_CACHE">CLEAR_CACHE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORCE_CALL">FORCE_CALL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_CALL">FORGET_CALL</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-calls-actions">tracking/calls/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cacheCall">cacheCall</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forceCall">forceCall</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetCall">forgetCall</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-transactions">tracking/transactions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-openTxChannel">openTxChannel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTransactionPromiEvent">createTransactionPromiEvent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-transactionsSaga">transactionsSaga</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-transactions-at">tracking/transactions/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_TX">FORGET_TX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SEND_TX">SEND_TX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SEND_TX_FAILED">SEND_TX_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_BROADCAST">TX_BROADCAST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_FAILED">TX_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_FINAL">TX_FINAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_RECEIPT">TX_RECEIPT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_SENT">TX_SENT</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-transactions-actions">tracking/transactions/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetTX">forgetTX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendTX">sendTX</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#util">util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mappedreducer">mappedreducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-poller">poller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-subber">subber</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/tracking/transactions/openTxChannel.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { END, eventChannel } from &apos;redux-saga&apos;;
+import * as transactionsAT from &apos;./AT&apos;;
+
+/**
+ * Open a TX channel: this channel maps web3 events to our redux tracking system.
+ *
+ * @param promiEvent The event emitter to read transaction status updates from.
+ * @param txID The ID of the transaction, used in the tracking system.
+ * @returns {Channel&lt;any&gt;} The redux saga channel.
+ */
+const openTxChannel = (promiEvent, txID) =&gt; eventChannel((emit) =&gt; {
+  // Web3 returns a &quot;promise combined with an event emitter&quot;: we map this to redux events.
+  promiEvent
+    .on(&apos;transactionHash&apos;, (hash) =&gt; {
+      emit({type: transactionsAT.TX_BROADCAST, txID, txHash: hash});
+    })
+    .on(&apos;receipt&apos;, (receipt) =&gt; {
+      // TODO: first receipt is probably double, as it&apos;s also the initial confirmation.
+      // This can be ignored for now, but maybe we can remove this listener altogether.
+      emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
+    })
+    .on(&apos;confirmation&apos;, (confirmationNumber, receipt) =&gt; {
+      // re-fire the TX_RECEIPT
+      emit({type: transactionsAT.TX_RECEIPT, txID, receipt});
+      // We can safely close the channel once we received enough confirmations
+      if (confirmationNumber &gt;= 12) {
+        emit(END);
+      }
+    })
+    .on(&apos;error&apos;, (error, receipt) =&gt; {
+      emit({type: transactionsAT.TX_FAILED, txID, receipt});
+      // TODO This is tricky, an out-of-gas transaction technically did not fail until it&apos;s final,
+      // as it could still be orphaned, and mined with a context
+      // that does not make it run out of gas.
+      emit(END);
+    });
+  // Return unsubscribe function (wrap for future compatibility)
+  return () =&gt; promiEvent.off();
+});
+
+export default openTxChannel;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="/image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+
+<script data-ice="layoutBodyScript" src="/script/search_index.js"></script>
+<script data-ice="layoutBodyScript" src="/script/search.js"></script>
+<script data-ice="layoutBodyScript" src="/script/pretty-print.js"></script>
+<script data-ice="layoutBodyScript" src="/script/inherited-summary.js"></script>
+<script data-ice="layoutBodyScript" src="/script/test-summary.js"></script>
+<script data-ice="layoutBodyScript" src="/script/inner-link.js"></script>
+<script data-ice="layoutBodyScript" src="/script/patch-for-local.js"></script>
+</body>
+</html>

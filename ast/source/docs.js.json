@@ -1,0 +1,354 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 1147,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 40,
+      "column": 0
+    }
+  },
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 1147,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0
+      },
+      "end": {
+        "line": 40,
+        "column": 0
+      }
+    },
+    "sourceType": "module",
+    "body": [],
+    "directives": [],
+    "leadingComments": null,
+    "innerComments": [
+      {
+        "type": "CommentLine",
+        "value": " This file is to enhance the documentation with typedefs + external links",
+        "start": 0,
+        "end": 75,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 75
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * A redux thunk, dispatch this to run it. https://github.com/reduxjs/redux-thunk\n * @typedef {function(dispatch:*, getState:*) | function(dispatch:*)} ReduxThunk\n ",
+        "start": 77,
+        "end": 247,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * A redux action type.\n * @typedef {string} ReduxActionType\n ",
+        "start": 249,
+        "end": 317,
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 0
+          },
+          "end": {
+            "line": 11,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * A redux saga (a generator returned by a generator function). https://redux-saga.js.org/\n * @typedef {Generator<*>} ReduxSaga\n ",
+        "start": 319,
+        "end": 454,
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 0
+          },
+          "end": {
+            "line": 16,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * A redux reducer.\n * @typedef {Reducer<any> | Reducer<any, AnyAction>} ReduxReducer\n ",
+        "start": 456,
+        "end": 549,
+        "loc": {
+          "start": {
+            "line": 18,
+            "column": 0
+          },
+          "end": {
+            "line": 21,
+            "column": 3
+          }
+        }
+      },
+      {
+        "type": "CommentBlock",
+        "value": "*\n * Redux state selector. Maps the whole state to just a specific part of the state.\n * This is used to structure and re-combine ReDApp modules however you like,\n *  if you prefer something else than the default.\n *\n * @example\n * // get redapp root\n * getRootState: (state) => state.redapp\n *\n * // From redapp root state to tracking state.\n * getTrackingState: (state) => getRootState(state).tracking\n *\n * // From tracking state to transactions state.\n * getTransactionsState: (state) => getTrackingState(state).transactions\n *\n * @typedef {function(state:object):*} ReduxStateSelector\n ",
+        "start": 551,
+        "end": 1146,
+        "loc": {
+          "start": {
+            "line": 23,
+            "column": 0
+          },
+          "end": {
+            "line": 39,
+            "column": 3
+          }
+        }
+      }
+    ]
+  },
+  "comments": [
+    {
+      "type": "CommentLine",
+      "value": " This file is to enhance the documentation with typedefs + external links",
+      "start": 0,
+      "end": 75,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 75
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux thunk, dispatch this to run it. https://github.com/reduxjs/redux-thunk\n * @typedef {function(dispatch:*, getState:*) | function(dispatch:*)} ReduxThunk\n ",
+      "start": 77,
+      "end": 247,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux action type.\n * @typedef {string} ReduxActionType\n ",
+      "start": 249,
+      "end": 317,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux saga (a generator returned by a generator function). https://redux-saga.js.org/\n * @typedef {Generator<*>} ReduxSaga\n ",
+      "start": 319,
+      "end": 454,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux reducer.\n * @typedef {Reducer<any> | Reducer<any, AnyAction>} ReduxReducer\n ",
+      "start": 456,
+      "end": 549,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Redux state selector. Maps the whole state to just a specific part of the state.\n * This is used to structure and re-combine ReDApp modules however you like,\n *  if you prefer something else than the default.\n *\n * @example\n * // get redapp root\n * getRootState: (state) => state.redapp\n *\n * // From redapp root state to tracking state.\n * getTrackingState: (state) => getRootState(state).tracking\n *\n * // From tracking state to transactions state.\n * getTransactionsState: (state) => getTrackingState(state).transactions\n *\n * @typedef {function(state:object):*} ReduxStateSelector\n ",
+      "start": 551,
+      "end": 1146,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 39,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "tokens": [
+    {
+      "type": "CommentLine",
+      "value": " This file is to enhance the documentation with typedefs + external links",
+      "start": 0,
+      "end": 75,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 75
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux thunk, dispatch this to run it. https://github.com/reduxjs/redux-thunk\n * @typedef {function(dispatch:*, getState:*) | function(dispatch:*)} ReduxThunk\n ",
+      "start": 77,
+      "end": 247,
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux action type.\n * @typedef {string} ReduxActionType\n ",
+      "start": 249,
+      "end": 317,
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux saga (a generator returned by a generator function). https://redux-saga.js.org/\n * @typedef {Generator<*>} ReduxSaga\n ",
+      "start": 319,
+      "end": 454,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * A redux reducer.\n * @typedef {Reducer<any> | Reducer<any, AnyAction>} ReduxReducer\n ",
+      "start": 456,
+      "end": 549,
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Redux state selector. Maps the whole state to just a specific part of the state.\n * This is used to structure and re-combine ReDApp modules however you like,\n *  if you prefer something else than the default.\n *\n * @example\n * // get redapp root\n * getRootState: (state) => state.redapp\n *\n * // From redapp root state to tracking state.\n * getTrackingState: (state) => getRootState(state).tracking\n *\n * // From tracking state to transactions state.\n * getTransactionsState: (state) => getTrackingState(state).transactions\n *\n * @typedef {function(state:object):*} ReduxStateSelector\n ",
+      "start": 551,
+      "end": 1146,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 0
+        },
+        "end": {
+          "line": 39,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "eof",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 1147,
+      "end": 1147,
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 0
+        },
+        "end": {
+          "line": 40,
+          "column": 0
+        }
+      }
+    }
+  ]
+}

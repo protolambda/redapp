@@ -1,0 +1,3367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../">
+  <title data-ice="title">Variable | ReDApp</title>
+  
+  
+<link data-ice="layoutCss" type="text/css" rel="stylesheet" href="/css/style.css">
+<link data-ice="layoutCss" type="text/css" rel="stylesheet" href="/css/prettify-tomorrow.css">
+<script data-ice="layoutHeadScript" src="/script/prettify/prettify.js"></script>
+<script data-ice="layoutHeadScript" src="/script/manual.js"></script>
+<meta name="description" content="Buidl your ethereum DApp with redux."><meta property="og:type" content="website"><meta property="og:url" content="https://redapp.protolambda.com"><meta property="og:site_name" content="ReDApp"><meta property="og:title" content="ReDApp"><meta property="og:image" content="https://redapp.protolambda.com/logo.png"><meta property="og:description" content="Buidl your ethereum DApp with redux."><meta property="og:author" content="https://twitter.com/protolambda"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="ReDApp"><meta property="twitter:description" content="Buidl your ethereum DApp with redux."><meta property="twitter:image" content="https://redapp.protolambda.com/logo.png"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header class="header" data-ice="pageHeader">
+
+
+<div class="search-box">
+    <span>
+        <img src="/image/search.png">
+        <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+    </span>
+    <ul class="search-result"></ul>
+</div>
+<a data-ice="headerLink" href="/" class="home-link" style="display: flex; align-items: center;"><img src="/image/brand_logo.svg" style="width:34px;"></a>
+<a data-ice="headerLink" href="/docs/" class="header-docs-link">Usage docs</a>
+<a data-ice="headerLink" href="/source.html" class="reference-link">Reference</a>
+<a data-ice="headerLink" href="/docs/examples.html" class="examples-link">Examples</a>
+<a style="position:relative; top:3px;" href="https://github.com/protolambda/redapp"><img width="20px" src="/image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initWeb3">initWeb3</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saga">saga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-reducer">reducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxReducer">ReduxReducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxSaga">ReduxSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxStateSelector">ReduxStateSelector</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReduxThunk">ReduxThunk</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#contracts">contracts</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-contractsSaga">contractsSaga</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#contracts-at">contracts/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADD_CONTRACT">ADD_CONTRACT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CONTRACT_ADDED">CONTRACT_ADDED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_CONTRACT">FORGET_CONTRACT</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#contracts-actions">contracts/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addContract">addContract</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetContract">forgetContract</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking">tracking</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-trackingSaga">trackingSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-trackingRed">trackingRed</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-accounts-at">tracking/accounts/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_GET_ALL">ACCOUNTS_GET_ALL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_POLL_ERROR">ACCOUNTS_POLL_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_START_POLLING">ACCOUNTS_START_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_STOP_POLLING">ACCOUNTS_STOP_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_BALANCE">ACCOUNT_BALANCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET">ACCOUNT_GET</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET_BALANCE">ACCOUNT_GET_BALANCE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET_BALANCE_FAILED">ACCOUNT_GET_BALANCE_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ADD_LOCAL_ACCOUNT">ADD_LOCAL_ACCOUNT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_LOCAL_ACCOUNT">FORGET_LOCAL_ACCOUNT</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-accounts-actions">tracking/accounts/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addLocalAcount">addLocalAcount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchAllAcounts">fetchAllAcounts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetLocalAccount">forgetLocalAccount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getAllAccounts">getAllAccounts</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getBalance">getBalance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSingleAccount">getSingleAccount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startAccountPolling">startAccountPolling</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopAccountPolling">stopAccountPolling</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-blocks">tracking/blocks</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-blocksSaga">blocksSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getSpecificBlock">getSpecificBlock</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-blocks-at">tracking/blocks/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_LISTEN_ERROR">BLOCKS_LISTEN_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_POLL_ERROR">BLOCKS_POLL_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_START_LISTENING">BLOCKS_START_LISTENING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_START_POLLING">BLOCKS_START_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_STOP_LISTENING">BLOCKS_STOP_LISTENING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_STOP_POLLING">BLOCKS_STOP_POLLING</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_SUB_NEW_BLOCK_CHECK">BLOCKS_SUB_NEW_BLOCK_CHECK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_FAILED">BLOCK_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_PROCESSED">BLOCK_PROCESSED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_RECEIVED">BLOCK_RECEIVED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_RETRIEVAL_ERROR">BLOCK_RETRIEVAL_ERROR</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GET_BLOCK">GET_BLOCK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-GET_LATEST_BLOCK">GET_LATEST_BLOCK</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-blocks-actions">tracking/blocks/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getBlock">getBlock</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getLatestBlock">getLatestBlock</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startBlockListening">startBlockListening</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startBlockPolling">startBlockPolling</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopBlockListening">stopBlockListening</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopBlockPolling">stopBlockPolling</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-calls">tracking/calls</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-awaitCall">awaitCall</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-callsSaga">callsSaga</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initiateCall">initiateCall</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-calls-at">tracking/calls/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CACHE_CALL">CACHE_CALL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_DECODE_FAIL">CALL_DECODE_FAIL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_DECODE_SUCCESS">CALL_DECODE_SUCCESS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_FAILED">CALL_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CALL_RETURNED">CALL_RETURNED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_CACHE">CLEAR_CACHE</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORCE_CALL">FORCE_CALL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_CALL">FORGET_CALL</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-calls-actions">tracking/calls/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cacheCall">cacheCall</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forceCall">forceCall</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetCall">forgetCall</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-transactions">tracking/transactions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-openTxChannel">openTxChannel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createTransactionPromiEvent">createTransactionPromiEvent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-transactionsSaga">transactionsSaga</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-transactions-at">tracking/transactions/AT</a><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_TX">FORGET_TX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SEND_TX">SEND_TX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SEND_TX_FAILED">SEND_TX_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_BROADCAST">TX_BROADCAST</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_FAILED">TX_FAILED</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_FINAL">TX_FINAL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_RECEIPT">TX_RECEIPT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TX_SENT">TX_SENT</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#tracking-transactions-actions">tracking/transactions/actions</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-forgetTX">forgetTX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendTX">sendTX</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#util">util</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mappedreducer">mappedreducer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-poller">poller</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-subber">subber</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">Variable</h1>
+<div data-ice="summaries"><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Summary</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_GET_ALL">ACCOUNTS_GET_ALL</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Get data (like the balance) for each account in the tracker.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_POLL_ERROR">ACCOUNTS_POLL_ERROR</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Whenever accounts polling failed, fired with &quot;err&quot; property containing the error.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_START_POLLING">ACCOUNTS_START_POLLING</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Start polling accounts (runs a ACCOUNTS_START_FETCH, followed by a ACCOUNTS_GET_ALL).</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNTS_STOP_POLLING">ACCOUNTS_STOP_POLLING</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Stop polling accounts (Polling can be resumed with ACCOUNTS_START_POLLING again).</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_BALANCE">ACCOUNT_BALANCE</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When an account gets a new updated balance.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET">ACCOUNT_GET</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Get data for an individual account.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET_BALANCE">ACCOUNT_GET_BALANCE</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>To start updating the balance of an account.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ACCOUNT_GET_BALANCE_FAILED">ACCOUNT_GET_BALANCE_FAILED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When balance updating fails.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ADD_CONTRACT">ADD_CONTRACT</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Load a contract (binding it to an web3js Contract instance), and add it to the redux store.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-ADD_LOCAL_ACCOUNT">ADD_LOCAL_ACCOUNT</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Add an account to track locally.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_LISTEN_ERROR">BLOCKS_LISTEN_ERROR</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When an error occurs during listening for blocks.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_POLL_ERROR">BLOCKS_POLL_ERROR</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When an error occurs during polling for blocks.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_START_LISTENING">BLOCKS_START_LISTENING</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Starts listening, for websocket based Web3 providers.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_START_POLLING">BLOCKS_START_POLLING</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Start polling, for simple non-websocket based Web3 providers such as Metamask.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_STOP_LISTENING">BLOCKS_STOP_LISTENING</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Stops listening, for websocket based Web3 providers.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_STOP_POLLING">BLOCKS_STOP_POLLING</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Stop polling, for simple non-websocket based Web3 providers such as Metamask</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCKS_SUB_NEW_BLOCK_CHECK">BLOCKS_SUB_NEW_BLOCK_CHECK</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Trigger that is used to tunnel the subscription event to a block check.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_FAILED">BLOCK_FAILED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When block data from &quot;BLOCK_RECEIVED&quot; could not be processed.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_PROCESSED">BLOCK_PROCESSED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When block data from &quot;BLOCK_RECEIVED&quot; was processed successfully.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_RECEIVED">BLOCK_RECEIVED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When raw block data was received.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-BLOCK_RETRIEVAL_ERROR">BLOCK_RETRIEVAL_ERROR</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When retrieving a block fails.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-CACHE_CALL">CACHE_CALL</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Call, but try to hit local redux cache first.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-CALL_DECODE_FAIL">CALL_DECODE_FAIL</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When a call failed to be decoded but was otherwise successful.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-CALL_DECODE_SUCCESS">CALL_DECODE_SUCCESS</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When a call is decoded, after <code>CALL_RETURNED</code>.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-CALL_FAILED">CALL_FAILED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When the call failed, (e.g.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-CALL_RETURNED">CALL_RETURNED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When a call promise is completed by web3, adds the raw result to the cache.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-CLEAR_CACHE">CLEAR_CACHE</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Wipe the cache.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-CONTRACT_ADDED">CONTRACT_ADDED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When the contract is loaded, the reducer adds it to the store now.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-FORCE_CALL">FORCE_CALL</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Call, ignoring the cache.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_CALL">FORGET_CALL</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Remove a single call from the cache.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_CONTRACT">FORGET_CONTRACT</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Remove a contract from redux store.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_LOCAL_ACCOUNT">FORGET_LOCAL_ACCOUNT</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Forget local account.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-FORGET_TX">FORGET_TX</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Remove TX from the tracker.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-GET_BLOCK">GET_BLOCK</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Force get a specific block (passed with &apos;blockHandle&apos;).</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-GET_LATEST_BLOCK">GET_LATEST_BLOCK</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Force get latest block.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-SEND_TX">SEND_TX</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Send a transaction, to be tracked.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-SEND_TX_FAILED">SEND_TX_FAILED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When sending errors, i.e.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-TX_BROADCAST">TX_BROADCAST</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When a tx has been broadcast.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-TX_FAILED">TX_FAILED</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Has a &quot;receipt&quot; if it was a mining failure (e.g.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-TX_FINAL">TX_FINAL</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When web3 explicitly provided us with 12 chained confirmations.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-TX_RECEIPT">TX_RECEIPT</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>When a receipt was received, may be multiple times in case of chain re-organization.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-TX_SENT">TX_SENT</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>After starting sending a transaction to the web3provider successfully, it&apos;s not broadcast yet!</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-reducer">reducer</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxReducer">ReduxReducer</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Root reducer of redapp.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-trackingRed">trackingRed</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxReducer">ReduxReducer</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Tracking reducer of redapp.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
+<div data-ice="details"><h2 data-ice="title">Static Public </h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNTS_GET_ALL">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNTS_GET_ALL</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber12">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNTS_GET_ALL} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber12">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Get data (like the balance) for each account in the tracker.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNTS_POLL_ERROR">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNTS_POLL_ERROR</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber54">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNTS_POLL_ERROR} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber54">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Whenever accounts polling failed, fired with &quot;err&quot; property containing the error.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNTS_START_POLLING">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNTS_START_POLLING</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber42">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNTS_START_POLLING} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber42">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Start polling accounts (runs a ACCOUNTS_START_FETCH, followed by a ACCOUNTS_GET_ALL).</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNTS_STOP_POLLING">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNTS_STOP_POLLING</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber48">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNTS_STOP_POLLING} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber48">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Stop polling accounts (Polling can be resumed with ACCOUNTS_START_POLLING again).</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNT_BALANCE">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNT_BALANCE</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber36">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNT_BALANCE} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber36">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When an account gets a new updated balance.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNT_GET">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNT_GET</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber18">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNT_GET} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber18">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Get data for an individual account.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNT_GET_BALANCE">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNT_GET_BALANCE</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber24">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNT_GET_BALANCE} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber24">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>To start updating the balance of an account.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ACCOUNT_GET_BALANCE_FAILED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ACCOUNT_GET_BALANCE_FAILED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ACCOUNT_GET_BALANCE_FAILED} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber30">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When balance updating fails.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ADD_CONTRACT">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ADD_CONTRACT</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/contracts/AT/index.js.html#lineNumber10">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ADD_CONTRACT} from &apos;<span><a href="file/src/contracts/AT/index.js.html#lineNumber10">redapp/es/contracts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Load a contract (binding it to an web3js Contract instance), and add it to the redux store.
+The methods of the contract are also added to the store,
+which can be called with their ABI arguments. This produces a thunk and an ID,
+the thunk can then be dispatched to execute the method,
+and the ID can be used to track the progress.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-ADD_LOCAL_ACCOUNT">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ADD_LOCAL_ACCOUNT</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber60">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ADD_LOCAL_ACCOUNT} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber60">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Add an account to track locally. (i.e. no interaction with the user)</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCKS_LISTEN_ERROR">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCKS_LISTEN_ERROR</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber42">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCKS_LISTEN_ERROR} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber42">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When an error occurs during listening for blocks.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCKS_POLL_ERROR">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCKS_POLL_ERROR</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber18">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCKS_POLL_ERROR} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber18">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When an error occurs during polling for blocks.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCKS_START_LISTENING">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCKS_START_LISTENING</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber24">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCKS_START_LISTENING} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber24">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Starts listening, for websocket based Web3 providers.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCKS_START_POLLING">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCKS_START_POLLING</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber6">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCKS_START_POLLING} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber6">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Start polling, for simple non-websocket based Web3 providers such as Metamask.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCKS_STOP_LISTENING">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCKS_STOP_LISTENING</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCKS_STOP_LISTENING} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber30">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Stops listening, for websocket based Web3 providers.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCKS_STOP_POLLING">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCKS_STOP_POLLING</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber12">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCKS_STOP_POLLING} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber12">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Stop polling, for simple non-websocket based Web3 providers such as Metamask</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCKS_SUB_NEW_BLOCK_CHECK">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCKS_SUB_NEW_BLOCK_CHECK</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber36">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCKS_SUB_NEW_BLOCK_CHECK} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber36">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Trigger that is used to tunnel the subscription event to a block check.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCK_FAILED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCK_FAILED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber79">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCK_FAILED} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber79">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When block data from &quot;BLOCK_RECEIVED&quot; could not be processed.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCK_PROCESSED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCK_PROCESSED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber73">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCK_PROCESSED} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber73">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When block data from &quot;BLOCK_RECEIVED&quot; was processed successfully.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCK_RECEIVED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCK_RECEIVED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber67">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCK_RECEIVED} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber67">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When raw block data was received.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-BLOCK_RETRIEVAL_ERROR">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">BLOCK_RETRIEVAL_ERROR</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber61">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {BLOCK_RETRIEVAL_ERROR} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber61">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When retrieving a block fails.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-CACHE_CALL">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">CACHE_CALL</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber6">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CACHE_CALL} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber6">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Call, but try to hit local redux cache first. If not in cache, a FORCE_CALL will be fired.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-CALL_DECODE_FAIL">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">CALL_DECODE_FAIL</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber42">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CALL_DECODE_FAIL} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber42">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When a call failed to be decoded but was otherwise successful.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-CALL_DECODE_SUCCESS">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">CALL_DECODE_SUCCESS</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber36">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CALL_DECODE_SUCCESS} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber36">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When a call is decoded, after <code>CALL_RETURNED</code>.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-CALL_FAILED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">CALL_FAILED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber48">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CALL_FAILED} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber48">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When the call failed, (e.g. invalid block number).</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-CALL_RETURNED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">CALL_RETURNED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CALL_RETURNED} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber30">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When a call promise is completed by web3, adds the raw result to the cache.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-CLEAR_CACHE">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">CLEAR_CACHE</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber12">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CLEAR_CACHE} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber12">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Wipe the cache.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-CONTRACT_ADDED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">CONTRACT_ADDED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/contracts/AT/index.js.html#lineNumber16">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CONTRACT_ADDED} from &apos;<span><a href="file/src/contracts/AT/index.js.html#lineNumber16">redapp/es/contracts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When the contract is loaded, the reducer adds it to the store now.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-FORCE_CALL">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">FORCE_CALL</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber24">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {FORCE_CALL} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber24">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Call, ignoring the cache.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-FORGET_CALL">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">FORGET_CALL</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber18">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {FORGET_CALL} from &apos;<span><a href="file/src/tracking/calls/AT/index.js.html#lineNumber18">redapp/es/tracking/calls/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Remove a single call from the cache.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-FORGET_CONTRACT">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">FORGET_CONTRACT</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/contracts/AT/index.js.html#lineNumber22">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {FORGET_CONTRACT} from &apos;<span><a href="file/src/contracts/AT/index.js.html#lineNumber22">redapp/es/contracts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Remove a contract from redux store.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-FORGET_LOCAL_ACCOUNT">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">FORGET_LOCAL_ACCOUNT</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber66">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {FORGET_LOCAL_ACCOUNT} from &apos;<span><a href="file/src/tracking/accounts/AT/index.js.html#lineNumber66">redapp/es/tracking/accounts/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Forget local account.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-FORGET_TX">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">FORGET_TX</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber52">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {FORGET_TX} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber52">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Remove TX from the tracker.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-GET_BLOCK">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">GET_BLOCK</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber55">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {GET_BLOCK} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber55">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Force get a specific block (passed with &apos;blockHandle&apos;).
+May be removed if it is not within the allowed the block-depth.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-GET_LATEST_BLOCK">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">GET_LATEST_BLOCK</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber48">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {GET_LATEST_BLOCK} from &apos;<span><a href="file/src/tracking/blocks/AT/index.js.html#lineNumber48">redapp/es/tracking/blocks/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Force get latest block.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-SEND_TX">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">SEND_TX</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber6">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {SEND_TX} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber6">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Send a transaction, to be tracked.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-SEND_TX_FAILED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">SEND_TX_FAILED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber18">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {SEND_TX_FAILED} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber18">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When sending errors, i.e. the web3provider fails before even broadcasting the transaction.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-TX_BROADCAST">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">TX_BROADCAST</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber24">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TX_BROADCAST} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber24">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When a tx has been broadcast.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-TX_FAILED">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">TX_FAILED</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber40">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TX_FAILED} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber40">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Has a &quot;receipt&quot; if it was a mining failure (e.g. out of gas).</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-TX_FINAL">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">TX_FINAL</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber46">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TX_FINAL} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber46">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When web3 explicitly provided us with 12 chained confirmations.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-TX_RECEIPT">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">TX_RECEIPT</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TX_RECEIPT} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber30">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>When a receipt was received, may be multiple times in case of chain re-organization.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-TX_SENT">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">TX_SENT</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxActionType">ReduxActionType</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber12">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TX_SENT} from &apos;<span><a href="file/src/tracking/transactions/AT/index.js.html#lineNumber12">redapp/es/tracking/transactions/AT/index.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>After starting sending a transaction to the web3provider successfully, it&apos;s not broadcast yet!</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-reducer">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">reducer</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxReducer">ReduxReducer</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/reducer.js.html#lineNumber10">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import reducer from &apos;<span><a href="file/src/reducer.js.html#lineNumber10">redapp/es/reducer.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Root reducer of redapp.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-trackingRed">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">trackingRed</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-ReduxReducer">ReduxReducer</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/tracking/trackingRed.js.html#lineNumber12">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import trackingRed from &apos;<span><a href="file/src/tracking/trackingRed.js.html#lineNumber12">redapp/es/tracking/trackingRed.js</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Tracking reducer of redapp.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="/image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+
+<script data-ice="layoutBodyScript" src="/script/search_index.js"></script>
+<script data-ice="layoutBodyScript" src="/script/search.js"></script>
+<script data-ice="layoutBodyScript" src="/script/pretty-print.js"></script>
+<script data-ice="layoutBodyScript" src="/script/inherited-summary.js"></script>
+<script data-ice="layoutBodyScript" src="/script/test-summary.js"></script>
+<script data-ice="layoutBodyScript" src="/script/inner-link.js"></script>
+<script data-ice="layoutBodyScript" src="/script/patch-for-local.js"></script>
+</body>
+</html>
