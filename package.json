@@ -1,6 +1,6 @@
 {
   "name": "redapp",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Redux web3 integration and util for DApps",
   "scripts": {
     "build": "npm run clean && run-p build:**",

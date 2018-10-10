@@ -52,10 +52,10 @@ const mapping = {
     {...state[txID], status: 'broadcast', hash: txHash }),
 
   [transactionsAT.TX_FAILED]: (state, { txID, receipt }) => updateTx(state, txID,
-    {...state[txID], status: 'failed', receipt: { input: state.receipt.input, ...(receipt || {}) }}),
+    {...state[txID], status: 'failed', receipt: { input: (state[txID].receipt || {}).input, ...(receipt || {}) }}),
 
   [transactionsAT.TX_RECEIPT]: (state, { txID, receipt }) => updateTx(state, txID,
-    {...state[txID], receipt: { input: state.receipt.input, ...(receipt || {}) }, status: receipt.blockNumber === null ? 'pending' : 'success'}),
+    {...state[txID], receipt: { input: (state[txID].receipt || {}).input, ...(receipt || {}) }, status: receipt.blockNumber === null ? 'pending' : 'success'}),
 
   [transactionsAT.FORGET_TX]: (state, { txID }) => {
     const res = {...state};

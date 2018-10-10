@@ -4,6 +4,10 @@
 
 *Please collect changelog nodes here,
  these will be included in the changelog entry for the next release.
+ 
+## `v1.2.1`
+
+- Bugfix, TXs receipts were retrieved incorrectly from the state.
 
 ## `v1.2.0`
 
