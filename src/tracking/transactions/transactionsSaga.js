@@ -45,7 +45,7 @@ function* sendTX(web3, {from, to, value, gas, gasPrice, data, nonce, txID}) {
   // Open a TX channel: this channel maps web3 events to our redux tracking system.
   const chan = yield call(openTxChannel, promiEvent, id);
 
-  yield put({type: transactionsAT.TX_SENT, txID: id});
+  yield put({type: transactionsAT.TX_SENT, txID: id, data});
 
   try {
     // Now process the channel, and forward the events.
